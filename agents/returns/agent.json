@@ -1,10 +1,10 @@
 {
   "stage": "returns",
-  "agent_id": "returns-stub@0",
-  "owner": "@github-handle-of-the-owner",
-  "mode": "inproc",
+  "agent_id": "returns-manager@0.1.0",
+  "owner": "@ruthvikgoud16",
+  "mode": "http",
   "url": "http://localhost:8104",
   "module": "agents.returns.app",
-  "implementation": "organiser-stub",
-  "notes": "Set mode to \"http\" if your agent is not Python or runs as its own service. Change implementation to a short honest description of what you built."
+  "implementation": "Ruthvik's Returns service. The bus calls POST /run. It does not import the desk.",
+  "notes": "cd cube-04-returns-manager && PORT=8104 npm run dev. ANTHROPIC_API_KEY must be set or the model call fail-opens to pending."
 }

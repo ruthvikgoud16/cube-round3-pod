@@ -1,10 +1,10 @@
 {
   "stage": "recovery",
-  "agent_id": "recovery-stub@0",
-  "owner": "@github-handle-of-the-owner",
-  "mode": "inproc",
+  "agent_id": "recovery-manager@1.0.0",
+  "owner": "@mdmoghnishah",
+  "mode": "http",
   "url": "http://localhost:8105",
   "module": "agents.recovery.app",
-  "implementation": "organiser-stub",
-  "notes": "Set mode to \"http\" if your agent is not Python or runs as its own service. Change implementation to a short honest description of what you built."
+  "implementation": "Moghnishah's Recovery service. The bus calls POST /run. It does not import his rules.",
+  "notes": "cd cube26-rcy-0266-mdmoghnishah/backend && uvicorn recovery.api:app --port 8105. A claim needs a named charge plus a finished upstream record."
 }

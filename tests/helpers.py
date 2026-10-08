@@ -1,7 +1,7 @@
 """Fake agents for failure/UNCERTAIN/override tests: they return crafted, contract-valid outputs."""
 import copy
 
-from orchestration.clients import AgentRejected, AgentTimeout, AgentUnavailable, client_for
+from orchestration.clients import AgentRejected, AgentSchemaRefusal, AgentTimeout, AgentUnavailable, client_for
 from shared.utils.records import PREFIX, build_output, build_record, check
 
 
@@ -65,4 +65,4 @@ class Mangle:
         return out
 
 
-__all__ = ["Fake", "Boom", "Flaky", "Mangle", "AgentRejected", "AgentTimeout", "AgentUnavailable"]
+__all__ = ["Fake", "Boom", "Flaky", "Mangle", "AgentRejected", "AgentSchemaRefusal", "AgentTimeout", "AgentUnavailable"]

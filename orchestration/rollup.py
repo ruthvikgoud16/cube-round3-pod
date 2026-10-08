@@ -77,7 +77,15 @@ def derive_final_outcome(workflow: dict, evidence: dict, status: str) -> dict | 
     claimable = rec_pair[1]["payload"].get("claimable_usd") if rec_pair else None
     needs_human = bool(incomplete or asks)
 
-    if rec_claim:
+    unjudged = [sr["stage"] for sr, rec in pairs if sr["stage"] != "recovery" and rec.get("status") != "completed"]
+    if rec_claim and unjudged:
+        outcome, verdict = "INCOMPLETE", "UNCERTAIN"
+        reason = (
+            f"Recovery's verdict was FAIL, but {', '.join(unjudged)} did not finish. "
+            "No claim is recommended from an unjudged stage."
+        )
+        rec_claim = False
+    elif rec_claim:
         outcome, verdict = "CLAIM_RECOMMENDED", "FAIL"
         reason = f"Recovery contradicted at least one charge (claimable ${claimable or 0:.2f})."
     elif failed:

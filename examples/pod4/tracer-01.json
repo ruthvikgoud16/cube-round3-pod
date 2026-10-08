@@ -1,0 +1,8 @@
+{
+  "org_id": "org_demo_alpha",
+  "unit_id": "TRACER-01",
+  "subject_id": "TRACER-01",
+  "route": "fba",
+  "returned": true,
+  "photos": "data/input/TRACER-01/{receiving,prep,pack,returns}/"
+}

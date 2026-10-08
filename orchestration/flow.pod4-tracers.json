@@ -1,0 +1,18 @@
+{
+  "flow_id": "pod4-tracers-v1",
+  "description": "Three real units, all five agents. This is not the sample-CSV flow. A unit here is photographed for Receiving, Prep, Pack, and Returns, then Recovery reads that chain. No golden PASS is declared until a real run returns one.",
+  "steps": [
+    { "stage": "receiving" },
+    { "stage": "prep" },
+    { "stage": "pack" },
+    { "stage": "returns" },
+    { "stage": "recovery" }
+  ],
+  "defaults": {
+    "timeout_s": 180,
+    "retries": 1,
+    "on_uncertain": "continue",
+    "on_pending": "continue",
+    "on_error": "continue"
+  }
+}

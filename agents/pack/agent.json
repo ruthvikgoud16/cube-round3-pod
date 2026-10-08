@@ -1,10 +1,10 @@
 {
   "stage": "pack",
-  "agent_id": "pack-stub@0",
-  "owner": "@github-handle-of-the-owner",
-  "mode": "inproc",
+  "agent_id": "pack-manager@1.0.0",
+  "owner": "@Vivek21-7",
+  "mode": "http",
   "url": "http://localhost:8103",
   "module": "agents.pack.app",
-  "implementation": "organiser-stub",
-  "notes": "Set mode to \"http\" if your agent is not Python or runs as its own service. Change implementation to a short honest description of what you built."
+  "implementation": "Vivek's Pack service. The bus calls POST /run. It does not import his code.",
+  "notes": "cd cube-03-pack-manager1 && python -m pack_manager.server --port 8103. Needs context.order with items, and at least one open-box photo."
 }

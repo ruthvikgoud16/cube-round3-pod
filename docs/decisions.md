@@ -76,4 +76,34 @@ A contradiction between documents or data is a **finding**, not a failure. Open 
 
 ## Your Pod's decisions
 
-_Add entries below._
+### D-007 · A 422 and a 200 pending envelope are the same stop
+- Date / Owner: 2026-10-08 / ruthvikgoud16
+- Context: Receiving answers a bad input with HTTP 422 and a FastAPI error body. Prep and Returns answer the same situation with HTTP 422 or 200 and a pending Agent Output. The starter treated every 4xx as `agent_rejected` and then kept calling later stages. Recovery could then read an unjudged stage as if it had finished.
+- Options considered: leave the starter (continue after every error); halt on every error including timeouts; halt only when the stage did not judge.
+- Decision: a 422 that already contains an Agent Output is accepted as that output. A 422 that does not is recorded as `schema_rejected`, not as a dead process. Either way the workflow stops. A completed `FAIL` (Prep `stop_and_fix`) does not stop the bus. A timeout is still retried and, after that, still follows `on_error`. If Recovery's verdict is `FAIL` while any earlier record is not `completed`, the final outcome is `INCOMPLETE` and no claim amount is attached.
+- Why: the five services do not share one HTTP habit. The bus has to. A claim from an unjudged barcode or an unjudged return is the failure mode Round 3 will hit first.
+- Consequences: one refused or pending stage means later stages stay `pending` until `resume`. A demo that needs five envelopes has to send a unit every applicable stage can actually judge. Forcing Pack and Prep on the same unit is still rejected: a unit is FBA or merchant-fulfilled, not both (D-000).
+
+### D-008 · Three tracer units call all five agents
+- Date / Owner: 2026-10-08 / ruthvikgoud16
+- Context: the sample flow (D-000) sends a unit through Prep or Pack, not both. The October 10 demo is three physical units photographed for every stage. Their photos are not in the sample CSVs.
+- Options considered: rewrite the four other agents into one codebase; point the bus at the organiser stubs; add a second flow that calls the existing HTTP services.
+- Decision: `flow.json` stays the sample route. `orchestration/flow.pod4-tracers.json` runs Receiving, Prep, Pack, Returns, and Recovery for `TRACER-01`, `TRACER-02`, and `TRACER-03`. Those four services stay in their own repos, mode `http`, ports 8102–8105. Receiving stays in-process on this repo. Photo bytes are attached to the Agent Input because a relative path in this repo is invisible to the other four. `on_pending: continue` is set only on this flow, so a pending stage does not hide the later agents. A schema 422 still stops. No golden PASS is written before a real run.
+- Why: the agents already return the contract. The missing piece was the pipe, not a new domain model. A claim still cannot be manufactured from an unjudged stage (rollup).
+- Consequences: `make run` does not use this flow. A tracer with an empty photo folder returns pending from that stage and the workflow stays incomplete. Order lines for Pack are added on the case when the photos arrive.
+
+### D-009 · Three presentation units are scripted, and the same ids can go live
+- Date / Owner: 2026-10-08 / ruthvikgoud16
+- Context: the October 10 demo cannot depend on a vision call. The Drive photos are not in the repo yet. A script that pretends to be Claude would fail the honesty check.
+- Options considered: hardcode PASS inside each teammate's agent; wait for photos and risk a timeout on stage; a bus-level script with model.calls 0, and a live switch.
+- Decision: `UNIT-001`, `UNIT-002`, and `UNIT-003` return contract-valid records from `orchestration/demo_overrides.py`. The model name is `demo-override` and the call count is 0. `UNIT-001` is CLEAN. `UNIT-002` is BLOCKED / NEEDS_REVIEW because Returns is UNCERTAIN. `UNIT-003` is CLAIM_RECOMMENDED and the Recovery payload flag is CONTRADICTS, citing the Prep and Returns record ids from that same run. `context.live: true`, or any other subject id, calls the real agent. A crashing agent is caught in the orchestrator and stored as UNCERTAIN. The official evidence schema is unchanged: verdict is already PASS, FAIL, or UNCERTAIN, and a content hash is SHA-256, not a tamper proof.
+- Why: the contract already rejects a thinner record. Rewriting the four agents to return a private shape would fail validation and the ownership check.
+- Consequences: do not quote these three runs as vision accuracy. When the Drive photos arrive, set `live` true or use `TRACER-01` through `TRACER-03`.
+
+### D-010 · The bus seals a real judgment that used a private hash or the word hold
+- Date / Owner: 2026-10-08 / ruthvikgoud16
+- Context: a live run of PRODUCT-1 through PRODUCT-10 called Claude. Receiving records were stored. Prep, Pack, and Returns records were dropped. Prep's next step was `hold`. Pack and Returns hashed the record with a different canonical form, so `content_hash` did not verify. One Pack check was UNCERTAIN with no `uncertain_reason`.
+- Options considered: rewrite the hash inside Prep, Pack, and Returns; keep dropping the envelopes; seal the body on the bus and map `hold` to `review`.
+- Decision: `canonicalize_output` runs before validation. `hold` becomes `review`. A missing uncertain reason becomes `insufficient_evidence`. The evidence body is sealed with the official hash, which excludes `content_hash` and `overrides`. The verdict, checks, and call count stay the agent's.
+- Why: the judgment was already made. Dropping it made every live workflow FAILED even when Pack had returned PASS. The hash is a content hash, not a tamper seal.
+- Consequences: a stored hash can differ from the hash in the agent's own log. A schema error that is not one of these three still becomes a pending UNCERTAIN record.

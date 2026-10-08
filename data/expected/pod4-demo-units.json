@@ -1,0 +1,6 @@
+{
+  "note": "These are the scripted presentation outcomes. model.calls is 0. They are not a vision score. Set live true on the case to call the real agents instead.",
+  "UNIT-001": {"status": "COMPLETED", "outcome": "CLEAN", "verdict": "PASS"},
+  "UNIT-002": {"status": "BLOCKED", "outcome": "NEEDS_REVIEW", "verdict": "UNCERTAIN"},
+  "UNIT-003": {"status": "COMPLETED", "outcome": "CLAIM_RECOMMENDED", "verdict": "FAIL", "evidence_flags": ["CONTRADICTS"]}
+}

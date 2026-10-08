@@ -13,18 +13,20 @@ What it does for you (keep or replace, but keep the behaviour; it is tested):
 """
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import os
 import time
 from pathlib import Path
 
-from shared.utils.hashing import verify
+from shared.utils.hashing import seal, verify
 from shared.utils.log import get_logger
 from shared.utils.records import error_obj, pending_output, utcnow
 from shared.utils.schema import errors as schema_errors
 
-from .clients import AgentRejected, AgentTimeout, AgentUnavailable, client_for, load_manifest
+from .clients import AgentRejected, AgentSchemaRefusal, AgentTimeout, AgentUnavailable, client_for, load_manifest
+from .demo_overrides import DemoClient, demo_applies
 from .rollup import derive_final_outcome, derive_status, effective
 from .store import MemoryStore
 
@@ -67,9 +69,26 @@ def discover_inputs(subject_id: str, stage: str) -> list[dict]:
     folder = root / subject_id / stage
     if not folder.is_dir():
         return []
-    return [{"ref": str(p.relative_to(root)), "kind": KINDS.get(p.suffix.lower(), "other"),
-             "sha256": hashlib.sha256(p.read_bytes()).hexdigest()}
-            for p in sorted(folder.iterdir()) if p.is_file() and not p.name.startswith(".")]
+    rows = []
+    for path in sorted(folder.iterdir()):
+        if not path.is_file() or path.name.startswith("."):
+            continue
+        raw = path.read_bytes()
+        row = {
+            "ref": str(path.relative_to(root)),
+            "kind": KINDS.get(path.suffix.lower(), "other"),
+            "sha256": hashlib.sha256(raw).hexdigest(),
+        }
+        # The photo lives in this pod's input folder. Prep, Pack, and Returns run in other
+        # repositories, so a relative ref is invisible to them. The bytes travel in the request.
+        if row["kind"] == "image" and len(raw) <= 8_000_000:
+            row["data_base64"] = base64.b64encode(raw).decode("ascii")
+            row["media_type"] = {
+                ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+                ".webp": "image/webp", ".gif": "image/gif",
+            }.get(path.suffix.lower(), "application/octet-stream")
+        rows.append(row)
+    return rows
 
 
 # ---------------------------------------------------------------- workflow state
@@ -128,6 +147,33 @@ def _previous_evidence(wf: dict, upto: int, store) -> list[dict]:
     return out
 
 
+_ACTIONS = {"continue", "review", "retry", "stop", "route_to_recovery", "complete"}
+_ACTION_ALIAS = {"hold": "review", "seal": "continue", "stop_and_fix": "stop"}
+
+
+def canonicalize_output(out: dict) -> dict:
+    """Make a teammate envelope storable without changing the verdict.
+
+    Prep and Pack say ``hold``. The contract's next step is ``review``.
+    Pack and Returns hash the record with spaces, timestamps, or ``overrides``
+    included, so ``verify`` fails on an otherwise real judgment. An UNCERTAIN
+    check with no reason is filled with ``insufficient_evidence``. The bus
+    then seals the body with the official content hash and stores that seal.
+    """
+    out = json.loads(json.dumps(out))
+    step = out.get("next_step_recommendation") or None
+    if isinstance(step, dict) and step.get("action") not in _ACTIONS:
+        step["action"] = _ACTION_ALIAS.get(step.get("action"), "review")
+        out["next_step_recommendation"] = step
+    evidence = out.get("evidence")
+    if isinstance(evidence, dict):
+        for item in evidence.get("checks") or []:
+            if item.get("verdict") == "UNCERTAIN" and not item.get("uncertain_reason"):
+                item["uncertain_reason"] = "insufficient_evidence"
+        out["evidence"] = seal(evidence)
+    return out
+
+
 def _validate(out: dict, wf: dict, stage: str) -> list[str]:
     """Why an agent output is not acceptable (empty list = accept)."""
     bad = schema_errors("agent-output", out)
@@ -147,6 +193,21 @@ def _validate(out: dict, wf: dict, stage: str) -> list[str]:
     return []
 
 
+def agent_context(wf: dict) -> dict:
+    """Case fields sit on the Agent Input where each agent already reads them.
+
+    Prep reads context.work_order. Pack reads context.order. Returns reads
+    context.product_name and context.parts_list. Recovery reads context.charges.
+    Receiving reads the purchase-order fields on context. Nesting them only
+    under context.case makes a photographed unit look empty.
+    """
+    case = wf.get("context") or {}
+    context = {key: value for key, value in case.items() if key != "overrides"}
+    context["case"] = case
+    context["overrides"] = wf.get("overrides") or []
+    return context
+
+
 def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict | None:
     """Run one stage. Returns a halt reason, or None. Always leaves a stored evidence record behind."""
     stage = sr["stage"]
@@ -160,9 +221,12 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
         "subject": {"org_id": wf["org_id"], "subject_id": wf["subject_id"], "route": wf["context"].get("route", "unknown")},
         "inputs": discover_inputs(wf["subject_id"], stage),
         "previous_evidence": _previous_evidence(wf, idx, store),
-        "context": {"overrides": wf["overrides"], "case": wf["context"]},
+        "context": agent_context(wf),
     }
+    if client is None:
+        client = DemoClient() if demo_applies(request) else client_for(stage)
     t0, out, err = time.monotonic(), None, None
+    stop_after = False
     while sr["attempts"] <= int(opts["retries"]):
         sr["attempts"] += 1
         try:
@@ -173,8 +237,14 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
             err = error_obj("agent_timeout", str(exc), retryable=True, stage=stage)
         except AgentUnavailable as exc:
             err = error_obj("agent_unavailable", str(exc), retryable=True, stage=stage)
+        except AgentSchemaRefusal as exc:
+            # Bare 422 (Receiving, Pack) is the same stop as a 200 pending envelope (Prep, Returns).
+            err = error_obj("schema_rejected", str(exc), retryable=False, stage=stage)
+            stop_after = True
+            break
         except AgentRejected as exc:
             err = error_obj("agent_rejected", str(exc), retryable=False, stage=stage)
+            stop_after = True
             break
         except Exception as exc:  # an agent bug must not take the orchestrator down
             err = error_obj("agent_exception", f"{type(exc).__name__}: {exc}", retryable=False, stage=stage)
@@ -182,6 +252,7 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
         if sr["attempts"] <= int(opts["retries"]):
             _log(wf, "retry", stage, err["message"])
     if out is not None:
+        out = canonicalize_output(out)
         bad = _validate(out, wf, stage)
         if bad:
             code = "tenant_mismatch" if bad[0].startswith("TENANCY") else "invalid_output"
@@ -209,6 +280,18 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
          f"{ev['decision']['outcome']} / {ev['decision']['verdict']}")
     if sr["state"] == "error" and opts["on_error"] == "block":
         return f"stage {stage} failed and on_error=block"
+    # A 422 and a 200 pending envelope are the same signal: this stage did not judge.
+    # Do not call the next agent. Recovery must not read an unjudged record as a finished disposition.
+    # A completed FAIL (Prep stop_and_fix) does not stop the bus. A timeout still follows on_error.
+    # The sample flow stops here (D-007). The tracer flow sets on_pending=continue so a
+    # pending photo still lets the later agents run. Recovery still cannot turn that into a claim.
+    pending_continues = (
+        opts.get("on_pending") == "continue"
+        and not stop_after
+        and ev.get("status") != "completed"
+    )
+    if (stop_after or (err is None and ev.get("status") != "completed")) and not pending_continues:
+        return f"stage {stage} did not judge (status={ev.get('status')}); not continuing"
     # Block only when an UNCERTAIN result actually asks for a person. Recovery's SILENT ("no evidence, so no claim")
     # is UNCERTAIN with needs_human=false: there is nothing for a human to decide, so it must not halt the workflow.
     if ev["decision"]["verdict"] == "UNCERTAIN" and ev["decision"].get("needs_human") and opts["on_uncertain"] == "block":
@@ -239,7 +322,7 @@ def advance(wf: dict, flow: dict, store, clients: dict | None = None) -> dict:
             continue
         step = steps[sr["stage"]]
         opts = {**defaults, **{k: v for k, v in step.items() if k not in ("stage", "when")}}
-        client = (clients or {}).get(sr["stage"]) or client_for(sr["stage"])
+        client = (clients or {}).get(sr["stage"]) if clients else None
         halt = _run_stage(wf, sr, idx, opts, store, client)
         store.save_workflow(wf)
         if halt:

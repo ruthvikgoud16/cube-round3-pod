@@ -1,10 +1,10 @@
 {
   "stage": "prep",
-  "agent_id": "prep-stub@0",
-  "owner": "@github-handle-of-the-owner",
-  "mode": "inproc",
+  "agent_id": "prep-manager@1.0.0",
+  "owner": "@MPreethika16",
+  "mode": "http",
   "url": "http://localhost:8102",
   "module": "agents.prep.app",
-  "implementation": "organiser-stub",
-  "notes": "Set mode to \"http\" if your agent is not Python or runs as its own service. Change implementation to a short honest description of what you built."
+  "implementation": "Preethika's Prep service. The bus calls POST /run. It does not import her code.",
+  "notes": "cd cube26-prp-0070-mpreethika16 && npx next dev -p 8102. ANTHROPIC_API_KEY from the returns .env. Front, back, and label photos are required."
 }

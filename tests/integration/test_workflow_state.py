@@ -116,6 +116,38 @@ def test_refusal_is_not_retried():
     boom = Boom(h.AgentRejected("HTTP 404"))
     wf, _ = run(receiving=boom)
     assert boom.calls == 1 and wf["errors"][0]["code"] == "agent_rejected" and wf["errors"][0]["retryable"] is False
+    states = {s["stage"]: s["state"] for s in wf["stage_results"]}
+    assert states["prep"] == states["returns"] == states["recovery"] == "pending"
+    assert wf["final_outcome"]["outcome"] != "CLAIM_RECOMMENDED"
+
+
+def test_pending_envelope_stops_the_bus_and_does_not_claim():
+    """HTTP 200 with status pending is the same stop as a 422. Later stages, including Recovery, do not run."""
+    wf, _ = run(prep=Fake("UNCERTAIN", status="pending"))
+    states = {s["stage"]: s["state"] for s in wf["stage_results"]}
+    assert states["receiving"] == "completed"
+    assert states["prep"] == "error"
+    assert states["returns"] == "pending" and states["recovery"] == "pending"
+    assert wf["halted"]["stage"] == "prep"
+    assert wf["final_outcome"]["outcome"] != "CLAIM_RECOMMENDED"
+
+
+def test_schema_refusal_is_the_same_stop_as_a_pending_envelope():
+    import tests.helpers as h
+    boom = Boom(h.AgentSchemaRefusal("HTTP 422: stage must be receiving"))
+    wf, _ = run(receiving=boom)
+    assert boom.calls == 1 and wf["errors"][0]["code"] == "schema_rejected"
+    states = {s["stage"]: s["state"] for s in wf["stage_results"]}
+    assert states["prep"] == states["recovery"] == "pending"
+    assert wf["final_outcome"]["outcome"] != "CLAIM_RECOMMENDED"
+
+
+def test_completed_fail_still_reaches_recovery_without_inventing_a_pass():
+    """A judged Prep stop is not a pending envelope. Recovery still runs. A PASS from Recovery is not a claim."""
+    wf, _ = run(prep="FAIL", recovery=Fake("UNCERTAIN", needs_human=False))
+    states = {s["stage"]: s["state"] for s in wf["stage_results"]}
+    assert states["prep"] == "completed" and states["recovery"] == "completed"
+    assert wf["final_outcome"]["outcome"] == "EXCEPTION"
 
 
 def test_agent_crash_does_not_crash_the_orchestrator():
