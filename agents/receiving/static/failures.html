@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failures · Inbound Receiving</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">Inbound <span>Receiving</span> <em class="tag">Pod 4</em></div>
+      <a href="/">Desk</a>
+      <a href="/evaluation">Evaluation</a>
+      <a class="active" href="/failures">Failures</a>
+      <a href="/about">About</a>
+      <a href="/docs">API</a>
+    </nav>
+
+    <header class="hero fade-in">
+      <h1>Failures</h1>
+      <p class="lede">Where the agent disagreed with agreed humans. Human disagreements are listed but not scored as agent errors.</p>
+    </header>
+
+    <section class="panel fade-in">
+      <h2>Mismatch list</h2>
+      <div id="failList" class="meta">Loading…</div>
+    </section>
+
+    <section class="panel fade-in">
+      <h2>Hard paths in the twelve</h2>
+      <ul class="meta">
+        <li><b>07 / 08</b> — wrong brand → identity FAIL → reject</li>
+        <li><b>04 / 05 / 11</b> — short or weak carton-count evidence</li>
+        <li><b>09</b> — headphones identity vs qty / missing case</li>
+        <li><b>12</b> — blur; evidence insufficient</li>
+        <li><b>Sealed cartons</b> — quantity UNCERTAIN → pending_review is correct</li>
+      </ul>
+    </section>
+  </div>
+  <script src="/static/app.js"></script>
+  <script>ReceivingFailures.init();</script>
+</body>
+</html>

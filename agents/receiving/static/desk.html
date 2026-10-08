@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inbound Receiving · Desk</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">Inbound <span>Receiving</span> <em class="tag">Pod 4</em></div>
+      <a class="active" href="/">Desk</a>
+      <a href="/evaluation">Evaluation</a>
+      <a href="/failures">Failures</a>
+      <a href="/about">About</a>
+      <a href="/docs">API</a>
+    </nav>
+
+    <header class="hero fade-in">
+      <h1>Inbound Receiving</h1>
+      <p class="lede">Twelve real dock deliveries. Observe once, policy decides, sealed stays uncertain.</p>
+      <div class="mode-bar">
+        <span class="dot" id="modeDot"></span>
+        Mode <b id="mode">…</b>
+        <span>·</span>
+        Project set <b>UNIT-RCV-01…12</b>
+        <span>·</span>
+        Live dock photos
+      </div>
+    </header>
+
+    <div class="workspace fade-in">
+      <aside class="stack">
+        <section class="panel">
+          <h2>Delivery</h2>
+          <label class="field">Case</label>
+          <select id="unit"></select>
+          <div class="case-rail" id="caseRail"></div>
+          <label class="field">Organisation</label>
+          <select id="org">
+            <option>org_demo_alpha</option>
+            <option>org_demo_bravo</option>
+          </select>
+          <div class="row">
+            <button type="button" id="run">Run receiving</button>
+            <button type="button" class="ghost" id="runAll">Run all 12</button>
+          </div>
+          <p class="status-line" id="status"></p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Dock photos</h2>
+            <span class="meta" id="photoHint">pallet · carton · unit</span>
+          </div>
+          <div class="shots" id="shots"></div>
+        </section>
+      </aside>
+
+      <main class="stack">
+        <section class="panel" id="resultPanel">
+          <div id="verdictSlot">
+            <div class="verdict-hero empty">
+              <p class="verdict-kicker">Awaiting run</p>
+              <p class="verdict-title" style="font-size:1.5rem;color:var(--muted)">Pick a delivery</p>
+              <p class="verdict-reason">Photos load from the staged dock set. Result shows outcome, checks, and PO — not raw contract JSON.</p>
+            </div>
+          </div>
+          <div class="po-strip" id="poStrip" hidden></div>
+        </section>
+
+        <section class="panel" id="checksPanel" hidden>
+          <div class="panel-head">
+            <h2>Policy checks</h2>
+            <span class="meta" id="checkSummary"></span>
+          </div>
+          <div class="checks" id="checks"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Batch board</h2>
+            <button type="button" class="ghost" id="toggleJson" style="padding:8px 12px;font-size:12px">Integrator JSON</button>
+          </div>
+          <div class="batch-board" id="batch"></div>
+          <pre class="dump" id="json" hidden></pre>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" id="lbClose">Close</button>
+    <img id="lbImg" alt="Dock photo">
+  </div>
+
+  <script src="/static/app.js"></script>
+  <script>ReceivingDesk.init();</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluation · Inbound Receiving</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">Inbound <span>Receiving</span> <em class="tag">Pod 4</em></div>
+      <a href="/">Desk</a>
+      <a class="active" href="/evaluation">Evaluation</a>
+      <a href="/failures">Failures</a>
+      <a href="/about">About</a>
+      <a href="/docs">API</a>
+    </nav>
+
+    <header class="hero fade-in">
+      <h1>Evaluation</h1>
+      <p class="lede">Jaanu + Soanli labeled all twelve before scoring. Soft = per-check agreement. Primary = full agreement only. Not an overall accuracy claim.</p>
+    </header>
+
+    <div class="stat-row fade-in" id="stats"></div>
+
+    <section class="panel fade-in">
+      <h2>Soft rates</h2>
+      <p class="meta" style="margin:-4px 0 12px">Humans agree on that check</p>
+      <table>
+        <thead>
+          <tr><th>Check</th><th>n</th><th>Match</th><th>FP</th><th>FN</th><th>UNCERTAIN≠</th></tr>
+        </thead>
+        <tbody id="softBody"></tbody>
+      </table>
+    </section>
+
+    <section class="panel fade-in">
+      <h2>Primary rates</h2>
+      <p class="meta" style="margin:-4px 0 12px">Full dual-labeler agreement only</p>
+      <table>
+        <thead>
+          <tr><th>Check</th><th>n</th><th>Match</th><th>FP</th><th>FN</th><th>UNCERTAIN≠</th></tr>
+        </thead>
+        <tbody id="fullBody"></tbody>
+      </table>
+      <p class="meta" id="agreedNote" style="margin-top:12px"></p>
+    </section>
+
+    <section class="panel fade-in">
+      <h2>All twelve — agent outcomes</h2>
+      <table>
+        <thead>
+          <tr><th>Case</th><th>Outcome</th><th>Identity</th><th>Cartons</th><th>Qty</th><th>Carton dmg</th><th>Unit dmg</th><th>Quality</th></tr>
+        </thead>
+        <tbody id="casesBody"></tbody>
+      </table>
+    </section>
+
+    <section class="panel fade-in">
+      <h2>Documents</h2>
+      <p class="meta">
+        <a href="/eval/EVALUATION.md">EVALUATION.md</a> ·
+        <a href="/eval/FAILED-CASES.md">FAILED-CASES.md</a> ·
+        <a href="/eval/PROJECT-SET.md">PROJECT-SET.md</a> ·
+        <a href="/eval/report.html">Printable report → PDF</a>
+      </p>
+    </section>
+  </div>
+  <script src="/static/app.js"></script>
+  <script>ReceivingEval.init();</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+delivery_id: UNIT-RCV-01
+po_number: PO-9101
+po_line: 1
+sku: SKU-NUTRABAY-SUPP
+product_name: Nutrabay supplement inbound carton
+spec_colour: 
+spec_components: 
+cartons_ordered: 2
+qty_ordered: 24
+supplier: Nutrabay / Shadowfax dock (live photos)
+
+Photos in receiving/:
+  01_pallet.jpg  — stack / floor spread (count cartons)
+  02_carton.jpg  — outer carton (label / damage)
+  03_unit.jpg    — unit / open / sealed stand-in

@@ -1,44 +1,62 @@
-# agents/receiving/  ·  Receiving Manager
+# Receiving Manager (elite) — Pod 4 · ~70% build
 
-**Owner:** Member 1 (Receiving Manager)  (set `owner` in `agent.json` and the handle in `.github/CODEOWNERS`)
+Local Round 3–ready Receiving agent. Photos are **not** required to finish the spine — use `RECEIVING_MODE=mock` until dock photos arrive.
 
-> **This folder currently contains an organiser stub** that replays the synthetic Round 2 CSV. It is *not* an agent. Replace it, then replace this README with one that describes what you actually built, how to run it, and its limits.
-
-| | |
-|---|---|
-| **Reads (inputs)** | Photos at the point of receipt (pallet, carton, unit) and the PO line |
-| **Reads (previous evidence)** | nothing: first in the chain |
-| **Produces** | identity, quantity, carton count, damage and quality verdicts |
-| **Recommended `check_key`s** | `identity_match, carton_count, quantity, carton_damage, unit_damage, quality_flags` |
-| **`decision.outcome` values** | `accept, accept_with_exceptions, reject, pending_review` |
-
-Your evidence is where supplier disputes begin and the only point at which a supplier claim is still possible. **Keep supplier-side shortfall (finding F-10) distinct from channel-side loss.** Set `subject.unit_scope` honestly: Round 2 Receiving rows are PO lines (finding F-08).
-
-## Where your code goes
+## Architecture (best approach)
 
 ```text
-agents/receiving/
-├── app.py          ← expose  handle(agent_input: dict) -> dict  (an Agent Output). Keep `app = make_app(...)` to serve over HTTP.
-├── agent.json      ← stage · agent_id · owner · mode (inproc | http) · url · an honest `implementation` description
-├── PROVENANCE.md   ← your Round 2 repo URL + commit this came from (create it)
-├── README.md       ← this file, rewritten
-└── …               ← your Round 2 code, prompts, rules, fixtures
+Agent Input
+  → tenancy (org_demo_alpha|bravo)
+  → PO context (+ fixture merge in mock)
+  → quality gate
+  → ONE observation (Claude live | fixture mock)
+  → receiving_policy_v1 → 6 official checks + outcome
+  → Evidence RCV-* (unit_scope=po_line, F-10 shortfall boundary)
+  → Agent Output (fail-open on errors)
 ```
 
-## Integrating, in order
+Same discipline as Returns: **observe ≠ decide**, one call, UNCERTAIN never upgrades to PASS.
 
-1. Read [`INTEGRATION-GUIDE.md`](../../INTEGRATION-GUIDE.md) and [`EVIDENCE-CONTRACT.md`](../../EVIDENCE-CONTRACT.md); open [`examples/end-to-end/`](../../examples/) for a real Agent Output.
-2. In `handle()`: read `request["subject"]`, `request["inputs"]` (your captures) and `request["previous_evidence"]`; run your agent (**one batched model call per unit**); build the record with `shared.utils.records.build_record()` and wrap it with `build_output()`.
-3. **Fail open.** On a model error return `pending_output(...)`, not an exception. Never invent evidence: if you did not see it, say UNCERTAIN with an `uncertain_reason`.
-4. **Refuse other tenants.** Raise `LookupError` (HTTP 404) for a subject that is not under `subject.org_id`.
-5. Make it idempotent: the same `request_id` must yield the same `record_id`. Use the **latest override** of previous evidence (`context.overrides`).
-6. Run `pytest tests/integration/test_agent_contracts.py`, first on the stub (it passes), then on yours, **with your own fixtures**.
-7. Run the whole system: `make run` and `make test`.
+Details: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
-## Run on its own
+## Quick start (no photos)
 
-```sh
-.venv/bin/uvicorn agents.receiving.app:app --port 8101
+```bash
+cd /Users/ruthvikgoud/Downloads/pod4/receiving-elite
+source .venv/bin/activate   # or: python3.11 -m venv .venv && pip install -r requirements.txt
+export RECEIVING_MODE=mock
+PYTHONPATH=. python scripts/run_receiving_demo.py
+PYTHONPATH=. pytest tests/unit/test_receiving_policy.py tests/unit/test_receiving_handle.py -q
+```
+
+Expected: **12/12** mock fixture paths. Photos staged under `data/input/UNIT-RCV-*/receiving/` (36 JPGs). Live: `RECEIVING_MODE=live` + `python scripts/run_receiving_live.py`.
+
+## HTTP (Pod orchestrator)
+
+```bash
+RECEIVING_MODE=mock uvicorn agents.receiving.app:app --port 8101
 curl localhost:8101/health
+# orchestrator POSTs Agent Input to /run
 ```
-Then set `"mode": "http"` in `agent.json` if you want the orchestrator to call it over HTTP.
+
+## When photos arrive (~30% left)
+
+1. Put sets under `data/input/UNIT-RCV-0N/receiving/{01_pallet,02_carton,03_unit}.jpg`
+2. `export RECEIVING_MODE=live` + `ANTHROPIC_API_KEY`
+3. Same `handle()` — no architecture change
+4. Copy `agents/receiving/` into Vinay’s Pod fork
+
+See [`PHOTOS-NEEDED.md`](PHOTOS-NEEDED.md).
+
+## Status
+
+| Piece | Status |
+|---|---|
+| Contract spine + policy | Done |
+| Mock fixtures (6 paths) | Done |
+| Fail-open / tenancy / idempotent RCV ids | Done |
+| Live Claude path | Done (needs photos + key) |
+| Real dock photos ×10 | Waiting on you |
+| Push to Vinay Pod repo | Waiting on write access |
+
+Owner on push: `@Vinayteja467` · Integration: Ruthvik

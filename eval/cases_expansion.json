@@ -1,0 +1,18 @@
+{
+  "schema_version": "receiving-eval-expansion-1",
+  "notes": "UNIT-RCV-13..24 staged for labeling toward 50. Not yet double-labeled. Mock fixtures remain 01–12 only.",
+  "cases": [
+    {"subject_id": "UNIT-RCV-13", "po": {"po_number": "PO-9213", "po_line": "1", "sku": "SKU-CARTON-GEN", "product_name": "Generic inbound carton", "qty_ordered": 24, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-14", "po": {"po_number": "PO-9214", "po_line": "1", "sku": "SKU-FRAGILE-PARCEL", "product_name": "Fragile handled inbound parcel", "qty_ordered": 12, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-15", "po": {"po_number": "PO-9215", "po_line": "1", "sku": "SKU-NUTRABAY-SUPP", "product_name": "Nutrabay supplement inbound carton", "qty_ordered": 24, "cartons_ordered": 2}},
+    {"subject_id": "UNIT-RCV-16", "po": {"po_number": "PO-9216", "po_line": "1", "sku": "SKU-PROT-1KG", "product_name": "Whey Protein 1kg vanilla", "qty_ordered": 24, "cartons_ordered": 2}},
+    {"subject_id": "UNIT-RCV-17", "po": {"po_number": "PO-9217", "po_line": "1", "sku": "SKU-INNOVIST-CARE", "product_name": "Innovist bath and body assortment", "qty_ordered": 12, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-18", "po": {"po_number": "PO-9218", "po_line": "1", "sku": "SKU-AJIO-FOOTWEAR", "product_name": "AJIO footwear assortment", "qty_ordered": 6, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-19", "po": {"po_number": "PO-9219", "po_line": "1", "sku": "SKU-ONYC-CARTON", "product_name": "Onyc inbound carton", "qty_ordered": 12, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-20", "po": {"po_number": "PO-9220", "po_line": "1", "sku": "SKU-NUTRABAY-SUPP", "product_name": "Nutrabay supplement inbound carton", "qty_ordered": 48, "cartons_ordered": 4}},
+    {"subject_id": "UNIT-RCV-21", "po": {"po_number": "PO-9221", "po_line": "1", "sku": "SKU-FRAGILE-PARCEL", "product_name": "Fragile handled inbound parcel", "qty_ordered": 24, "cartons_ordered": 2}},
+    {"subject_id": "UNIT-RCV-22", "po": {"po_number": "PO-9222", "po_line": "1", "sku": "SKU-NUTRABAY-SUPP", "product_name": "Nutrabay supplement inbound carton", "qty_ordered": 24, "cartons_ordered": 2}},
+    {"subject_id": "UNIT-RCV-23", "po": {"po_number": "PO-9223", "po_line": "1", "sku": "SKU-CARTON-GEN", "product_name": "Generic inbound carton", "qty_ordered": 12, "cartons_ordered": 1}},
+    {"subject_id": "UNIT-RCV-24", "po": {"po_number": "PO-9224", "po_line": "1", "sku": "SKU-FRAGILE-PARCEL", "product_name": "Fragile handled inbound parcel", "qty_ordered": 24, "cartons_ordered": 2}}
+  ]
+}

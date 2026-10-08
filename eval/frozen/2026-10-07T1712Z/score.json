@@ -1,0 +1,534 @@
+{
+  "schema_version": "receiving-eval-score-1",
+  "scored_at": "2026-10-07T17:12:36Z",
+  "labelers": [
+    "Jaanu",
+    "Soanli"
+  ],
+  "checks": [
+    "identity_match",
+    "carton_count",
+    "quantity",
+    "carton_damage",
+    "unit_damage",
+    "quality_flags"
+  ],
+  "n_cases": 12,
+  "n_agreed_all_checks": 3,
+  "n_disagreed": 9,
+  "agreed_case_ids": [
+    "UNIT-RCV-01",
+    "UNIT-RCV-06",
+    "UNIT-RCV-10"
+  ],
+  "disagreed_case_ids": [
+    "UNIT-RCV-02",
+    "UNIT-RCV-03",
+    "UNIT-RCV-04",
+    "UNIT-RCV-05",
+    "UNIT-RCV-07",
+    "UNIT-RCV-08",
+    "UNIT-RCV-09",
+    "UNIT-RCV-11",
+    "UNIT-RCV-12"
+  ],
+  "predictions_file": "predictions.json",
+  "model_calls": 11,
+  "per_check_full_agreement": {
+    "identity_match": {
+      "n": 3,
+      "match": 1,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 2,
+      "other_mismatch": 0,
+      "missing": 0
+    },
+    "carton_count": {
+      "n": 3,
+      "match": 0,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 3,
+      "other_mismatch": 0,
+      "missing": 0
+    },
+    "quantity": {
+      "n": 3,
+      "match": 3,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 0,
+      "other_mismatch": 0,
+      "missing": 0
+    },
+    "carton_damage": {
+      "n": 3,
+      "match": 2,
+      "fp": 0,
+      "fn": 1,
+      "uncertain_mismatch": 0,
+      "other_mismatch": 0,
+      "missing": 0
+    },
+    "unit_damage": {
+      "n": 3,
+      "match": 3,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 0,
+      "other_mismatch": 0,
+      "missing": 0
+    },
+    "quality_flags": {
+      "n": 3,
+      "match": 3,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 0,
+      "other_mismatch": 0,
+      "missing": 0
+    }
+  },
+  "per_check_soft_agreement": {
+    "identity_match": {
+      "n": 12,
+      "match": 4,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 7,
+      "other_mismatch": 0,
+      "missing": 1,
+      "n_human_agreed": 12
+    },
+    "carton_count": {
+      "n": 6,
+      "match": 1,
+      "fp": 0,
+      "fn": 2,
+      "uncertain_mismatch": 3,
+      "other_mismatch": 0,
+      "missing": 0,
+      "n_human_agreed": 6
+    },
+    "quantity": {
+      "n": 10,
+      "match": 9,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 0,
+      "other_mismatch": 0,
+      "missing": 1,
+      "n_human_agreed": 10
+    },
+    "carton_damage": {
+      "n": 8,
+      "match": 5,
+      "fp": 0,
+      "fn": 2,
+      "uncertain_mismatch": 1,
+      "other_mismatch": 0,
+      "missing": 0,
+      "n_human_agreed": 8
+    },
+    "unit_damage": {
+      "n": 12,
+      "match": 10,
+      "fp": 0,
+      "fn": 0,
+      "uncertain_mismatch": 1,
+      "other_mismatch": 0,
+      "missing": 1,
+      "n_human_agreed": 12
+    },
+    "quality_flags": {
+      "n": 11,
+      "match": 7,
+      "fp": 2,
+      "fn": 0,
+      "uncertain_mismatch": 2,
+      "other_mismatch": 0,
+      "missing": 0,
+      "n_human_agreed": 11
+    }
+  },
+  "case_rows": [
+    {
+      "case_id": "UNIT-RCV-01",
+      "full_agreement": true,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-02",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "PASS",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-03",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "FAIL",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-04",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-05",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-06",
+      "full_agreement": true,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-07",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "FAIL",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "FAIL"
+        },
+        "Soanli": {
+          "identity_match": "FAIL",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "FAIL"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-08",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "FAIL",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "FAIL"
+        },
+        "Soanli": {
+          "identity_match": "FAIL",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "FAIL"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-09",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "FAIL",
+          "carton_damage": "PASS",
+          "unit_damage": "PASS",
+          "quality_flags": "UNCERTAIN"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "PASS",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "PASS",
+          "quality_flags": "UNCERTAIN"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "PASS",
+        "quality_flags": "FAIL"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-10",
+      "full_agreement": true,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "PASS",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    },
+    {
+      "case_id": "UNIT-RCV-11",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "PASS",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "FAIL",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "PASS"
+        },
+        "Soanli": {
+          "identity_match": "PASS",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "UNCERTAIN",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "UNCERTAIN"
+        }
+      },
+      "agent_checks": {},
+      "agent_outcome": "pending_review",
+      "agent_status": "pending_or_error"
+    },
+    {
+      "case_id": "UNIT-RCV-12",
+      "full_agreement": false,
+      "human": {
+        "Jaanu": {
+          "identity_match": "UNCERTAIN",
+          "carton_count": "FAIL",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "UNCERTAIN",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "UNCERTAIN"
+        },
+        "Soanli": {
+          "identity_match": "UNCERTAIN",
+          "carton_count": "UNCERTAIN",
+          "quantity": "UNCERTAIN",
+          "carton_damage": "UNCERTAIN",
+          "unit_damage": "UNCERTAIN",
+          "quality_flags": "UNCERTAIN"
+        }
+      },
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "agent_outcome": "pending_review",
+      "agent_status": "ok"
+    }
+  ]
+}

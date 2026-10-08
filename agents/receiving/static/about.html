@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Inbound Receiving</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <div class="brand">Inbound <span>Receiving</span> <em class="tag">Pod 4</em></div>
+      <a href="/">Desk</a>
+      <a href="/evaluation">Evaluation</a>
+      <a href="/failures">Failures</a>
+      <a class="active" href="/about">About</a>
+      <a href="/docs">API</a>
+    </nav>
+
+    <header class="hero fade-in">
+      <h1>Inbound Receiving</h1>
+      <p class="lede">Pod 4 · Round 3. Agent Input → one observation → receiving_policy_v1 → Evidence RCV-*. Fail-open. unit_scope=po_line.</p>
+    </header>
+
+    <div class="grid-3">
+      <section class="panel fade-in">
+        <h2>Contract</h2>
+        <p class="meta">POST <span class="mono">/run</span> with Evidence Contract Agent Input. GET <span class="mono">/health</span>. Stage <span class="mono">receiving</span>. Orgs: org_demo_alpha / org_demo_bravo. Desk UI is for operators — JSON is for the orchestrator.</p>
+      </section>
+      <section class="panel fade-in">
+        <h2>Modes</h2>
+        <p class="meta"><span class="mono">RECEIVING_MODE=mock</span> — fixture observations (what you saw as fixture-mock). <span class="mono">live</span> — Claude on the twelve staged dock photo sets.</p>
+      </section>
+      <section class="panel fade-in">
+        <h2>Project set</h2>
+        <p class="meta">Exactly twelve real deliveries: <span class="mono">UNIT-RCV-01…12</span>. Not mocks. Photos under <span class="mono">data/input/</span>.</p>
+      </section>
+    </div>
+
+    <section class="panel fade-in">
+      <h2>Pipeline</h2>
+      <pre class="dump">Agent Input
+  → tenancy gate
+  → PO context
+  → load photos (data/input/&lt;UNIT&gt;/receiving/)
+  → quality gate
+  → ONE observation (Claude | fixture)
+  → receiving_policy_v1 (6 checks → outcome)
+  → Evidence Record RCV-* · unit_scope=po_line
+  → Agent Output (fail-open on errors)</pre>
+    </section>
+
+    <section class="panel fade-in">
+      <h2>Docs</h2>
+      <p class="meta">
+        <a href="/eval/PROJECT-SET.md">Project set</a> ·
+        <a href="/eval/EVALUATION.md">Evaluation</a> ·
+        <a href="/eval/FAILED-CASES.md">Failed cases</a> ·
+        <a href="/docs/INTEGRATION.md">Integration</a> ·
+        <a href="/eval/report.html">Printable report</a>
+      </p>
+    </section>
+  </div>
+</body>
+</html>

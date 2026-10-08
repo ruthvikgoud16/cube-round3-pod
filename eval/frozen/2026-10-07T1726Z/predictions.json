@@ -1,0 +1,249 @@
+{
+  "schema_version": "receiving-eval-predict-1",
+  "mode": "live",
+  "generated_at": "2026-10-07T17:25:21Z",
+  "elapsed_s": 123.7,
+  "cases": [
+    {
+      "case_id": "UNIT-RCV-01",
+      "status": "ok",
+      "checks": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 9302,
+      "record_id": "RCV-dddebb81d895",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-02",
+      "status": "ok",
+      "checks": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "UNCERTAIN",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 9902,
+      "record_id": "RCV-f194dbb1a2f0",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-03",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10806,
+      "record_id": "RCV-50a866d50f09",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-04",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 9955,
+      "record_id": "RCV-d23bd977003c",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-05",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10676,
+      "record_id": "RCV-181514347a73",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-06",
+      "status": "ok",
+      "checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10764,
+      "record_id": "RCV-0ad79e8b0bc8",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-07",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10480,
+      "record_id": "RCV-bf3c9b257516",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-08",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10562,
+      "record_id": "RCV-e8e96c48e84f",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-09",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10655,
+      "record_id": "RCV-0441c62fedae",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-10",
+      "status": "ok",
+      "checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 10194,
+      "record_id": "RCV-128c4188302c",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-11",
+      "status": "ok",
+      "checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 8305,
+      "record_id": "RCV-eb6146279a80",
+      "error": null
+    },
+    {
+      "case_id": "UNIT-RCV-12",
+      "status": "ok",
+      "checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "outcome": "pending_review",
+      "verdict": "FAIL",
+      "model_calls": 1,
+      "model_name": "claude",
+      "model_version": "claude-sonnet-4-5",
+      "latency_ms": 8767,
+      "record_id": "RCV-62e51d9b4cef",
+      "error": null
+    }
+  ],
+  "model_calls_total": 12
+}

@@ -1,0 +1,30 @@
+{
+  "total_deliveries": 12,
+  "photos_per_delivery": 3,
+  "total_photos_min": 36,
+  "folder_pattern": "data/input/UNIT-RCV-{NN}/receiving/",
+  "files": ["01_pallet.jpg", "02_carton.jpg", "03_unit.jpg"],
+  "optional_file": "04_label.jpg",
+  "status": "staged",
+  "source_drive": "https://drive.google.com/drive/folders/1ntPKrpVc9ebb0cDLwAQYyityM01RHMZA",
+  "unit_photo_source": "cube-04-returns-manager/fixtures/images/vision-gate",
+  "remap_notes": [
+    "Case 06: no water-stain photo in set → label tears (FRAGILE wear).",
+    "Unit shots for electronics/headphones reuse RTN vision-gate fixtures.",
+    "Prefer floor spreads without faces for pallet (IMG_1340/1342/1343)."
+  ],
+  "cases": [
+    {"id": "UNIT-RCV-01", "case": "clean_ok", "po_cartons": 2, "po_units": 24, "notes": "Nutrabay stack"},
+    {"id": "UNIT-RCV-02", "case": "clean_ok_2", "po_cartons": 1, "po_units": 12, "notes": "Innovist"},
+    {"id": "UNIT-RCV-03", "case": "short_units", "po_cartons": 4, "po_units": 48, "show_units": 44, "notes": "AJIO / short count path"},
+    {"id": "UNIT-RCV-04", "case": "short_cartons", "po_cartons": 4, "po_units": 48, "show_cartons": 3, "notes": "short pallet"},
+    {"id": "UNIT-RCV-05", "case": "crush", "po_cartons": 2, "po_units": 24, "notes": "onyc crushed corner"},
+    {"id": "UNIT-RCV-06", "case": "tears", "po_cartons": 3, "po_units": 36, "notes": "fragile tears (was water)"},
+    {"id": "UNIT-RCV-07", "case": "wrong_sku", "po_cartons": 2, "po_units": 24, "notes": "PlatinumRx vs whey PO"},
+    {"id": "UNIT-RCV-08", "case": "wrong_variant", "po_cartons": 2, "po_units": 24, "notes": "medicine vs blue bottle PO"},
+    {"id": "UNIT-RCV-09", "case": "missing_parts", "po_cartons": 1, "po_units": 12, "notes": "headphones missing case"},
+    {"id": "UNIT-RCV-10", "case": "sealed", "po_cartons": 2, "po_units": 24, "notes": "do not open"},
+    {"id": "UNIT-RCV-11", "case": "dark", "po_cartons": 2, "po_units": 24, "notes": "darkened carton"},
+    {"id": "UNIT-RCV-12", "case": "blur", "po_cartons": 2, "po_units": 24, "notes": "IMG_1379 soft focus"}
+  ]
+}

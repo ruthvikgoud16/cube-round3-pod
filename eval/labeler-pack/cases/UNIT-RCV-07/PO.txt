@@ -1,0 +1,15 @@
+delivery_id: UNIT-RCV-07
+po_number: PO-9107
+po_line: 3
+sku: SKU-PROT-1KG
+product_name: Whey Protein 1kg vanilla
+spec_colour: 
+spec_components: 
+cartons_ordered: 2
+qty_ordered: 48
+supplier: Supplier East (DUMMY)
+
+Photos in receiving/:
+  01_pallet.jpg  — stack / floor spread (count cartons)
+  02_carton.jpg  — outer carton (label / damage)
+  03_unit.jpg    — unit / open / sealed stand-in

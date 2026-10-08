@@ -1,0 +1,15 @@
+delivery_id: UNIT-RCV-08
+po_number: PO-9108
+po_line: 1
+sku: SKU-BOTTLE-BLU
+product_name: Insulated Bottle Blue
+spec_colour: blue
+spec_components: 
+cartons_ordered: 2
+qty_ordered: 24
+supplier: Supplier North (DUMMY)
+
+Photos in receiving/:
+  01_pallet.jpg  — stack / floor spread (count cartons)
+  02_carton.jpg  — outer carton (label / damage)
+  03_unit.jpg    — unit / open / sealed stand-in

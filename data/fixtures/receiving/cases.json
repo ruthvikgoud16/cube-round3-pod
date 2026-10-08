@@ -1,0 +1,336 @@
+{
+  "schema_version": "receiving-fixtures-3",
+  "notes": "12 paths. Mock observations for CI (accept paths need fixture counts). Live dock photos are mostly sealed — quantity UNCERTAIN correctly yields pending_review (never invent unit counts). See live_expected_outcome.",
+  "cases": [
+    {
+      "subject_id": "UNIT-RCV-01",
+      "label": "clean_ok",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9101",
+        "po_line": "1",
+        "sku": "SKU-NUTRABAY-SUPP",
+        "product_name": "Nutrabay supplement inbound carton",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "supplier": "Nutrabay / Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 2,
+        "quantity_visible": "yes",
+        "units_observed": 24,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "Two undamaged Nutrabay cartons on the floor stack; open sample matches PO line.",
+        "confidence": 0.92
+      },
+      "expected_outcome": "accept"
+    },
+    {
+      "subject_id": "UNIT-RCV-02",
+      "label": "clean_ok_2",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9102",
+        "po_line": "1",
+        "sku": "SKU-INNOVIST-CARE",
+        "product_name": "Innovist bath and body assortment",
+        "qty_ordered": 12,
+        "cartons_ordered": 1,
+        "supplier": "Innovist (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 1,
+        "quantity_visible": "yes",
+        "units_observed": 12,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "One clean Innovist carton; count matches PO.",
+        "confidence": 0.9
+      },
+      "expected_outcome": "accept"
+    },
+    {
+      "subject_id": "UNIT-RCV-03",
+      "label": "short_units",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9103",
+        "po_line": "2",
+        "sku": "SKU-AJIO-FOOTWEAR",
+        "product_name": "AJIO footwear assortment",
+        "qty_ordered": 6,
+        "cartons_ordered": 1,
+        "supplier": "AJIO / Shadowfax (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 1,
+        "quantity_visible": "yes",
+        "units_observed": 3,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "Four cartons present; counted units total 44 against 48 ordered.",
+        "confidence": 0.88
+      },
+      "expected_outcome": "accept_with_exceptions"
+    },
+    {
+      "subject_id": "UNIT-RCV-04",
+      "label": "short_cartons",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9104",
+        "po_line": "1",
+        "sku": "SKU-NUTRABAY-SUPP",
+        "product_name": "Nutrabay supplement inbound carton",
+        "qty_ordered": 48,
+        "cartons_ordered": 4,
+        "supplier": "Nutrabay / Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 3,
+        "quantity_visible": "uncertain",
+        "units_observed": null,
+        "carton_damage": "none",
+        "unit_damage": "uncertain",
+        "quality_flags": [],
+        "quality_flags_uncertain": true,
+        "evidence": "Only three cartons visible against four ordered; sealed so unit count uncertain.",
+        "confidence": 0.7
+      },
+      "expected_outcome": "pending_review"
+    },
+    {
+      "subject_id": "UNIT-RCV-05",
+      "label": "crush",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9105",
+        "po_line": "1",
+        "sku": "SKU-ONYC-CARTON",
+        "product_name": "Onyc inbound carton",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "supplier": "Onyc / dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 2,
+        "quantity_visible": "yes",
+        "units_observed": 24,
+        "carton_damage": "crushing",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "Carton corner crushed; contents look intact in sample.",
+        "confidence": 0.85
+      },
+      "expected_outcome": "accept_with_exceptions"
+    },
+    {
+      "subject_id": "UNIT-RCV-06",
+      "label": "tears",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9106",
+        "po_line": "2",
+        "sku": "SKU-FRAGILE-PARCEL",
+        "product_name": "Fragile handled inbound parcel",
+        "qty_ordered": 36,
+        "cartons_ordered": 3,
+        "supplier": "Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 3,
+        "quantity_visible": "yes",
+        "units_observed": 36,
+        "carton_damage": "tears",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "Fragile carton shows edge wear and tears; sample unit looks dry.",
+        "confidence": 0.84
+      },
+      "expected_outcome": "accept_with_exceptions"
+    },
+    {
+      "subject_id": "UNIT-RCV-07",
+      "label": "wrong_sku",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9107",
+        "po_line": "3",
+        "sku": "SKU-PROT-1KG",
+        "product_name": "Whey Protein 1kg vanilla",
+        "qty_ordered": 48,
+        "cartons_ordered": 2,
+        "supplier": "Supplier East (DUMMY)"
+      },
+      "observation": {
+        "identity_match": "no",
+        "carton_count_visible": "yes",
+        "cartons_observed": 2,
+        "quantity_visible": "yes",
+        "units_observed": 48,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": [],
+        "evidence": "Cartons branded PlatinumRx medicines, not whey protein vanilla.",
+        "confidence": 0.91
+      },
+      "expected_outcome": "reject"
+    },
+    {
+      "subject_id": "UNIT-RCV-08",
+      "label": "wrong_variant",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9108",
+        "po_line": "1",
+        "sku": "SKU-BOTTLE-BLU",
+        "product_name": "Insulated Bottle Blue",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "spec_colour": "blue",
+        "supplier": "Supplier North (DUMMY)"
+      },
+      "observation": {
+        "identity_match": "no",
+        "carton_count_visible": "yes",
+        "cartons_observed": 2,
+        "quantity_visible": "yes",
+        "units_observed": 24,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": ["wrong_colour", "wrong_variant"],
+        "evidence": "Inbound shows PlatinumRx medicine cartons, not blue insulated bottles.",
+        "confidence": 0.89
+      },
+      "expected_outcome": "reject"
+    },
+    {
+      "subject_id": "UNIT-RCV-09",
+      "label": "missing_parts",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9109",
+        "po_line": "1",
+        "sku": "SKU-HEADPHONES-RED",
+        "product_name": "Red/Black Wired Over-Ear Headphones",
+        "qty_ordered": 12,
+        "cartons_ordered": 1,
+        "spec_components": ["headphones", "cable", "carrying case"],
+        "supplier": "Innovist dock + RTN unit sample"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 1,
+        "quantity_visible": "yes",
+        "units_observed": 12,
+        "carton_damage": "none",
+        "unit_damage": "none",
+        "quality_flags": ["missing_components"],
+        "evidence": "Open sample shows headphones and cable; carrying case not in frame.",
+        "confidence": 0.86
+      },
+      "expected_outcome": "accept_with_exceptions"
+    },
+    {
+      "subject_id": "UNIT-RCV-10",
+      "label": "sealed",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9110",
+        "po_line": "1",
+        "sku": "SKU-FRAGILE-PARCEL",
+        "product_name": "Fragile handled inbound parcel",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "supplier": "Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "yes",
+        "carton_count_visible": "yes",
+        "cartons_observed": 2,
+        "quantity_visible": "uncertain",
+        "units_observed": null,
+        "carton_damage": "none",
+        "unit_damage": "uncertain",
+        "quality_flags": [],
+        "quality_flags_uncertain": true,
+        "evidence": "Two sealed fragile cartons with Flipkart/Shadowfax labels; contents not opened.",
+        "confidence": 0.55
+      },
+      "expected_outcome": "pending_review"
+    },
+    {
+      "subject_id": "UNIT-RCV-11",
+      "label": "dark",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9111",
+        "po_line": "1",
+        "sku": "SKU-NUTRABAY-SUPP",
+        "product_name": "Nutrabay supplement inbound carton",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "supplier": "Nutrabay / Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "uncertain",
+        "carton_count_visible": "uncertain",
+        "cartons_observed": null,
+        "quantity_visible": "uncertain",
+        "units_observed": null,
+        "carton_damage": "uncertain",
+        "unit_damage": "uncertain",
+        "quality_flags": [],
+        "quality_flags_uncertain": true,
+        "evidence": "Dock corner is too dark; labels and counts cannot be read reliably.",
+        "confidence": 0.2
+      },
+      "expected_outcome": "pending_review"
+    },
+    {
+      "subject_id": "UNIT-RCV-12",
+      "label": "blur",
+      "fixture_version": "live-photo-1",
+      "po": {
+        "po_number": "PO-9112",
+        "po_line": "1",
+        "sku": "SKU-FRAGILE-PARCEL",
+        "product_name": "Fragile handled inbound parcel",
+        "qty_ordered": 24,
+        "cartons_ordered": 2,
+        "supplier": "Shadowfax dock (live photos)"
+      },
+      "observation": {
+        "identity_match": "uncertain",
+        "carton_count_visible": "uncertain",
+        "cartons_observed": null,
+        "quantity_visible": "uncertain",
+        "units_observed": null,
+        "carton_damage": "uncertain",
+        "unit_damage": "uncertain",
+        "quality_flags": [],
+        "quality_flags_uncertain": true,
+        "evidence": "Photos are blurry and distant; SKU text and damage cannot be confirmed.",
+        "confidence": 0.15
+      },
+      "expected_outcome": "pending_review"
+    }
+  ]
+}

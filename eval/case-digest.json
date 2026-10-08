@@ -1,0 +1,840 @@
+{
+  "cases": [
+    {
+      "case_id": "UNIT-RCV-01",
+      "label": "clean_ok",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "carton_count: agent=FAIL human=UNCERTAIN"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-02",
+      "label": "clean_ok_2",
+      "product_name": "Innovist bath and body assortment",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [],
+      "human_disagreement": [
+        "carton_damage"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-03",
+      "label": "short_units",
+      "product_name": "AJIO footwear assortment",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "FAIL",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "quantity",
+        "carton_damage"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-04",
+      "label": "short_cartons",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-05",
+      "label": "crush",
+      "product_name": "Onyc inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-06",
+      "label": "tears",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS",
+        "carton_count: agent=FAIL human=UNCERTAIN"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-07",
+      "label": "wrong_sku",
+      "product_name": "Whey Protein 1kg vanilla",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "soanli": {
+        "identity_match": "FAIL",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "mismatches_on_agreed_checks": [
+        "quality_flags: agent=PASS human=FAIL"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-08",
+      "label": "wrong_variant",
+      "product_name": "Insulated Bottle Blue",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "soanli": {
+        "identity_match": "FAIL",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "mismatches_on_agreed_checks": [
+        "quality_flags: agent=PASS human=FAIL"
+      ],
+      "human_disagreement": [
+        "carton_count",
+        "carton_damage"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-09",
+      "label": "missing_parts",
+      "product_name": "Red/Black Wired Over-Ear Headphones",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "FAIL",
+        "carton_damage": "PASS",
+        "unit_damage": "PASS",
+        "quality_flags": "UNCERTAIN"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "PASS",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=FAIL human=PASS",
+        "unit_damage: agent=UNCERTAIN human=PASS",
+        "quality_flags: agent=PASS human=UNCERTAIN"
+      ],
+      "human_disagreement": [
+        "quantity"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-10",
+      "label": "sealed",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS",
+        "carton_count: agent=FAIL human=UNCERTAIN",
+        "carton_damage: agent=FAIL human=PASS"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-11",
+      "label": "dark",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count",
+        "carton_damage",
+        "quality_flags"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-12",
+      "label": "blur",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "soanli": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "carton_damage: agent=PASS human=UNCERTAIN",
+        "quality_flags: agent=PASS human=UNCERTAIN"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    }
+  ],
+  "failed": [
+    {
+      "case_id": "UNIT-RCV-01",
+      "label": "clean_ok",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "carton_count: agent=FAIL human=UNCERTAIN"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-03",
+      "label": "short_units",
+      "product_name": "AJIO footwear assortment",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "FAIL",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "quantity",
+        "carton_damage"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-04",
+      "label": "short_cartons",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-05",
+      "label": "crush",
+      "product_name": "Onyc inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-06",
+      "label": "tears",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS",
+        "carton_count: agent=FAIL human=UNCERTAIN"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-07",
+      "label": "wrong_sku",
+      "product_name": "Whey Protein 1kg vanilla",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "soanli": {
+        "identity_match": "FAIL",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "mismatches_on_agreed_checks": [
+        "quality_flags: agent=PASS human=FAIL"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-08",
+      "label": "wrong_variant",
+      "product_name": "Insulated Bottle Blue",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "FAIL",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "soanli": {
+        "identity_match": "FAIL",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "FAIL"
+      },
+      "mismatches_on_agreed_checks": [
+        "quality_flags: agent=PASS human=FAIL"
+      ],
+      "human_disagreement": [
+        "carton_count",
+        "carton_damage"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-09",
+      "label": "missing_parts",
+      "product_name": "Red/Black Wired Over-Ear Headphones",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "FAIL",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "FAIL",
+        "carton_damage": "PASS",
+        "unit_damage": "PASS",
+        "quality_flags": "UNCERTAIN"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "PASS",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "PASS",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=FAIL human=PASS",
+        "unit_damage: agent=UNCERTAIN human=PASS",
+        "quality_flags: agent=PASS human=UNCERTAIN"
+      ],
+      "human_disagreement": [
+        "quantity"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-10",
+      "label": "sealed",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS",
+        "carton_count: agent=FAIL human=UNCERTAIN",
+        "carton_damage: agent=FAIL human=PASS"
+      ],
+      "human_disagreement": []
+    },
+    {
+      "case_id": "UNIT-RCV-11",
+      "label": "dark",
+      "product_name": "Nutrabay supplement inbound carton",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "PASS",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "FAIL",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "soanli": {
+        "identity_match": "PASS",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "identity_match: agent=UNCERTAIN human=PASS"
+      ],
+      "human_disagreement": [
+        "carton_count",
+        "carton_damage",
+        "quality_flags"
+      ]
+    },
+    {
+      "case_id": "UNIT-RCV-12",
+      "label": "blur",
+      "product_name": "Fragile handled inbound parcel",
+      "agent_outcome": "pending_review",
+      "agent_checks": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "PASS",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "PASS"
+      },
+      "jaanu": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "FAIL",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "soanli": {
+        "identity_match": "UNCERTAIN",
+        "carton_count": "UNCERTAIN",
+        "quantity": "UNCERTAIN",
+        "carton_damage": "UNCERTAIN",
+        "unit_damage": "UNCERTAIN",
+        "quality_flags": "UNCERTAIN"
+      },
+      "mismatches_on_agreed_checks": [
+        "carton_damage: agent=PASS human=UNCERTAIN",
+        "quality_flags: agent=PASS human=UNCERTAIN"
+      ],
+      "human_disagreement": [
+        "carton_count"
+      ]
+    }
+  ]
+}

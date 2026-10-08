@@ -1,0 +1,371 @@
+{
+  "cases": {
+    "UNIT-RCV-01": {
+      "label": "clean_ok",
+      "notes": "Nutrabay \u2014 tighter stack + close angles",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1343.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1344.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1345.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-02": {
+      "label": "clean_ok_2",
+      "notes": "Innovist single-carton countable set",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1353.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1352.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1354.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-03": {
+      "label": "short_units",
+      "notes": "AJIO packing-list short qty path",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1361.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1362.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1361.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-04": {
+      "label": "short_cartons",
+      "notes": "Single Nutrabay focus vs PO=4",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1347.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-05": {
+      "label": "crush",
+      "notes": "ONYC crush \u2014 single carton countable",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1363.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1363.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1364.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-06": {
+      "label": "tears",
+      "notes": "FRAGILE set",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1357.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1358.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1359.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-07": {
+      "label": "wrong_sku",
+      "notes": "PlatinumRx vs whey PO \u2014 brand must FAIL identity",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1348.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1349.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1348.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-08": {
+      "label": "wrong_variant",
+      "notes": "PlatinumRx vs blue bottle PO",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1350.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1351.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1350.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-09": {
+      "label": "missing_parts",
+      "notes": "Innovist shipper + headphones unit",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1352.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1354.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/cube-04-returns-manager/fixtures/images/vision-gate/dev-003-photo-1.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-10": {
+      "label": "sealed",
+      "notes": "Sealed fragile Flipkart/Shadowfax",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1355.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1356.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1355.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-11": {
+      "label": "dark",
+      "notes": "Mild darken so model can return UNCERTAIN",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg",
+          "transform": "darken:0.38"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg",
+          "transform": "darken:0.38"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg",
+          "transform": "darken:0.38"
+        }
+      }
+    },
+    "UNIT-RCV-12": {
+      "label": "blur",
+      "notes": "Soft-focus",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1379.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1379.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1379.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-13": {
+      "label": "clean_extra_a",
+      "notes": "Expansion \u2014 large sealed carton",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1365.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1365.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1366.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-14": {
+      "label": "fragile_extra",
+      "notes": "Expansion \u2014 fragile angles",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1360.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1359.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1358.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-15": {
+      "label": "nutrabay_extra",
+      "notes": "Expansion \u2014 Nutrabay angles",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1344.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1345.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1347.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-16": {
+      "label": "platinum_extra",
+      "notes": "Expansion \u2014 PlatinumRx (wrong-sku pool)",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1349.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1351.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1348.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-17": {
+      "label": "innovist_extra",
+      "notes": "Expansion \u2014 Innovist",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1352.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1353.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1354.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-18": {
+      "label": "ajio_extra",
+      "notes": "Expansion \u2014 AJIO",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1361.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1362.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1369.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-19": {
+      "label": "onyc_extra",
+      "notes": "Expansion \u2014 ONYC crush",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1363.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1364.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1363.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-20": {
+      "label": "stack_extra",
+      "notes": "Expansion \u2014 multi carton floor (no faces)",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1342.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1343.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1340.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-21": {
+      "label": "sealed_extra",
+      "notes": "Expansion \u2014 sealed fragile",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1355.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1357.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1356.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-22": {
+      "label": "mixed_extra",
+      "notes": "Expansion \u2014 sack/carton mix (count hard)",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1341.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1346.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1344.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-23": {
+      "label": "clean_extra_b",
+      "notes": "Expansion \u2014 sealed brown carton",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1366.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1365.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1369.jpg"
+        }
+      }
+    },
+    "UNIT-RCV-24": {
+      "label": "blur_extra",
+      "notes": "Expansion \u2014 blur + companion",
+      "files": {
+        "01_pallet.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1379.jpg"
+        },
+        "02_carton.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1379.jpg"
+        },
+        "03_unit.jpg": {
+          "source": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons/IMG_1360.jpg"
+        }
+      }
+    }
+  },
+  "sources": {
+    "cartons": "/Users/ruthvikgoud/Downloads/pod4/receiving-cartons",
+    "rtn": "/Users/ruthvikgoud/cube-04-returns-manager/fixtures/images/vision-gate"
+  }
+}

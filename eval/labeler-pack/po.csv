@@ -1,0 +1,13 @@
+delivery_id,po_number,po_line,sku,product_name,spec_colour,spec_components,cartons_ordered,qty_ordered,supplier,photo_folder
+UNIT-RCV-01,PO-9101,1,SKU-NUTRABAY-SUPP,Nutrabay supplement inbound carton,,,2,24,Nutrabay / Shadowfax dock (live photos),cases/UNIT-RCV-01/receiving/
+UNIT-RCV-02,PO-9102,1,SKU-INNOVIST-CARE,Innovist bath and body assortment,,,1,12,Innovist (live photos),cases/UNIT-RCV-02/receiving/
+UNIT-RCV-03,PO-9103,2,SKU-AJIO-FOOTWEAR,AJIO footwear assortment,,,1,6,AJIO / Shadowfax (live photos),cases/UNIT-RCV-03/receiving/
+UNIT-RCV-04,PO-9104,1,SKU-NUTRABAY-SUPP,Nutrabay supplement inbound carton,,,4,48,Nutrabay / Shadowfax dock (live photos),cases/UNIT-RCV-04/receiving/
+UNIT-RCV-05,PO-9105,1,SKU-ONYC-CARTON,Onyc inbound carton,,,2,24,Onyc / dock (live photos),cases/UNIT-RCV-05/receiving/
+UNIT-RCV-06,PO-9106,2,SKU-FRAGILE-PARCEL,Fragile handled inbound parcel,,,3,36,Shadowfax dock (live photos),cases/UNIT-RCV-06/receiving/
+UNIT-RCV-07,PO-9107,3,SKU-PROT-1KG,Whey Protein 1kg vanilla,,,2,48,Supplier East (DUMMY),cases/UNIT-RCV-07/receiving/
+UNIT-RCV-08,PO-9108,1,SKU-BOTTLE-BLU,Insulated Bottle Blue,blue,,2,24,Supplier North (DUMMY),cases/UNIT-RCV-08/receiving/
+UNIT-RCV-09,PO-9109,1,SKU-HEADPHONES-RED,Red/Black Wired Over-Ear Headphones,,headphones;cable;carrying case,1,12,Innovist dock + RTN unit sample,cases/UNIT-RCV-09/receiving/
+UNIT-RCV-10,PO-9110,1,SKU-FRAGILE-PARCEL,Fragile handled inbound parcel,,,2,24,Shadowfax dock (live photos),cases/UNIT-RCV-10/receiving/
+UNIT-RCV-11,PO-9111,1,SKU-NUTRABAY-SUPP,Nutrabay supplement inbound carton,,,2,24,Nutrabay / Shadowfax dock (live photos),cases/UNIT-RCV-11/receiving/
+UNIT-RCV-12,PO-9112,1,SKU-FRAGILE-PARCEL,Fragile handled inbound parcel,,,2,24,Shadowfax dock (live photos),cases/UNIT-RCV-12/receiving/

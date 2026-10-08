@@ -1,0 +1,15 @@
+delivery_id: UNIT-RCV-03
+po_number: PO-9103
+po_line: 2
+sku: SKU-AJIO-FOOTWEAR
+product_name: AJIO footwear assortment
+spec_colour: 
+spec_components: 
+cartons_ordered: 1
+qty_ordered: 6
+supplier: AJIO / Shadowfax (live photos)
+
+Photos in receiving/:
+  01_pallet.jpg  — stack / floor spread (count cartons)
+  02_carton.jpg  — outer carton (label / damage)
+  03_unit.jpg    — unit / open / sealed stand-in

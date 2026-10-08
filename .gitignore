@@ -10,3 +10,6 @@ venv/
 out/
 .pytest_cache/
 *.egg-info/
+
+# Generated labeler export; rebuild with scripts/export_labeler_pack.py
+eval/*.zip

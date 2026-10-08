@@ -1,0 +1,49 @@
+case_id,labeler,identity_match,carton_count,quantity,carton_damage,unit_damage,quality_flags,evidence_sufficient,product_name,sku,cartons_ordered,qty_ordered,note
+UNIT-RCV-01,Jaanu,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,Nutrabay branding clear; mixed floor pile so carton count of 2 uncertain; sealed with crush; units not visible
+UNIT-RCV-01,Soanli,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,Nutrabay logo and blue Nutrabay tape match the PO. Pallet is a mixed dock pile so a clean count of exactly 2 Nutrabay cartons is not possible. Carton sealed with corner crush; units not visible.
+UNIT-RCV-02,Jaanu,PASS,PASS,UNCERTAIN,PASS,UNCERTAIN,PASS,yes,Innovist bath and body assortment,SKU-INNOVIST-CARE,1,12,One Innovist carton matches PO; sealed so quantity uncertain; no clear crush or water
+UNIT-RCV-02,Soanli,PASS,PASS,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Innovist bath and body assortment,SKU-INNOVIST-CARE,1,12,Innovist brands carton (Bare Anatomy / Chemist at Play / Sun Scoop / Vinci Botanicals) matches bath-and-body PO. One carton shown equals 1 ordered. Sealed so unit qty unknown. Corner crush/dent on carton; units not visible.
+UNIT-RCV-03,Jaanu,PASS,PASS,UNCERTAIN,PASS,UNCERTAIN,PASS,yes,AJIO footwear assortment,SKU-AJIO-FOOTWEAR,1,6,AJIO branding matches; one carton; sealed so 6 units not countable; outer carton intact
+UNIT-RCV-03,Soanli,PASS,PASS,FAIL,FAIL,UNCERTAIN,PASS,yes,AJIO footwear assortment,SKU-AJIO-FOOTWEAR,1,6,AJIO tape and footwear packing list match the PO line. One AJIO carton equals 1 ordered. Packing list shows 3 footwear lines vs qty_ordered 6. Carton has clear crush/tear; units not opened.
+UNIT-RCV-04,Jaanu,PASS,FAIL,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,4,48,Nutrabay matches; only one clear carton vs 4 ordered; sealed with corner crush; units not visible
+UNIT-RCV-04,Soanli,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,4,48,Nutrabay branding/tape matches. Mixed pallet plus one focus carton cannot confirm 4 cartons; other cartons may be out of frame. Carton sealed with crushed/caved top; units not visible. Unit photo is a duplicate carton shot.
+UNIT-RCV-05,Jaanu,PASS,FAIL,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Onyc inbound carton,SKU-ONYC-CARTON,2,24,ONYC tape matches; only one carton vs 2 ordered; edge crush; sealed; units not visible
+UNIT-RCV-05,Soanli,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Onyc inbound carton,SKU-ONYC-CARTON,2,24,Blue ONYC smiley tape matches the PO. Only one ONYC carton is in frame among a mixed dock; cannot confirm 2. Carton sealed with edge crush/tear; units not visible.
+UNIT-RCV-06,Jaanu,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,3,36,Fragile tape matches PO; mixed floor cannot confirm 3 cartons; sealed with edge wear; units not visible
+UNIT-RCV-06,Soanli,PASS,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,PASS,yes,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,3,36,Red FRAGILE / HANDLE WITH CARE tape matches the PO product name. Mixed floor shot does not prove exactly 3 cartons for this line. Carton sealed with corner crush; units not visible.
+UNIT-RCV-07,Jaanu,FAIL,FAIL,UNCERTAIN,FAIL,UNCERTAIN,FAIL,yes,Whey Protein 1kg vanilla,SKU-PROT-1KG,2,48,PlatinumRx carton not whey protein; one carton vs 2 ordered; corner crush; units not visible
+UNIT-RCV-07,Soanli,FAIL,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,FAIL,yes,Whey Protein 1kg vanilla,SKU-PROT-1KG,2,48,Photos show a sealed PlatinumRx carton clearly not whey protein 1kg vanilla. Only one carton in focus vs 2 ordered but others may be out of frame. Heavy corner crush; units and variant not visible.
+UNIT-RCV-08,Jaanu,FAIL,FAIL,UNCERTAIN,PASS,UNCERTAIN,FAIL,yes,Insulated Bottle Blue,SKU-BOTTLE-BLU,2,24,PlatinumRx carton not blue insulated bottle; one carton vs 2 ordered; outer mostly intact; units not visible
+UNIT-RCV-08,Soanli,FAIL,UNCERTAIN,UNCERTAIN,FAIL,UNCERTAIN,FAIL,yes,Insulated Bottle Blue,SKU-BOTTLE-BLU,2,24,Photos show a sealed PlatinumRx carton (www.platinumrx.in) not a blue insulated bottle. One carton in focus; cannot confirm 2. Outer carton creased/dented; bottle colour/units not visible.
+UNIT-RCV-09,Jaanu,PASS,PASS,FAIL,PASS,PASS,UNCERTAIN,yes,Red/Black Wired Over-Ear Headphones,SKU-HEADPHONES-RED,1,12,Headphones match PO; one unit visible vs 12 ordered; carrying case not shown
+UNIT-RCV-09,Soanli,PASS,PASS,UNCERTAIN,PASS,PASS,UNCERTAIN,yes,Red/Black Wired Over-Ear Headphones,SKU-HEADPHONES-RED,1,12,Unit photo is red/black wired over-ear headphones matching the PO; outer carton is Innovist (supplier note says Innovist dock sample). One carton equals 1 ordered. Only one unit shown so qty 12 and carrying case cannot be verified; cable present; carton intact; unit looks undamaged.
+UNIT-RCV-10,Jaanu,PASS,UNCERTAIN,UNCERTAIN,PASS,UNCERTAIN,PASS,yes,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,Fragile tape matches; mixed floor cannot confirm exactly 2 cartons; sealed; no clear water or tear; units not visible
+UNIT-RCV-10,Soanli,PASS,UNCERTAIN,UNCERTAIN,PASS,UNCERTAIN,PASS,yes,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,Focus carton has FRAGILE / HANDLE WITH CARE tape matching the PO. Mixed dock does not confirm exactly 2 for this line. Carton sealed with no clear crush/water/tear; units not visible.
+UNIT-RCV-11,Jaanu,PASS,FAIL,UNCERTAIN,FAIL,UNCERTAIN,PASS,no,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,Dark but Nutrabay readable; one carton vs 2 ordered; sealed with crush; weak stack evidence
+UNIT-RCV-11,Soanli,PASS,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,no,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,All three files are the same dim single-carton shot with Nutrabay-style blue tape. No pallet spread so carton count vs 2 cannot be judged. Sealed; damage and units unclear. Evidence not sufficient for a full receive.
+UNIT-RCV-12,Jaanu,UNCERTAIN,FAIL,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,no,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,Blurry hand-held shot; label unreadable; one carton vs 2 ordered; damage and units cannot be judged
+UNIT-RCV-12,Soanli,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,UNCERTAIN,no,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,All three photos are the same motion-blurred hand-held box. Label text unreadable so identity vs Fragile PO cannot be confirmed. Count damage and units cannot be judged. Evidence not sufficient.
+UNIT-RCV-13,Jaanu,,,,,,,,Generic inbound carton,SKU-CARTON-GEN,1,24,
+UNIT-RCV-13,Soanli,,,,,,,,Generic inbound carton,SKU-CARTON-GEN,1,24,
+UNIT-RCV-14,Jaanu,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,1,12,
+UNIT-RCV-14,Soanli,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,1,12,
+UNIT-RCV-15,Jaanu,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,
+UNIT-RCV-15,Soanli,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,
+UNIT-RCV-16,Jaanu,,,,,,,,Whey Protein 1kg vanilla,SKU-PROT-1KG,2,24,
+UNIT-RCV-16,Soanli,,,,,,,,Whey Protein 1kg vanilla,SKU-PROT-1KG,2,24,
+UNIT-RCV-17,Jaanu,,,,,,,,Innovist bath and body assortment,SKU-INNOVIST-CARE,1,12,
+UNIT-RCV-17,Soanli,,,,,,,,Innovist bath and body assortment,SKU-INNOVIST-CARE,1,12,
+UNIT-RCV-18,Jaanu,,,,,,,,AJIO footwear assortment,SKU-AJIO-FOOTWEAR,1,6,
+UNIT-RCV-18,Soanli,,,,,,,,AJIO footwear assortment,SKU-AJIO-FOOTWEAR,1,6,
+UNIT-RCV-19,Jaanu,,,,,,,,Onyc inbound carton,SKU-ONYC-CARTON,1,12,
+UNIT-RCV-19,Soanli,,,,,,,,Onyc inbound carton,SKU-ONYC-CARTON,1,12,
+UNIT-RCV-20,Jaanu,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,4,48,
+UNIT-RCV-20,Soanli,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,4,48,
+UNIT-RCV-21,Jaanu,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,
+UNIT-RCV-21,Soanli,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,
+UNIT-RCV-22,Jaanu,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,
+UNIT-RCV-22,Soanli,,,,,,,,Nutrabay supplement inbound carton,SKU-NUTRABAY-SUPP,2,24,
+UNIT-RCV-23,Jaanu,,,,,,,,Generic inbound carton,SKU-CARTON-GEN,1,12,
+UNIT-RCV-23,Soanli,,,,,,,,Generic inbound carton,SKU-CARTON-GEN,1,12,
+UNIT-RCV-24,Jaanu,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,
+UNIT-RCV-24,Soanli,,,,,,,,Fragile handled inbound parcel,SKU-FRAGILE-PARCEL,2,24,

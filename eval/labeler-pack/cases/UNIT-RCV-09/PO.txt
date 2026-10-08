@@ -1,0 +1,15 @@
+delivery_id: UNIT-RCV-09
+po_number: PO-9109
+po_line: 1
+sku: SKU-HEADPHONES-RED
+product_name: Red/Black Wired Over-Ear Headphones
+spec_colour: 
+spec_components: headphones;cable;carrying case
+cartons_ordered: 1
+qty_ordered: 12
+supplier: Innovist dock + RTN unit sample
+
+Photos in receiving/:
+  01_pallet.jpg  — stack / floor spread (count cartons)
+  02_carton.jpg  — outer carton (label / damage)
+  03_unit.jpg    — unit / open / sealed stand-in
