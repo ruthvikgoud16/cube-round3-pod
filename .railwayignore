@@ -1,0 +1,14 @@
+.git
+.venv
+venv
+out
+.env
+.env.*
+!.env.example
+**/__pycache__
+**/*.pyc
+data/input
+data/sample
+web
+node_modules
+.pytest_cache

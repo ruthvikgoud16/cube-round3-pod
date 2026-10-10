@@ -116,15 +116,89 @@ Every failure is **recorded and never becomes success**: a degraded evidence rec
 
 ---
 
-## Your Pod's architecture  ← **replace this section**
+## Your Pod's architecture
 
-_Delete this note and describe **your** system. At minimum:_
+Pod 4 runs one orchestrator and five stage agents. The orchestrator in `orchestration/` owns workflow state. It does not judge a stage. The in-tree `agents/*/app.py` files that replay sample CSVs are not the live agents. Prep, Pack, Returns, and Recovery are the HTTP services named in each `agent.json`. Receiving is the in-process agent in `agents/receiving/`.
 
-1. **Diagram** of your actual components and flow, including anything you added.
-2. **What each agent really is**: model, rules, services, dependencies; which are still stubs.
-3. **Your orchestrator**: approach, how workflow state is stored, retries, how evidence is persisted, how overrides work (link the decisions in `docs/decisions.md`).
-4. **Your routing and final-outcome logic**, and how they treat uncertainty and weak evidence.
-5. **Tenancy**: where it is enforced, and how you tested it.
-6. **Failure model**: what you break in the demo and what happens.
-7. **Deployment**: where it runs, how to reach it, how to start it.
-8. **Known limits.**
+```
+case
+  → Orchestrator :8100   (FileStore under out/)
+       Receiving   in-process, optional HTTP :8101   receiving-manager, owner @Vinayteja467
+       Prep        HTTP :8102                        prep-manager, owner @MPreethika16
+       Pack        HTTP :8103                        pack-manager, owner @Vivek21-7
+       Returns     HTTP :8104                        returns-manager, owner @ruthvikgoud16
+       Recovery    HTTP :8105                        recovery-manager, owner @mdmoghnishah
+  → Workflow State + Final Outcome
+```
+
+Official `orchestration/flow.json` still routes Prep only for FBA and Pack only for merchant-fulfilled, and Returns only when `returned` is true. `orchestration/flow.pod4-tracers.json` (D-008) runs all five stages for TRACER-01, TRACER-02, and TRACER-03. A unit is not both FBA and merchant-fulfilled.
+
+### What each agent really is
+
+| Stage | What judges | Model | Still a stub? |
+|---|---|---|---|
+| Receiving | Observer plus policy. The model does not set the verdict. | Claude when `ANTHROPIC_API_KEY` is set | No. In-tree agent. |
+| Prep | Work-order guards plus one Claude observation. | claude-sonnet-4-5 when the key is set | The in-tree `app.py` is a CSV stub. The live service is the Prep repo on port 8102. |
+| Pack | One Claude inspection of the open box against the order. A closed carton returns UNCERTAIN and makes no call. | claude-sonnet-4-5 | In-tree `app.py` is a CSV stub. Live service is port 8103. |
+| Returns | One Claude call for identity, completeness, and condition. Disposition follows the policy. | Claude | In-tree `app.py` is a CSV stub. Live service is port 8104. |
+| Recovery | Rules on the fee line and the upstream evidence. A model summary cannot change the position. | No model call required | In-tree `app.py` is illustrative. Live service is port 8105. |
+
+Demo units UNIT-001, UNIT-002, and UNIT-003 are scripted in `orchestration/demo_overrides.py` (D-009). They are labeled as a script. `context.live: true` and the TRACER subjects skip that script.
+
+### Orchestrator
+
+`orchestration/orchestrator.py` starts, advances, resumes, and records overrides. State is JSON files in `out/workflows/` and `out/evidence/` through `FileStore`. Evidence is immutable: a second write of the same `record_id` with a different `content_hash` is rejected. Retries come from the flow (`retries`, `timeout_s`). A person records an override with actor, reason, and the record it supersedes (`POST /workflows/{id}/overrides`).
+
+Decisions that define this Pod, in `docs/decisions.md`:
+
+- D-007. A bare HTTP 422 stops the bus. A 422 that already contains an Agent Output is kept. A completed FAIL does not stop the bus. A pending stage stops `flow.json` so Recovery cannot treat an unjudged stage as finished.
+- D-008. The tracer flow runs every stage and continues on pending.
+- D-009. The three demo units are a script, not a vision result.
+- D-010. Before validation, `canonicalize_output` maps `hold` to `review`, fills a missing `uncertain_reason`, and reseals `content_hash`. Verdicts and check results stay the agent's.
+
+Photos at `data/input/<subject>/<stage>/` are embedded as `data_base64` when they are images of 8MB or less, so an agent in another repo can see them.
+
+### Routing and the final outcome
+
+`orchestration/rollup.py` derives the outcome. It is not copied from an agent.
+
+| Situation | Outcome |
+|---|---|
+| Every applicable stage passed | CLEAN |
+| A stage other than Recovery finished FAIL | EXCEPTION |
+| A stage asked for a person | NEEDS_REVIEW, workflow BLOCKED |
+| A stage errored or stayed pending | INCOMPLETE, workflow FAILED |
+| Recovery verdict FAIL and every earlier record completed | CLAIM_RECOMMENDED |
+| Recovery verdict FAIL while an earlier record is not completed | INCOMPLETE, and no claim amount is attached |
+| Recovery silent (`UNCERTAIN`, `needs_human` false) | Does not by itself halt the workflow |
+
+`provisional` is true unless the workflow status is COMPLETED.
+
+### Tenancy
+
+Demo tenants are `org_demo_alpha` and `org_demo_bravo`. Each request, record, and workflow carries `org_id`. An unknown tenant is HTTP 404 from the live agents. Records whose `org_id` or unit does not match the subject are dropped before Recovery judges. The stress run and the HTTP classify tests cover the refusal path. The orchestrator API itself has no login.
+
+### Failure model
+
+What the stress run broke, with the process still alive (`docs/pod4-stress-run.md`):
+
+- Connection refused becomes FAILED / INCOMPLETE, verdict UNCERTAIN, error `agent_unavailable`. Resume after the agent answers can finish COMPLETED / CLEAN.
+- An exception inside an agent is stored as UNCERTAIN. It does not escape `run_workflow`.
+- A bare 422 from Prep keeps Receiving's PASS and does not call the later stages.
+
+### Deployment
+
+Local only. Nothing here is a public URL.
+
+```
+uvicorn orchestration.api:app --port 8100
+```
+
+The read-only desk is `http://127.0.0.1:8100/desk`. Health is `GET /health`. Prep, Pack, Returns, and Recovery must already be listening on 8102–8105 or those stages report down. Set `ORCH_FLOW` to `orchestration/flow.pod4-tracers.json` for the five-stage demo path. `make run` still uses `flow.json`.
+
+### Known limits
+
+- `data/input/TRACER-01`, `TRACER-02`, and `TRACER-03` have no photos, so a live five-stage tracer run is not frozen.
+- There is no system claim-precision number. Stage scores live in `docs/evaluation.md`. The stress numbers are not vision accuracy.
+- The desk reads workflows already stored under `out/`. It does not start agents.
+- Receiving's agreed-on-every-check set is 3 units. Pack's held-out verdict match is 3 of 14. Recovery has no match rate.

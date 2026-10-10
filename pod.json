@@ -11,24 +11,24 @@
     {
       "role": "Prep Manager",
       "agent": "prep",
-      "github": ""
+      "github": "MPreethika16"
     },
     {
       "role": "Pack Manager",
       "agent": "pack",
-      "github": ""
+      "github": "Vivek21-7"
     },
     {
       "role": "Returns Manager",
       "agent": "returns",
-      "github": ""
+      "github": "ruthvikgoud16"
     },
     {
       "role": "Recovery Manager",
       "agent": "recovery",
-      "github": ""
+      "github": "mdmoghnishah"
     }
   ],
-  "notes": "Pod 4. Ruthvik (ruthvikgoud16) owns Receiving + orchestration coordination. Teammates: add GitHub handles for Prep/Pack/Returns/Recovery. Receiving photos staged under data/input/UNIT-RCV-*/receiving/.",
+  "notes": "Pod 4. Handles match agents/*/agent.json. Ruthvik (ruthvikgoud16) is the orchestration coordinator and the Returns owner. Receiving's manifest owner is Vinayteja467. Live Prep, Pack, Returns, and Recovery are HTTP services, not the in-tree CSV stubs.",
   "orchestration_coordinator": "ruthvikgoud16"
 }

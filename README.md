@@ -52,6 +52,17 @@ make test             # integration, end-to-end, failure, UNCERTAIN, override an
 make run              # all sample workflows end to end -> out/workflows/*.json and out/evidence/*.json
 make case UNIT=UNIT-0014 ORG=org_demo_alpha     # one workflow, in full
 make serve            # orchestrator API on :8100 (POST /workflows, GET /workflows/{id}, GET /health)
+
+## Deploy
+
+The desk and the API are the same service. `GET /health` is the health check. `GET /desk` is the page.
+
+```sh
+docker build -t pod4-orchestrator .
+docker run --rm -p 8100:8100 pod4-orchestrator
+```
+
+The image listens on `0.0.0.0` and `$PORT` (default 8100). It does not load the sample catalog and it does not start a workflow by itself. `POST /workflows` requires `route` (`fba` or `mfn`) and `returned` (`true` or `false`). Anything else you send, such as product name or sku, is stored only when you include it. `data/input` is not copied into the image. Do not put `ANTHROPIC_API_KEY` in the image. `render.yaml` is the same service for Render. Point `PREP_URL`, `PACK_URL`, `RETURNS_URL`, and `RECOVERY_URL` at the agent hosts when those services are reachable.
 ```
 
 Out of the box everything runs on **organiser stub agents** replaying the synthetic Round 2 CSVs. **Replacing a stub with your real agent is your job.**

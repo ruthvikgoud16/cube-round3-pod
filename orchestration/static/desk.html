@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pod 4 evidence desk</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --paper: #f4f1ea;
+      --card: #fffdf8;
+      --pass: #1f6b45;
+      --fail: #9f1239;
+      --uncertain: #92400e;
+      --blocked: #1e3a5f;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 15px/1.45 "Iowan Old Style", Palatino, Georgia, serif; color: var(--ink); background: var(--paper); }
+    header { padding: 18px 24px 10px; border-bottom: 1px solid var(--line); background: var(--card); }
+    h1 { font-size: 22px; margin: 0 0 4px; font-weight: 600; }
+    .sub { margin: 0; color: var(--muted); max-width: 70rem; }
+    nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 24px; }
+    nav button, .case { font: inherit; cursor: pointer; background: var(--card); border: 1px solid var(--line); }
+    nav button { padding: 6px 10px; }
+    nav button[aria-current="true"] { border-color: var(--ink); }
+    main { display: grid; grid-template-columns: 280px 1fr; gap: 16px; padding: 0 24px 40px; }
+    aside, article, .panel { background: var(--card); border: 1px solid var(--line); }
+    aside { padding: 12px; }
+    article { padding: 16px 18px; min-height: 420px; }
+    h2 { font-size: 18px; margin: 0 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    .case { display: block; width: 100%; text-align: left; padding: 8px 10px; margin-bottom: 6px; }
+    .case[aria-current="true"] { border-color: var(--ink); }
+    .case small { display: block; color: var(--muted); }
+    .agents { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 8px 0 14px; }
+    .agent { border: 1px solid var(--line); padding: 8px; background: #fff; }
+    .agent strong { display: block; }
+    .pill { display: inline-block; padding: 1px 6px; border: 1px solid var(--line); font-family: ui-monospace, monospace; font-size: 12px; }
+    .PASS { color: var(--pass); }
+    .FAIL { color: var(--fail); }
+    .UNCERTAIN, .BLOCKED, .FAILED { color: var(--uncertain); }
+    .EXCEPTION, .INCOMPLETE { color: var(--fail); }
+    .outcome { font-size: 22px; margin: 0 0 6px; }
+    .stage { border-top: 1px solid var(--line); padding: 10px 0; }
+    code, .mono { font-family: ui-monospace, monospace; font-size: 12px; word-break: break-all; }
+    table { border-collapse: collapse; width: 100%; margin-top: 6px; }
+    td, th { border-bottom: 1px solid var(--line); text-align: left; padding: 4px 6px; vertical-align: top; font-size: 13px; }
+    .limits li { margin: 4px 0; }
+    .script { color: var(--muted); font-size: 14px; }
+    .script li { margin: 6px 0; }
+    @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pod 4 evidence desk</h1>
+    <p class="sub">Standard pod. One commerce unit, five stages. The orchestrator owns workflow status and the final outcome. Agents return judgments. This page only reads what is already stored.</p>
+  </header>
+  <nav>
+    <button type="button" data-panel="brief" aria-current="true">1 Brief</button>
+    <button type="button" data-panel="agents">2 Agents</button>
+    <button type="button" data-panel="cases">3 Cases</button>
+    <button type="button" data-panel="limits">4 Limits</button>
+  </nav>
+  <main>
+    <aside>
+      <h2>Stored workflows</h2>
+      <div id="list"></div>
+    </aside>
+    <article id="detail"></article>
+  </main>
+  <script>
+    const detail = document.getElementById("detail");
+    const list = document.getElementById("list");
+    const panels = {
+      brief: "brief",
+      agents: "agents",
+      cases: "cases",
+      limits: "limits"
+    };
+    let currentId = null;
+    let healthBody = null;
+    let bundles = {};
+
+    function esc(value) {
+      return String(value ?? "")
+        .replace(/\/(?:Users|tmp|home)\/\S+/g, "[local folder]")
+        .replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+    }
+
+    function pill(value) {
+      const text = value || "—";
+      return "<span class='pill " + esc(text) + "'>" + esc(text) + "</span>";
+    }
+
+    const briefHtml = `
+      <h2>What this pod is</h2>
+      <p>A unit is received, prepped for FBA or packed for MFN, accepted back only if it was returned, then compared with a fee line. Recovery does not invent a claim when the fee line is missing or the upstream stage did not finish.</p>
+      <ol class="script">
+        <li>0:00 Problem. Pod 4, standard, five members. Coordinator ruthvikgoud16. Returns is the same person.</li>
+        <li>1:00 Architecture. Receiving runs in this process. Prep 8102, Pack 8103, Returns 8104, and Recovery 8105 are HTTP. The sample CSV stubs in this repo are not the live agents.</li>
+        <li>2:30 Open Product 04. Every stage stored a record. The outcome is EXCEPTION, status BLOCKED, claim empty.</li>
+        <li>5:00 Trace a check to its record id and sha256.</li>
+        <li>6:00 Receiving on Product 04 is UNCERTAIN and asks for a person. No override is stored on these runs. Product 02 and Product 06 are FAILED / INCOMPLETE.</li>
+        <li>8:00 No workflow here is CLAIM_RECOMMENDED. Recovery on these products had no fee line.</li>
+        <li>9:00 Limits are on the last tab. There is no public deployment URL yet.</li>
+      </ol>
+      <h3>Owners</h3>
+      <table>
+        <tr><th>Stage</th><th>GitHub</th><th>Live path</th></tr>
+        <tr><td>Receiving</td><td>manifest owner Vinayteja467. pod.json still lists ruthvikgoud16</td><td>in-process</td></tr>
+        <tr><td>Prep</td><td>MPreethika16</td><td>HTTP :8102</td></tr>
+        <tr><td>Pack</td><td>Vivek21-7</td><td>HTTP :8103</td></tr>
+        <tr><td>Returns</td><td>ruthvikgoud16</td><td>HTTP :8104</td></tr>
+        <tr><td>Recovery</td><td>mdmoghnishah</td><td>HTTP :8105</td></tr>
+      </table>`;
+
+    const limitsHtml = `
+      <h2>What these runs do not show</h2>
+      <ul class="limits">
+        <li>No stored workflow is COMPLETED and CLEAN.</li>
+        <li>No stored workflow is CLAIM_RECOMMENDED. Sale invoices were not turned into fee lines.</li>
+        <li>No human override is recorded on Product 01–04 or Product 06.</li>
+        <li>Product 04 is the only unit where every stage stored a completed record. Prep and Pack failed. Receiving still needs a person.</li>
+        <li>Customer shipping labels were not sent to the models.</li>
+        <li>Claude decision-set sheets, not a system accuracy percentage: Prep 104/122 from one labeler. Pack 3/14 after one carton with a printed face was excluded. Returns identity 37/40, completeness 30/40, condition 17/40. Receiving full agreement is 3 units. Recovery has no match rate.</li>
+        <li>GET /health used to crash because Prep, Pack, and Returns report <span class="mono">ok</span> rather than <span class="mono">status</span>. The desk now reads both.</li>
+        <li>Agents are not copied into this repository. <span class="mono">round3-final</span> is not tagged. There is no deployment URL.</li>
+      </ul>`;
+
+    function agentsHtml() {
+      const agents = (healthBody && healthBody.agents) || {};
+      const order = ["receiving", "prep", "pack", "returns", "recovery"];
+      const cards = order.map((stage) => {
+        const row = agents[stage] || { status: "unknown" };
+        const id = row.agent_id || row.agent || "";
+        return "<div class='agent'><strong>" + esc(stage) + "</strong>" + pill(row.status)
+          + "<div class='mono'>" + esc(id) + "</div>"
+          + (row.error ? "<div>" + esc(row.error) + "</div>" : "")
+          + "</div>";
+      }).join("");
+      const overall = healthBody ? healthBody.status : "unreachable";
+      const flow = healthBody ? healthBody.flow : "";
+      return "<h2>Agents right now</h2><p>Flow <span class='mono'>" + esc(flow) + "</span> " + pill(overall) + "</p><div class='agents'>" + cards + "</div>"
+        + "<p>Prep can be degraded when its database is down. That does not change a stored verdict. Receiving has no separate port in this process.</p>";
+    }
+
+    function stageHtml(stage, record) {
+      const checks = (record.checks || []).map((check) =>
+        "<tr><td>" + esc(check.check_key) + "</td><td>" + pill(check.verdict) + "</td><td>" + esc(check.detail || check.observed || "") + "</td></tr>"
+      ).join("");
+      const model = record.model || {};
+      const decision = record.decision || {};
+      const err = record.error && (record.error.message || record.error.code);
+      return "<section class='stage'><h3>" + esc(stage.stage) + " " + pill(stage.state) + " " + pill(stage.verdict) + "</h3>"
+        + "<p>" + esc(decision.reason || stage.outcome || "") + "</p>"
+        + "<p class='mono'>" + esc(stage.record_id || "no record") + "</p>"
+        + "<p>model " + esc(model.name || "—") + " · calls " + esc(model.calls) + " · needs a person " + esc(decision.needs_human) + "</p>"
+        + "<p>sha256 <span class='mono'>" + esc(record.content_hash || "—") + "</span></p>"
+        + (err ? "<p>" + esc(err) + "</p>" : "")
+        + (checks ? "<table><tr><th>Check</th><th>Verdict</th><th>Detail</th></tr>" + checks + "</table>" : "")
+        + "</section>";
+    }
+
+    function caseHtml(id) {
+      const body = bundles[id];
+      if (!body) return "<p>That workflow is not stored.</p>";
+      const workflow = body.workflow || {};
+      const outcome = workflow.final_outcome || {};
+      const evidence = body.evidence || {};
+      const stages = (workflow.stage_results || []).map((stage) => stageHtml(stage, evidence[stage.record_id] || {})).join("");
+      const overrides = workflow.overrides || [];
+      return "<h2>" + esc(workflow.subject_id || id) + "</h2>"
+        + "<p class='outcome'>" + pill(outcome.outcome || workflow.status) + " " + pill(outcome.verdict) + " " + pill(workflow.status) + "</p>"
+        + "<p>" + esc(outcome.reason || workflow.status_reason || "") + "</p>"
+        + "<p>Provisional " + esc(outcome.provisional) + ". Needs a person " + esc(outcome.needs_human)
+        + ". Claim USD " + esc(outcome.claimable_usd == null ? "none" : outcome.claimable_usd)
+        + ". Overrides stored " + esc(overrides.length) + ".</p>"
+        + "<p class='mono'>" + esc(workflow.workflow_id) + " · flow " + esc(workflow.flow_id) + "</p>"
+        + stages;
+    }
+
+    function render(which) {
+      if (which === "brief") detail.innerHTML = briefHtml;
+      else if (which === "agents") detail.innerHTML = agentsHtml();
+      else if (which === "limits") detail.innerHTML = limitsHtml;
+      else if (currentId) detail.innerHTML = caseHtml(currentId);
+      else detail.innerHTML = "<p>Choose a stored workflow.</p>";
+    }
+
+    async function openWorkflow(id, button) {
+      currentId = id;
+      for (const node of list.querySelectorAll("button")) node.removeAttribute("aria-current");
+      if (button) button.setAttribute("aria-current", "true");
+      document.querySelector('nav button[data-panel="cases"]').setAttribute("aria-current", "true");
+      for (const node of document.querySelectorAll("nav button")) {
+        if (node.dataset.panel !== "cases") node.removeAttribute("aria-current");
+      }
+      if (!bundles[id]) {
+        const response = await fetch("/workflows/" + encodeURIComponent(id) + "/evidence");
+        if (!response.ok) {
+          detail.innerHTML = "<p>That workflow is not stored.</p>";
+          return;
+        }
+        bundles[id] = await response.json();
+      }
+      render("cases");
+    }
+
+    async function load() {
+      try {
+        const response = await fetch("/health");
+        healthBody = response.ok ? await response.json() : { status: "down", agents: {} };
+      } catch (err) {
+        healthBody = { status: "down", agents: {} };
+      }
+      const response = await fetch("/workflows");
+      const body = await response.json();
+      const ids = body.workflow_ids || [];
+      if (!ids.length) {
+        list.innerHTML = "<p>No workflows stored yet.</p>";
+      } else {
+        list.innerHTML = ids.map((id) => "<button type='button' class='case' data-id='" + esc(id) + "'>" + esc(id.replace("WF-org_demo_alpha-", "")) + "</button>").join("");
+        for (const button of list.querySelectorAll("button")) {
+          button.addEventListener("click", () => openWorkflow(button.dataset.id, button));
+        }
+      }
+      render("brief");
+      const preferred = ids.find((id) => id.endsWith("PRODUCT-04"));
+      if (preferred) {
+        const button = list.querySelector("button[data-id='" + preferred + "']");
+        await openWorkflow(preferred, button);
+        document.querySelector('nav button[data-panel="brief"]').click();
+      }
+    }
+
+    for (const button of document.querySelectorAll("nav button")) {
+      button.addEventListener("click", () => {
+        for (const node of document.querySelectorAll("nav button")) node.removeAttribute("aria-current");
+        button.setAttribute("aria-current", "true");
+        render(button.dataset.panel);
+      });
+    }
+
+    load();
+  </script>
+</body>
+</html>

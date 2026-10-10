@@ -1,0 +1,11 @@
+.git
+.venv
+venv
+out
+.env
+.env.*
+!.env.example
+**/__pycache__
+**/*.pyc
+data/input
+web

@@ -47,7 +47,13 @@ Rates use cases where **both** labelers (Jaanu, Soanli) agreed. UNCERTAIN is not
 - Sealed cartons correctly produce quantity UNCERTAIN → `pending_review`; that is not treated as a false positive.
 - This submission grades the **twelve real project deliveries** only.
 
-## F. Agent outcomes (all 12)
+## F. Cost and limits
+
+Token totals were not stored. The meter is 12 Claude calls, one per delivery. That is not an invoice.
+
+The primary table is the 3 units where Jaanu and Soanli agreed on all six checks. The soft table is larger and is not a substitute for that primary set. Nine units stay out of the primary rates because the labelers disagreed. This is the finished pilot. It is not a 50-case evaluation.
+
+## G. Agent outcomes (all 12)
 
 - `UNIT-RCV-01`: status=ok outcome=pending_review checks={'identity_match': 'PASS', 'carton_count': 'FAIL', 'quantity': 'UNCERTAIN', 'carton_damage': 'FAIL', 'unit_damage': 'UNCERTAIN', 'quality_flags': 'PASS'}
 - `UNIT-RCV-02`: status=ok outcome=pending_review checks={'identity_match': 'PASS', 'carton_count': 'PASS', 'quantity': 'UNCERTAIN', 'carton_damage': 'PASS', 'unit_damage': 'UNCERTAIN', 'quality_flags': 'PASS'}
