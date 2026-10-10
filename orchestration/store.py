@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 from pathlib import Path
 
 
@@ -43,6 +44,17 @@ class FileStore(MemoryStore):
         self.root = Path(root or os.environ.get("OUT_DIR", "out"))
         (self.root / "workflows").mkdir(parents=True, exist_ok=True)
         (self.root / "evidence").mkdir(parents=True, exist_ok=True)
+        if os.environ.get("SEED_DIR"):
+            self._seed(Path(os.environ["SEED_DIR"]))
+
+    def _seed(self, seed: Path) -> None:
+        """Copy already-recorded runs into an empty store. A deployed disk starts empty on every boot, so the
+        stored workflow and evidence JSON ship inside the image. A store that already holds runs is left alone."""
+        if any((self.root / "workflows").glob("*.json")):
+            return
+        for sub in ("workflows", "evidence"):
+            for src in sorted((seed / sub).glob("*.json")):
+                shutil.copyfile(src, self.root / sub / src.name)
 
     def load_workflow(self, workflow_id: str) -> dict | None:
         p = self.root / "workflows" / f"{workflow_id}.json"

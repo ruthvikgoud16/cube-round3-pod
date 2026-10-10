@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PCK-ae21b8d46e8a",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01-r2",
+  "stage": "pack",
+  "agent_id": "pack-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-01-r2",
+    "unit_id": "PRODUCT-01-r2",
+    "unit_scope": "order",
+    "refs": {
+      "order_id": "PRODUCT-01-r2"
+    }
+  },
+  "status": "completed",
+  "captured_at": "2026-10-10T07:19:05Z",
+  "produced_at": "2026-10-10T07:19:05Z",
+  "latency_ms": 0,
+  "operator_id": "pack",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "pack-observe-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-01-r2/pack/open-shoe.jpeg",
+      "sha256": "7d7a5c415a5ae88a23412ddb32231e88d9a7448b4f6631d580dd8be78ad0a179",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "line_match",
+      "verdict": "PASS",
+      "confidence": null,
+      "expected": 1,
+      "observed": 1,
+      "detail": "Bond Street By Red Tape Men's Casual Sneakers",
+      "evidence_refs": [
+        "PRODUCT-01-r2/pack/open-shoe.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "PASS",
+    "outcome": "seal",
+    "confidence": null,
+    "reason": "All expected items present, correct quantity, correct variant, NO extra items.",
+    "needs_human": false
+  },
+  "payload": {
+    "pack_decision": "SEAL",
+    "upstream_refs": [
+      "RCV-a15c91f24118",
+      "PRP-5f4f9b62d057"
+    ],
+    "claim_boundary": "open_box_pack_only"
+  },
+  "upstream_refs": [
+    "RCV-a15c91f24118",
+    "PRP-5f4f9b62d057"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "7972ba477ce48f8f8cd6752309038131a8eb4b14f8a10203eb98f69e4e8e63a9"
+}

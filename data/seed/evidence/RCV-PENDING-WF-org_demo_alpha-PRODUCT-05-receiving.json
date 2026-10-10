@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-PENDING-WF-org_demo_alpha-PRODUCT-05-receiving",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-05",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-05",
+    "unit_id": "PRODUCT-05",
+    "unit_scope": "unit",
+    "refs": {}
+  },
+  "client_id": null,
+  "status": "pending",
+  "captured_at": "2026-10-10T07:06:49Z",
+  "produced_at": "2026-10-10T07:06:49Z",
+  "latency_ms": null,
+  "operator_id": null,
+  "model": {
+    "name": "none",
+    "version": "0",
+    "calls": 0
+  },
+  "inputs": [],
+  "checks": [],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "unusable_photos: no photos in inputs and no folder /Users/ruthvikgoud/cube-round3-pod/data/input/PRODUCT-05/receiving",
+    "needs_human": true
+  },
+  "payload": {},
+  "upstream_refs": [],
+  "overrides": [],
+  "error": {
+    "code": "unusable_photos",
+    "message": "no photos in inputs and no folder /Users/ruthvikgoud/cube-round3-pod/data/input/PRODUCT-05/receiving",
+    "retryable": true,
+    "stage": "receiving",
+    "agent_id": "receiving-manager@1.0.0",
+    "at": "2026-10-10T07:06:49Z",
+    "detail": null
+  },
+  "content_hash": "57f82163fd8c5d23e00f84425bf244c6f6753c99dab7f482e3dac72d7a03e5e9"
+}

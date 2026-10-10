@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCY-73868d3258f4",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01-r2",
+  "stage": "recovery",
+  "agent_id": "recovery-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-01-r2",
+    "unit_id": "PRODUCT-01-r2",
+    "unit_scope": "unit",
+    "refs": {}
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:19:05Z",
+  "produced_at": "2026-10-10T07:19:11Z",
+  "latency_ms": 6101,
+  "operator_id": null,
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "recovery-summary-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-01-r2/recovery/invoice-shoe.pdf",
+      "sha256": "0ecb8e8d9d69b68b48c9a9000ebb7d9a4ba73c49e555ecd18b8860b450fd1c1d",
+      "kind": "document"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "fee_lines_available",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "at least one fee report line for the subject",
+      "observed": 0,
+      "detail": "No fee report lines were supplied or found for this subject; nothing to assess.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "insufficient_evidence",
+    "confidence": null,
+    "reason": "No fee report lines were supplied or found for this subject; nothing to assess.",
+    "needs_human": false
+  },
+  "payload": {
+    "charges": [],
+    "claimable_usd": 0.0,
+    "claimable_note": "Conditional potential amount from contradicted, unreimbursed fee lines. Not an approved recoverable amount; no claim is filed.",
+    "unclaimable": [],
+    "positions": {
+      "CONTRADICTS": 0,
+      "SUPPORTS": 0,
+      "SILENT": 0,
+      "UNCERTAIN": 0
+    },
+    "charge_source": "none",
+    "dropped_foreign_lines": [],
+    "ignored_foreign_evidence": [],
+    "upstream_agents_seen": [
+      "pack",
+      "prep",
+      "receiving",
+      "returns"
+    ],
+    "overrides_applied": [],
+    "rule_version": "recovery-round3-adapter-0.1",
+    "input_fingerprint": "57f1b9fca620febd89f2bee58adb979d02710f853cda082ccfa1966866cec122",
+    "assessment_decided_by": "rules",
+    "claim_filed": false,
+    "ai_summary": {
+      "status": "complete",
+      "model": "claude-sonnet-4-5",
+      "called": true,
+      "text": "# Recovery Review Note\n\n**Subject:** PRODUCT-01-r2 (org_demo_alpha, FBA route)\n\n**Decision:** UNCERTAIN - Insufficient Evidence\n\n**Summary:**\nNo fee report lines or charge data were provided for this subject. The review system could not assess any potential recovery amounts because no charges exist in the record.\n\n**Evidence Assessment:**\n- No line IDs to cite\n- No evidence record IDs to reference\n- No charge types identified\n- Cannot determine what evidence supports, contradicts, or is missing\n\n**Missing Information:**\n- All fee report data\n- All charge documentation\n- All supporting evidence\n\n**Conclusion:**\nWithout fee report lines, no conditional potential amounts can be calculated. Human reviewer must obtain complete fee and charge documentation before any recovery assessment is possible.\n\n**Action Required:** Obtain and supply fee report data for this subject.\n\n---\n*Word count: 119*",
+      "note": "Reviewer aid only; rules decided the assessment."
+    }
+  },
+  "upstream_refs": [
+    "RCV-a15c91f24118",
+    "PRP-5f4f9b62d057",
+    "PCK-ae21b8d46e8a",
+    "RTN-PRODUCT-01-r2"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "06228521505c3f1d140b932e0142e92ebeda6be0a22ebef8903d88df93337b71"
+}

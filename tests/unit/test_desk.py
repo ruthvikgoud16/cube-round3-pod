@@ -27,6 +27,21 @@ def test_desk_lists_one_workflow(tmp_path, monkeypatch):
     assert b"Pod 4 evidence desk" in page.content
 
 
+def test_seed_dir_fills_an_empty_store_once(tmp_path, monkeypatch):
+    """A deployed disk starts empty; SEED_DIR supplies the stored runs. A store that already holds runs is left alone."""
+    seed = tmp_path / "seed"
+    (seed / "workflows").mkdir(parents=True)
+    (seed / "evidence").mkdir()
+    (seed / "workflows" / "WF-SEED-1.json").write_text('{"workflow_id": "WF-SEED-1", "evidence_references": ["X-1"]}')
+    (seed / "evidence" / "X-1.json").write_text('{"record_id": "X-1", "content_hash": "abc"}')
+    monkeypatch.setenv("SEED_DIR", str(seed))
+    store = FileStore(tmp_path / "out")
+    assert store.load_workflow("WF-SEED-1")["evidence_references"] == ["X-1"]
+    assert store.get_evidence("X-1")["record_id"] == "X-1"
+    (seed / "workflows" / "WF-SEED-2.json").write_text('{"workflow_id": "WF-SEED-2"}')
+    assert FileStore(tmp_path / "out").load_workflow("WF-SEED-2") is None
+
+
 def test_create_requires_product_facts_and_does_not_invent_them():
     import orchestration.api as api
 

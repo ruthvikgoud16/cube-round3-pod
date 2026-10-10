@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PCK-9dcaf5ca560b",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-04",
+  "stage": "pack",
+  "agent_id": "pack-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-04",
+    "unit_id": "PRODUCT-04",
+    "unit_scope": "order",
+    "refs": {
+      "order_id": "PRODUCT-04"
+    }
+  },
+  "status": "completed",
+  "captured_at": "2026-10-10T07:01:17Z",
+  "produced_at": "2026-10-10T07:01:17Z",
+  "latency_ms": 0,
+  "operator_id": "pack",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "pack-observe-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-04/pack/01-with-carton.jpg",
+      "sha256": "a362b8da175e7a7f6a8cc1ccf6528a877fccd44245d888d0900946033fa5c436",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "line_match",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": 1,
+      "observed": 1,
+      "detail": "Oblique Sally tech pouch",
+      "evidence_refs": [
+        "PRODUCT-04/pack/01-with-carton.jpg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "review_required",
+    "confidence": null,
+    "reason": "The model could not confirm Oblique Sally tech pouch, so this pack cannot be sealed. Model: While a brown tech pouch matching the general description is present in quantity of 1, I cannot definitively confirm this is the 'Oblique Sally tech pouch' specifically. No visible branding, tags, or labels are clear enough in the photos to verify the exact model name 'Sally' or brand 'Oblique'. The retail box text is not legible enough to confirm product identity.",
+    "needs_human": true
+  },
+  "payload": {
+    "pack_decision": "UNCERTAIN",
+    "upstream_refs": [
+      "RCV-7e332f3270f4",
+      "PRP-b7ec38b3c3c8"
+    ],
+    "claim_boundary": "open_box_pack_only"
+  },
+  "upstream_refs": [
+    "RCV-7e332f3270f4",
+    "PRP-b7ec38b3c3c8"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "7ae3b039b827e50d1c22edab91cc8b9afa948fe3ad10589ca7a4b26811fe1f19"
+}

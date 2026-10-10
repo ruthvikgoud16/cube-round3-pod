@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-PRODUCT-02",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-02",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-02",
+    "unit_id": "PRODUCT-02",
+    "unit_scope": "unit",
+    "refs": {}
+  },
+  "client_id": null,
+  "status": "pending",
+  "captured_at": "2026-10-10T06:52:09.042Z",
+  "produced_at": "2026-10-10T06:52:09.042Z",
+  "latency_ms": null,
+  "operator_id": null,
+  "model": {
+    "name": "none",
+    "version": "0",
+    "provider": null,
+    "prompt_version": null,
+    "calls": 0,
+    "cost_usd": null
+  },
+  "inputs": [],
+  "checks": [],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "No usable photos were attached to this Agent Input",
+    "needs_human": true
+  },
+  "payload": {
+    "fail_open": true
+  },
+  "upstream_refs": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving",
+    "PRP-addbc14a625a",
+    "PCK-6721dbc61179"
+  ],
+  "overrides": [],
+  "error": {
+    "code": "pending",
+    "message": "No usable photos were attached to this Agent Input",
+    "retryable": true
+  },
+  "content_hash": "424b63a6b405de6fd32265b5943b96a9bb838ebdd70ed3f7c1eb9b5f7d10d126"
+}

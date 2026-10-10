@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-ec5b0202e0d4",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-03",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-03",
+    "unit_id": "PRODUCT-03",
+    "unit_scope": "unit",
+    "refs": {
+      "order_id": "PRODUCT-03",
+      "sku": null,
+      "asin": null,
+      "product_name": "GOBOULT Mustang Torq wireless earbuds, Silver"
+    }
+  },
+  "client_id": "round3-orchestrator",
+  "status": "pending",
+  "captured_at": "2026-10-10T06:55:57.479Z",
+  "produced_at": "2026-10-10T06:55:57.499Z",
+  "latency_ms": 13708,
+  "operator_id": "orchestrator",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "returns-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "org_demo_alpha/9e81dcb59e8d22bccdb7849d9e1434cd",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/18552e05d560fbd6a93b61df6f042244",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/e638e553c1f17a7068d49adc67d8b51d",
+      "sha256": null,
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "The product box clearly shows 'GOBOULT' branding and 'Mustang' text, along with 'Charging Torq | Wireless earbuds' which matches the ordered product name. The charging case has a Mustang logo (horse) with racing stripes, consistent with the Mustang branding. The earbuds visible in the case have a red/pink metallic finish matching the product imagery on the box.",
+      "evidence_refs": [
+        "org_demo_alpha/9e81dcb59e8d22bccdb7849d9e1434cd",
+        "org_demo_alpha/18552e05d560fbd6a93b61df6f042244",
+        "org_demo_alpha/e638e553c1f17a7068d49adc67d8b51d"
+      ],
+      "expected": "GOBOULT Mustang Torq wireless earbuds, Silver",
+      "observed": {
+        "matches": true
+      }
+    },
+    {
+      "check_key": "completeness",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.7,
+      "detail": "The charging case and both earbuds are clearly visible in the photos. The case is open showing the earbuds seated inside. There is a small plastic bag visible in the first photo inside the Mustang Owners Club box that may contain extra eartips or accessories, but its contents are not clearly visible. The manual and any extra eartips are not shown in the photographs, but this doesn't mean they are missing - they simply weren't photographed or may be in the bag/box.",
+      "evidence_refs": [
+        "org_demo_alpha/9e81dcb59e8d22bccdb7849d9e1434cd",
+        "org_demo_alpha/18552e05d560fbd6a93b61df6f042244",
+        "org_demo_alpha/e638e553c1f17a7068d49adc67d8b51d"
+      ],
+      "observed": {
+        "seen": [
+          "charging case",
+          "earbuds"
+        ],
+        "missing": [],
+        "not_in_frame": [
+          "extra eartips",
+          "manual"
+        ]
+      },
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "condition",
+      "verdict": "PASS",
+      "confidence": 0.85,
+      "detail": "The product appears to be in excellent condition. The charging case shows no visible scratches, scuffs, or wear. The earbuds appear pristine with no signs of use. The packaging includes both the retail box and a special Mustang Owners Club presentation box, both in good condition. The product appears to have been opened but shows no signs of actual use. The case and earbuds look clean and undamaged.",
+      "evidence_refs": [
+        "org_demo_alpha/9e81dcb59e8d22bccdb7849d9e1434cd",
+        "org_demo_alpha/18552e05d560fbd6a93b61df6f042244",
+        "org_demo_alpha/e638e553c1f17a7068d49adc67d8b51d"
+      ],
+      "observed": {
+        "amazon_condition": "used_like_new",
+        "observed_state": "opened_unused"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "At least one check is UNCERTAIN. The operator decides. UNCERTAIN is not a pass.",
+    "needs_human": true
+  },
+  "payload": {
+    "amazon_condition": "used_like_new",
+    "observed_state": "opened_unused",
+    "parts_missing": [],
+    "parts_seen": [
+      "charging case",
+      "earbuds"
+    ],
+    "parts_not_in_frame": [
+      "extra eartips",
+      "manual"
+    ],
+    "policy_version": "policy_v1",
+    "return_destination": "unknown",
+    "rule_source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201889720",
+    "condition_graded": true,
+    "schema_internal": "rtn-0.1-provisional"
+  },
+  "upstream_refs": [
+    "RCV-70d00048a840",
+    "PRP-027fc4628a01",
+    "PCK-86a170bd7dbc"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "a321e0240ff9dfb1c2443cbef8e914707235e017610c96337b26944b50754311"
+}

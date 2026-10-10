@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-ad852c465895",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-05",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-05",
+    "unit_id": "PRODUCT-05",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "KO_D_5088Black_S",
+      "asin": "UNKNOWN",
+      "product_name": "JOMPERS Embroidered Kurta"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:20:00Z",
+  "produced_at": "2026-10-10T07:20:00Z",
+  "latency_ms": 7522,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+      "sha256": "d5ef8ac730cbc1e5670a2bc25f0395c1df02c1274ea516c197ac92ef218d9e52",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+      "sha256": "9a912ae72b8c4f6e868ec31034328c7fd03c72d1ed9819049165897d4a0906d9",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-05/receiving/brand.jpeg",
+      "sha256": "79e0a88d888fbf0ae60994e49bd69526782d2daafd1bbd33035038c34e8f66ff",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-05/receiving/front1.jpeg",
+      "sha256": "8214c7546ceb425a4aee3612549526f8ded6e736bf97a0b810fc0a9880dd360a",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-05/receiving/kurtha-front.jpeg",
+      "sha256": "022b91f0fed1492acf219b204960e8eb8f5fd5fdae5aa3eb3922cc99a9c5789e",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-05/receiving/kurtha-front1.jpeg",
+      "sha256": "6b9d7a81d4e1a4d0f602f5a7e8957491e64e78aeeb8fdcb3b9aa0b26f6fad5b0",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "KO_D_5088Black_S (JOMPERS Embroidered Kurta)",
+      "observed": "yes",
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "FAIL",
+      "confidence": 0.95,
+      "expected": 0,
+      "observed": 1,
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": [
+        "One black JOMPERS embroidered kurta with long sleeves, neckline embroidery, front embroidery and attached product/size labels"
+      ],
+      "observed": [],
+      "detail": "One AJIO courier polybag (not a cardboard carton) contains one black JOMPERS kurta size S with gold embroidery matching PO spec. No damage visible on polybag or kurta; product tag confirms article IKO_D_5088Black and all embroidery details present.",
+      "evidence_refs": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "FAIL",
+    "outcome": "accept_with_exceptions",
+    "confidence": null,
+    "reason": "receiving_policy_v1: accept with exceptions: carton_count.",
+    "needs_human": false
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": 1,
+    "cartons_ordered": 0,
+    "cartons_received": 1,
+    "shortfall_units": 0,
+    "shortfall_cartons": 0,
+    "quality_flags": [],
+    "observation_confidence": 0.95,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ],
+      "carton": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ],
+      "unit": [
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+        "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+        "PRODUCT-05/receiving/brand.jpeg",
+        "PRODUCT-05/receiving/front1.jpeg",
+        "PRODUCT-05/receiving/kurtha-front.jpeg",
+        "PRODUCT-05/receiving/kurtha-front1.jpeg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [],
+      "failed_checks": [
+        "carton_count"
+      ],
+      "human_required": false
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 6,
+      "unusable": 0,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+      "PRODUCT-05/receiving/WhatsApp Image 2026-10-10 at 10.40.09 AM.jpeg",
+      "PRODUCT-05/receiving/brand.jpeg",
+      "PRODUCT-05/receiving/front1.jpeg",
+      "PRODUCT-05/receiving/kurtha-front.jpeg",
+      "PRODUCT-05/receiving/kurtha-front1.jpeg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "fe40be543424a7dae6ef99a3fb367898d9e36d4879002295d219dbc38373e37d"
+}

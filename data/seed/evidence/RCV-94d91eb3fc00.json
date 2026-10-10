@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-94d91eb3fc00",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-06",
+    "unit_id": "PRODUCT-06",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "MacBook Air",
+      "asin": "UNKNOWN",
+      "product_name": "Apple MacBook Air 13-inch"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:12:20Z",
+  "produced_at": "2026-10-10T07:12:20Z",
+  "latency_ms": 6607,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-06/receiving/01.jpg",
+      "sha256": "d8832063bcd7f4b3b38f5f65ff624749a1e3d9f616d7619e7dbf5fcc33900a7f",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-06/receiving/02.jpg",
+      "sha256": "b447547cbb79a52ef87aaf14c02ad0631f6710556f423af6c7d0a3e4c8d8e2fd",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-06/receiving/03.jpg",
+      "sha256": "b872c2524af5cb8f288d50f2c4d6352d7056b19bcc9e754dc62a53f2f966454d",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-06/receiving/04.jpg",
+      "sha256": "f4da4adf66ba069db428f376728543970b41ffff544c494e27f2309e5cca9510",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "MacBook Air (Apple MacBook Air 13-inch)",
+      "observed": "yes",
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": [
+        "MacBook Air laptop",
+        "power adapter",
+        "charging cable",
+        "documentation"
+      ],
+      "observed": [],
+      "detail": "One MacBook Air retail box visible with clear \"MacBook Air\" branding and Apple manufacturing labels, matching the PO product. Box appears clean and undamaged; cardboard shipping carton also shows no crushing, tears, or water damage.",
+      "evidence_refs": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "PASS",
+    "outcome": "accept",
+    "confidence": null,
+    "reason": "receiving_policy_v1: all receiving checks passed.",
+    "needs_human": false
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": 1,
+    "cartons_ordered": 1,
+    "cartons_received": 1,
+    "shortfall_units": 0,
+    "shortfall_cartons": 0,
+    "quality_flags": [],
+    "observation_confidence": 0.95,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ],
+      "carton": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ],
+      "unit": [
+        "PRODUCT-06/receiving/01.jpg",
+        "PRODUCT-06/receiving/02.jpg",
+        "PRODUCT-06/receiving/03.jpg",
+        "PRODUCT-06/receiving/04.jpg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [],
+      "failed_checks": [],
+      "human_required": false
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 4,
+      "unusable": 0,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-06/receiving/01.jpg",
+      "PRODUCT-06/receiving/02.jpg",
+      "PRODUCT-06/receiving/03.jpg",
+      "PRODUCT-06/receiving/04.jpg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "76a21d944c370659cafbaf3c2e7168a896fbc7a3b643e30efc3e1adae439a133"
+}

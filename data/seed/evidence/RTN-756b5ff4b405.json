@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-756b5ff4b405",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-03-r2",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-03-r2",
+    "unit_id": "PRODUCT-03-r2",
+    "unit_scope": "unit",
+    "refs": {
+      "order_id": "PRODUCT-03-r2",
+      "sku": null,
+      "asin": null,
+      "product_name": "GOBOULT Mustang Torq 60Hrs True Wireless Earbuds"
+    }
+  },
+  "client_id": "round3-orchestrator",
+  "status": "pending",
+  "captured_at": "2026-10-10T07:19:45.713Z",
+  "produced_at": "2026-10-10T07:19:45.716Z",
+  "latency_ms": 13288,
+  "operator_id": "orchestrator",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "returns-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "org_demo_alpha/2c0cc9e8099ad66bd32a16c5a370e102",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/93d6a067921c112b06fe3de37906e272",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/f7282c4fc7846057f7cbfcfbd10ad705",
+      "sha256": null,
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "The product packaging clearly shows 'GOBOULT Mustang' branding with 'Charging Torq | Wireless earbuds' text. The silver/gray charging case with black racing stripes and Mustang logo matches the Mustang Torq branding. The earbuds visible in the case have the distinctive red/pink accent design shown on the retail box.",
+      "evidence_refs": [
+        "org_demo_alpha/2c0cc9e8099ad66bd32a16c5a370e102",
+        "org_demo_alpha/93d6a067921c112b06fe3de37906e272",
+        "org_demo_alpha/f7282c4fc7846057f7cbfcfbd10ad705"
+      ],
+      "expected": "GOBOULT Mustang Torq 60Hrs True Wireless Earbuds",
+      "observed": {
+        "matches": true
+      }
+    },
+    {
+      "check_key": "completeness",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.85,
+      "detail": "The charging case with both earbuds is visible in the open case photo. The retail packaging box is shown. However, spare ear tips and user manual are not visible in the photos - they may be inside the Mustang Owners Club box or packaging but are not shown in frame.",
+      "evidence_refs": [
+        "org_demo_alpha/2c0cc9e8099ad66bd32a16c5a370e102",
+        "org_demo_alpha/93d6a067921c112b06fe3de37906e272",
+        "org_demo_alpha/f7282c4fc7846057f7cbfcfbd10ad705"
+      ],
+      "observed": {
+        "seen": [
+          "charging case",
+          "left earbud",
+          "right earbud",
+          "retail packaging"
+        ],
+        "missing": [],
+        "not_in_frame": [
+          "spare ear tips",
+          "user manual"
+        ]
+      },
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "condition",
+      "verdict": "PASS",
+      "confidence": 0.8,
+      "detail": "The charging case shows clear signs of use with visible scuffing and wear on the silver/gray surface. The earbuds appear to have been used (visible in the charging case with pink/red LED indicators lit). The retail packaging appears intact and in good condition. The item is functional (LEDs are illuminated) but shows cosmetic wear consistent with used_very_good grade - minor cosmetic imperfections but overall good appearance.",
+      "evidence_refs": [
+        "org_demo_alpha/2c0cc9e8099ad66bd32a16c5a370e102",
+        "org_demo_alpha/93d6a067921c112b06fe3de37906e272",
+        "org_demo_alpha/f7282c4fc7846057f7cbfcfbd10ad705"
+      ],
+      "observed": {
+        "amazon_condition": "used_very_good",
+        "observed_state": "signs_of_use"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "At least one check is UNCERTAIN. The operator decides. UNCERTAIN is not a pass.",
+    "needs_human": true
+  },
+  "payload": {
+    "amazon_condition": "used_very_good",
+    "observed_state": "signs_of_use",
+    "parts_missing": [],
+    "parts_seen": [
+      "charging case",
+      "left earbud",
+      "right earbud",
+      "retail packaging"
+    ],
+    "parts_not_in_frame": [
+      "spare ear tips",
+      "user manual"
+    ],
+    "policy_version": "policy_v1",
+    "return_destination": "unknown",
+    "rule_source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201889720",
+    "condition_graded": true,
+    "schema_internal": "rtn-0.1-provisional"
+  },
+  "upstream_refs": [
+    "RCV-1611847adba5",
+    "PRP-102da7eb2dde",
+    "PCK-8282bf2e11b6"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "0ef82d54c5e37222fc2c4b21021f0160d6bec72fc8f58a876e5872ab1b7548ab"
+}

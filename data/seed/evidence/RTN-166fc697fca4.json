@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-166fc697fca4",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-06",
+    "unit_id": "PRODUCT-06",
+    "unit_scope": "unit",
+    "refs": {
+      "order_id": "PRODUCT-06",
+      "sku": null,
+      "asin": null,
+      "product_name": "Apple MacBook Air 13-inch"
+    }
+  },
+  "client_id": "round3-orchestrator",
+  "status": "pending",
+  "captured_at": "2026-10-10T07:12:46.000Z",
+  "produced_at": "2026-10-10T07:12:46.003Z",
+  "latency_ms": 14612,
+  "operator_id": "orchestrator",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "returns-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "org_demo_alpha/067c15f7d1ce903ffd26bb5bcba9a84a",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/6c1b62c7c002d19e88df8b673c918b5b",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/15a09af82e06501d5df6450f6315fed7",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/bbc1b407e8c8571a249560e707586f31",
+      "sha256": null,
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "The product shows a silver laptop with the Apple logo visible on the top lid and 'MacBook Air' branding clearly visible on the box/packaging. The design, color (silver), and branding are consistent with an Apple MacBook Air 13-inch laptop.",
+      "evidence_refs": [
+        "org_demo_alpha/067c15f7d1ce903ffd26bb5bcba9a84a",
+        "org_demo_alpha/6c1b62c7c002d19e88df8b673c918b5b",
+        "org_demo_alpha/15a09af82e06501d5df6450f6315fed7",
+        "org_demo_alpha/bbc1b407e8c8571a249560e707586f31"
+      ],
+      "expected": "Apple MacBook Air 13-inch",
+      "observed": {
+        "matches": true
+      }
+    },
+    {
+      "check_key": "completeness",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.7,
+      "detail": "The MacBook Air laptop itself is clearly visible showing the bottom with rubber feet and the top with Apple logo. Documentation/packaging materials are visible in the background. However, the photos do not show whether the power adapter and charging cable are present in the box - they are simply not in frame. The box appears to be open with packing material visible.",
+      "evidence_refs": [
+        "org_demo_alpha/067c15f7d1ce903ffd26bb5bcba9a84a",
+        "org_demo_alpha/6c1b62c7c002d19e88df8b673c918b5b",
+        "org_demo_alpha/15a09af82e06501d5df6450f6315fed7",
+        "org_demo_alpha/bbc1b407e8c8571a249560e707586f31"
+      ],
+      "observed": {
+        "seen": [
+          "MacBook Air laptop",
+          "documentation"
+        ],
+        "missing": [],
+        "not_in_frame": [
+          "power adapter",
+          "charging cable"
+        ]
+      },
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "condition",
+      "verdict": "PASS",
+      "confidence": 0.85,
+      "detail": "The MacBook Air appears to be in excellent cosmetic condition with no visible scratches, dents, or damage on the silver aluminum body. The rubber feet on the bottom appear intact and clean. The box has been opened (visible packing material and open box), but the laptop itself shows no signs of use - the surfaces are clean and pristine. The packaging appears to be original Apple packaging in good condition. This meets the criteria for Used - Like New: item in perfect working condition, original protective wrapping may be missing but original packaging is available, and item may arrive in original manufacturer packaging or in a brown/white box.",
+      "evidence_refs": [
+        "org_demo_alpha/067c15f7d1ce903ffd26bb5bcba9a84a",
+        "org_demo_alpha/6c1b62c7c002d19e88df8b673c918b5b",
+        "org_demo_alpha/15a09af82e06501d5df6450f6315fed7",
+        "org_demo_alpha/bbc1b407e8c8571a249560e707586f31"
+      ],
+      "observed": {
+        "amazon_condition": "used_like_new",
+        "observed_state": "opened_unused"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "At least one check is UNCERTAIN. The operator decides. UNCERTAIN is not a pass.",
+    "needs_human": true
+  },
+  "payload": {
+    "amazon_condition": "used_like_new",
+    "observed_state": "opened_unused",
+    "parts_missing": [],
+    "parts_seen": [
+      "MacBook Air laptop",
+      "documentation"
+    ],
+    "parts_not_in_frame": [
+      "power adapter",
+      "charging cable"
+    ],
+    "policy_version": "policy_v1",
+    "return_destination": "unknown",
+    "rule_source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201889720",
+    "condition_graded": true,
+    "schema_internal": "rtn-0.1-provisional"
+  },
+  "upstream_refs": [
+    "RCV-94d91eb3fc00",
+    "PRP-c759bb0aed01",
+    "PCK-b41a0d87502c"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "9bab3ebcc788366450ce2cc708f42012c9138800dc72d32ab9212f30f28da84e"
+}

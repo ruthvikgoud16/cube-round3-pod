@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+  "flow_id": "pod4-tracers-v1",
+  "org_id": "org_demo_alpha",
+  "subject_id": "PRODUCT-06",
+  "context": {
+    "route": "fba",
+    "returned": true,
+    "product_name": "Apple MacBook Air 13-inch",
+    "sku": "MacBook Air",
+    "spec_variant": "Silver",
+    "qty_ordered": 1,
+    "cartons_ordered": 1,
+    "parts_list": [
+      "MacBook Air laptop",
+      "power adapter",
+      "charging cable",
+      "documentation"
+    ],
+    "order": {
+      "order_id": "PRODUCT-06",
+      "items": [
+        {
+          "sku": "MacBook Air",
+          "product_name": "Apple MacBook Air 13-inch",
+          "quantity": 1,
+          "variant": "Silver"
+        },
+        {
+          "sku": "power adapter",
+          "product_name": "power adapter",
+          "quantity": 1,
+          "variant": ""
+        },
+        {
+          "sku": "charging cable",
+          "product_name": "charging cable",
+          "quantity": 1,
+          "variant": ""
+        },
+        {
+          "sku": "documentation",
+          "product_name": "documentation",
+          "quantity": 1,
+          "variant": ""
+        }
+      ]
+    },
+    "work_order": {
+      "workOrderId": "WO-PRODUCT-06",
+      "unitId": "PRODUCT-06",
+      "sku": "MacBook Air",
+      "asin": "not-on-label",
+      "expectedFnsku": "not-on-label",
+      "requirements": {
+        "polybag": "UNKNOWN",
+        "suffocationWarning": "UNKNOWN",
+        "expiryDate": "UNKNOWN",
+        "handlingMarks": {
+          "state": "UNKNOWN",
+          "requiredMarks": []
+        }
+      }
+    },
+    "charges": [],
+    "live": true,
+    "include_ai_summary": false
+  },
+  "status": "FAILED",
+  "status_reason": "stage did not complete: prep, returns",
+  "current_stage": "returns",
+  "previous_stage": "prep",
+  "stage_results": [
+    {
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCV-94d91eb3fc00",
+      "evidence_status": "completed",
+      "verdict": "PASS",
+      "outcome": "accept",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "continue",
+        "reason": "receiving_policy_v1: all receiving checks passed."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:12:14Z",
+      "finished_at": "2026-10-10T07:12:20Z",
+      "duration_ms": 6628,
+      "error": null
+    },
+    {
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "PRP-0289ea1e5cf8",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "prep operational status REVIEW_REQUIRED"
+      },
+      "runs": 2,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:20:12Z",
+      "finished_at": "2026-10-10T07:20:12Z",
+      "duration_ms": 52,
+      "error": null
+    },
+    {
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "PCK-b41a0d87502c",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "At least one visible item is low confidence or the brand is not clear, so this pack cannot be sealed."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:12:20Z",
+      "finished_at": "2026-10-10T07:12:31Z",
+      "duration_ms": 10681,
+      "error": null
+    },
+    {
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "RTN-PENDING-WF-org_demo_alpha-PRODUCT-06-returns-r2",
+      "evidence_status": "error",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "HTTP 413: {\"statusCode\": 413, \"code\": \"FST_ERR_CTP_BODY_TOO_LARGE\", \"error\": \"Payload Too Large\", \"message\": \"Request body is too large\"}"
+      },
+      "runs": 2,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:20:12Z",
+      "finished_at": "2026-10-10T07:20:12Z",
+      "duration_ms": 63,
+      "error": {
+        "code": "agent_rejected",
+        "message": "HTTP 413: {\"statusCode\": 413, \"code\": \"FST_ERR_CTP_BODY_TOO_LARGE\", \"error\": \"Payload Too Large\", \"message\": \"Request body is too large\"}",
+        "retryable": false,
+        "stage": "returns",
+        "agent_id": "returns-manager@0.1.0",
+        "at": "2026-10-10T07:20:12Z",
+        "detail": null
+      }
+    },
+    {
+      "stage": "recovery",
+      "agent_id": "recovery-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCY-2f785d492fd6",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "insufficient_evidence",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "complete",
+        "reason": "No fee report lines were supplied or found for this subject; nothing to assess."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:12:46Z",
+      "finished_at": "2026-10-10T07:12:46Z",
+      "duration_ms": 9,
+      "error": null
+    }
+  ],
+  "evidence_references": [
+    "RCV-94d91eb3fc00",
+    "PRP-c759bb0aed01",
+    "PCK-b41a0d87502c",
+    "RTN-166fc697fca4",
+    "RCY-2f785d492fd6",
+    "PRP-0289ea1e5cf8",
+    "RTN-PENDING-WF-org_demo_alpha-PRODUCT-06-returns-r2"
+  ],
+  "timestamps": {
+    "created_at": "2026-10-10T07:12:14Z",
+    "updated_at": "2026-10-10T07:20:12Z",
+    "completed_at": null
+  },
+  "errors": [
+    {
+      "code": "pending",
+      "message": "Prep received 4 usable photo(s). Front, back, and label are required, so observation was not run.",
+      "retryable": true,
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "at": "2026-10-10T07:12:20Z"
+    },
+    {
+      "code": "agent_rejected",
+      "message": "HTTP 413: {\"statusCode\": 413, \"code\": \"FST_ERR_CTP_BODY_TOO_LARGE\", \"error\": \"Payload Too Large\", \"message\": \"Request body is too large\"}",
+      "retryable": false,
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "at": "2026-10-10T07:20:12Z",
+      "detail": null
+    }
+  ],
+  "overrides": [],
+  "halted": {
+    "stage": "returns",
+    "reason": "stage returns did not judge (status=error); not continuing",
+    "at": "2026-10-10T07:20:12Z"
+  },
+  "final_outcome": {
+    "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+    "outcome": "INCOMPLETE",
+    "verdict": "UNCERTAIN",
+    "reason": "Stage did not complete: prep, returns.",
+    "needs_human": true,
+    "provisional": true,
+    "claimable_usd": null,
+    "contributing_records": [
+      "RCV-94d91eb3fc00",
+      "PRP-0289ea1e5cf8",
+      "PCK-b41a0d87502c",
+      "RTN-PENDING-WF-org_demo_alpha-PRODUCT-06-returns-r2",
+      "RCY-2f785d492fd6"
+    ],
+    "effective_verdicts": {
+      "receiving": "PASS",
+      "prep": "UNCERTAIN",
+      "pack": "UNCERTAIN",
+      "returns": "UNCERTAIN",
+      "recovery": "UNCERTAIN"
+    },
+    "decided_by": "orchestrator",
+    "decided_at": "2026-10-10T07:20:12Z"
+  },
+  "transitions": [
+    {
+      "at": "2026-10-10T07:12:14Z",
+      "event": "workflow_created",
+      "stage": null,
+      "detail": "flow=pod4-tracers-v1"
+    },
+    {
+      "at": "2026-10-10T07:12:14Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "PENDING",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T07:12:20Z",
+      "event": "stage_completed",
+      "stage": "receiving",
+      "detail": "accept / PASS"
+    },
+    {
+      "at": "2026-10-10T07:12:20Z",
+      "event": "stage_error",
+      "stage": "prep",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:12:31Z",
+      "event": "stage_completed",
+      "stage": "pack",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:12:46Z",
+      "event": "stage_error",
+      "stage": "returns",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:12:46Z",
+      "event": "stage_completed",
+      "stage": "recovery",
+      "detail": "insufficient_evidence / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:12:46Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "stage did not complete: prep, returns",
+      "from_status": "IN_PROGRESS",
+      "to_status": "FAILED"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "FAILED",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "stage_error",
+      "stage": "prep",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "stage_degraded",
+      "stage": "returns",
+      "detail": "agent_rejected: recorded as error; flow policy decides what next"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "stage_error",
+      "stage": "returns",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "halted",
+      "stage": "returns",
+      "detail": "stage returns did not judge (status=error); not continuing"
+    },
+    {
+      "at": "2026-10-10T07:20:12Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "stage did not complete: prep, returns",
+      "from_status": "IN_PROGRESS",
+      "to_status": "FAILED"
+    }
+  ]
+}

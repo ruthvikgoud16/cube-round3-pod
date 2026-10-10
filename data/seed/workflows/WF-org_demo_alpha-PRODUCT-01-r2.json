@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01-r2",
+  "flow_id": "pod4-tracers-v1",
+  "org_id": "org_demo_alpha",
+  "subject_id": "PRODUCT-01-r2",
+  "context": {
+    "route": "fba",
+    "returned": false,
+    "product_name": "Bond Street By Red Tape Men's Casual Sneakers",
+    "sku": "BSE0871-9",
+    "spec_variant": "White/Beige, size 9",
+    "qty_ordered": 1,
+    "parts_list": [
+      "Left shoe",
+      "right shoe",
+      "retail shoe box"
+    ],
+    "order": {
+      "order_id": "OD338734740660891100",
+      "items": [
+        {
+          "name": "Bond Street By Red Tape Men's Casual Sneakers",
+          "qty": 1,
+          "sku": "BSE0871-9"
+        }
+      ]
+    },
+    "live": true
+  },
+  "status": "FAILED",
+  "status_reason": "stage did not complete: prep, returns",
+  "current_stage": "recovery",
+  "previous_stage": "returns",
+  "stage_results": [
+    {
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCV-a15c91f24118",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "receiving_policy_v1: UNCERTAIN on carton_count; UNCERTAIN is not a pass. Holding for a person."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:18:49Z",
+      "finished_at": "2026-10-10T07:18:55Z",
+      "duration_ms": 5995,
+      "error": null
+    },
+    {
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "PRP-5f4f9b62d057",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "Prep received 5 usable photo(s). Front, back, and label are required, so observation was not run."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:18:55Z",
+      "finished_at": "2026-10-10T07:18:55Z",
+      "duration_ms": 13,
+      "error": {
+        "code": "pending",
+        "message": "Prep received 5 usable photo(s). Front, back, and label are required, so observation was not run.",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "PCK-ae21b8d46e8a",
+      "evidence_status": "completed",
+      "verdict": "PASS",
+      "outcome": "seal",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "continue",
+        "reason": "All expected items present, correct quantity, correct variant, NO extra items."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:18:55Z",
+      "finished_at": "2026-10-10T07:19:05Z",
+      "duration_ms": 9797,
+      "error": null
+    },
+    {
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "RTN-PRODUCT-01-r2",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "No usable photos were attached to this Agent Input"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:19:05Z",
+      "finished_at": "2026-10-10T07:19:05Z",
+      "duration_ms": 3,
+      "error": {
+        "code": "pending",
+        "message": "No usable photos were attached to this Agent Input",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "recovery",
+      "agent_id": "recovery-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCY-73868d3258f4",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "insufficient_evidence",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "complete",
+        "reason": "No fee report lines were supplied or found for this subject; nothing to assess."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:19:05Z",
+      "finished_at": "2026-10-10T07:19:11Z",
+      "duration_ms": 6111,
+      "error": null
+    }
+  ],
+  "evidence_references": [
+    "RCV-a15c91f24118",
+    "PRP-5f4f9b62d057",
+    "PCK-ae21b8d46e8a",
+    "RTN-PRODUCT-01-r2",
+    "RCY-73868d3258f4"
+  ],
+  "timestamps": {
+    "created_at": "2026-10-10T07:18:49Z",
+    "updated_at": "2026-10-10T07:19:11Z",
+    "completed_at": null
+  },
+  "errors": [
+    {
+      "code": "pending",
+      "message": "Prep received 5 usable photo(s). Front, back, and label are required, so observation was not run.",
+      "retryable": true,
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "at": "2026-10-10T07:18:55Z"
+    },
+    {
+      "code": "pending",
+      "message": "No usable photos were attached to this Agent Input",
+      "retryable": true,
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "at": "2026-10-10T07:19:05Z"
+    }
+  ],
+  "overrides": [],
+  "halted": null,
+  "final_outcome": {
+    "workflow_id": "WF-org_demo_alpha-PRODUCT-01-r2",
+    "outcome": "INCOMPLETE",
+    "verdict": "UNCERTAIN",
+    "reason": "Stage did not complete: prep, returns.",
+    "needs_human": true,
+    "provisional": true,
+    "claimable_usd": null,
+    "contributing_records": [
+      "RCV-a15c91f24118",
+      "PRP-5f4f9b62d057",
+      "PCK-ae21b8d46e8a",
+      "RTN-PRODUCT-01-r2",
+      "RCY-73868d3258f4"
+    ],
+    "effective_verdicts": {
+      "receiving": "UNCERTAIN",
+      "prep": "UNCERTAIN",
+      "pack": "PASS",
+      "returns": "UNCERTAIN",
+      "recovery": "UNCERTAIN"
+    },
+    "decided_by": "orchestrator",
+    "decided_at": "2026-10-10T07:19:11Z"
+  },
+  "transitions": [
+    {
+      "at": "2026-10-10T07:18:49Z",
+      "event": "workflow_created",
+      "stage": null,
+      "detail": "flow=pod4-tracers-v1"
+    },
+    {
+      "at": "2026-10-10T07:18:49Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "PENDING",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T07:18:55Z",
+      "event": "stage_completed",
+      "stage": "receiving",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:18:55Z",
+      "event": "stage_error",
+      "stage": "prep",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:19:05Z",
+      "event": "stage_completed",
+      "stage": "pack",
+      "detail": "seal / PASS"
+    },
+    {
+      "at": "2026-10-10T07:19:05Z",
+      "event": "stage_error",
+      "stage": "returns",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:19:11Z",
+      "event": "stage_completed",
+      "stage": "recovery",
+      "detail": "insufficient_evidence / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:19:11Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "stage did not complete: prep, returns",
+      "from_status": "IN_PROGRESS",
+      "to_status": "FAILED"
+    }
+  ]
+}

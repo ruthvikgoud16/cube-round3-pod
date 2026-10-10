@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PCK-b41a0d87502c",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+  "stage": "pack",
+  "agent_id": "pack-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-06",
+    "unit_id": "PRODUCT-06",
+    "unit_scope": "order",
+    "refs": {
+      "order_id": "PRODUCT-06"
+    }
+  },
+  "status": "completed",
+  "captured_at": "2026-10-10T07:12:31Z",
+  "produced_at": "2026-10-10T07:12:31Z",
+  "latency_ms": 0,
+  "operator_id": "pack",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "pack-observe-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-06/pack/01.jpg",
+      "sha256": "f4da4adf66ba069db428f376728543970b41ffff544c494e27f2309e5cca9510",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "line_match",
+      "verdict": "FAIL",
+      "confidence": null,
+      "expected": 1,
+      "observed": 0,
+      "detail": "Apple MacBook Air 13-inch",
+      "evidence_refs": [
+        "PRODUCT-06/pack/01.jpg"
+      ]
+    },
+    {
+      "check_key": "line_match",
+      "verdict": "FAIL",
+      "confidence": null,
+      "expected": 1,
+      "observed": 0,
+      "detail": "power adapter",
+      "evidence_refs": [
+        "PRODUCT-06/pack/01.jpg"
+      ]
+    },
+    {
+      "check_key": "line_match",
+      "verdict": "FAIL",
+      "confidence": null,
+      "expected": 1,
+      "observed": 0,
+      "detail": "charging cable",
+      "evidence_refs": [
+        "PRODUCT-06/pack/01.jpg"
+      ]
+    },
+    {
+      "check_key": "line_match",
+      "verdict": "FAIL",
+      "confidence": null,
+      "expected": 1,
+      "observed": 0,
+      "detail": "documentation",
+      "evidence_refs": [
+        "PRODUCT-06/pack/01.jpg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "review_required",
+    "confidence": null,
+    "reason": "At least one visible item is low confidence or the brand is not clear, so this pack cannot be sealed.",
+    "needs_human": true
+  },
+  "payload": {
+    "pack_decision": "UNCERTAIN",
+    "upstream_refs": [
+      "RCV-94d91eb3fc00",
+      "PRP-c759bb0aed01"
+    ],
+    "claim_boundary": "open_box_pack_only"
+  },
+  "upstream_refs": [
+    "RCV-94d91eb3fc00",
+    "PRP-c759bb0aed01"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "c83f99d4e9573efe15c5de6e46be4749d92a60a7422c71147367d95b1162d5ac"
+}

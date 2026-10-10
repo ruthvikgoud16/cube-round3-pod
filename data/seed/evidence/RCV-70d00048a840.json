@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-70d00048a840",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-03",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-03",
+    "unit_id": "PRODUCT-03",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "8906133855741",
+      "asin": "UNKNOWN",
+      "product_name": "GOBOULT Mustang Torq wireless earbuds, Silver"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T06:55:43Z",
+  "produced_at": "2026-10-10T06:55:43Z",
+  "latency_ms": 5915,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-03/receiving/02-label.jpg",
+      "sha256": "330652fb9b36ec9b00f779d4a28f3b5e2bec66771a00051b21d419a2a2402fd9",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "8906133855741 (GOBOULT Mustang Torq wireless earbuds, Silver)",
+      "observed": "yes",
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": 1,
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": [
+        "charging case",
+        "earbuds",
+        "extra eartips",
+        "manual"
+      ],
+      "observed": [],
+      "detail": "One sealed retail box for GOBOULT Mustang Torq wireless earbuds visible, barcode 8906133855741 matches PO SKU. Box appears undamaged with clean edges and corners; contents not visible as unit is sealed.",
+      "evidence_refs": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "receiving_policy_v1: UNCERTAIN on quantity; UNCERTAIN is not a pass. Holding for a person.",
+    "needs_human": true
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": null,
+    "cartons_ordered": 1,
+    "cartons_received": 1,
+    "shortfall_units": null,
+    "shortfall_cartons": 0,
+    "quality_flags": [],
+    "observation_confidence": 0.95,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ],
+      "carton": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ],
+      "unit": [
+        "PRODUCT-03/receiving/02-label.jpg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [
+        "quantity"
+      ],
+      "failed_checks": [],
+      "human_required": true
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 1,
+      "unusable": 1,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-03/receiving/01-mailer.jpg",
+      "PRODUCT-03/receiving/02-label.jpg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "cbce69ca7af2806228fb890b939f5d93dccb3eef476de7c7124d374f7c095308"
+}
