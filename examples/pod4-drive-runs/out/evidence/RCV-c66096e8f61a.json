@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-c66096e8f61a",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-02-r2",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-02-r2",
+    "unit_id": "PRODUCT-02-r2",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "BLACK COTTEDE (carton label); shipping barcode visible on Red Tape parcel",
+      "asin": "UNKNOWN",
+      "product_name": "Red Tape Classic sneakers (Prep photos); BLACK COTTEDE plastic study table (Receiving carton label)"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:19:19Z",
+  "produced_at": "2026-10-10T07:19:19Z",
+  "latency_ms": 8000,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-02-r2/receiving/cartoon-shoe.jpeg",
+      "sha256": "8b6a5c22ac9dfebb9071515f7e3b1f32fee9a76012ca585ea2d5739d0022e9d5",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-02-r2/receiving/label.jpeg",
+      "sha256": "91a0ebc413c015e2940475470870701c2257bb2e42d65c1bd255c94f0ec1f82d",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "FAIL",
+      "confidence": 0.95,
+      "expected": "BLACK COTTEDE (carton label); shipping barcode visible on Red Tape parcel (Red Tape Classic sneakers (Prep photos); BLACK COTTEDE plastic study table (Receiving carton label))",
+      "observed": "no",
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "observed": 1,
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/cartoon-shoe.jpeg",
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": 1,
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "FAIL",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "tears",
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "uncertain",
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "poor_image"
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": [],
+      "observed": [],
+      "detail": "The focus carton clearly shows a Flipkart label for \"BLACK COTTEDE | BK SALES black cotton Plastic Study Table\" with seller SATIVA KISHAN BHIKHABHAI, which does not match the PO product (Red Tape Classic sneakers). The carton shows worn edges and surface tears, with handwritten \"E/O\" marking visible.",
+      "evidence_refs": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "FAIL",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "receiving_policy_v1: UNCERTAIN on carton_count, quantity, unit_damage; UNCERTAIN is not a pass. Holding for a person.",
+    "needs_human": true
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": null,
+    "cartons_ordered": null,
+    "cartons_received": 1,
+    "shortfall_units": null,
+    "shortfall_cartons": null,
+    "quality_flags": [],
+    "observation_confidence": 0.95,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-02-r2/receiving/cartoon-shoe.jpeg",
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ],
+      "carton": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ],
+      "unit": [
+        "PRODUCT-02-r2/receiving/label.jpeg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [
+        "carton_count",
+        "quantity",
+        "unit_damage"
+      ],
+      "failed_checks": [
+        "identity_match",
+        "carton_damage"
+      ],
+      "human_required": true
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 2,
+      "unusable": 0,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-02-r2/receiving/cartoon-shoe.jpeg",
+      "PRODUCT-02-r2/receiving/label.jpeg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "19cc97a6cd9d2a7350a0342d8abe22975bb15467b0d6a2590613b1bc13d34ebd"
+}

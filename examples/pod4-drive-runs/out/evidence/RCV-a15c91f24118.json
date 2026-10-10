@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-a15c91f24118",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01-r2",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-01-r2",
+    "unit_id": "PRODUCT-01-r2",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "BSE0871-9",
+      "asin": "UNKNOWN",
+      "product_name": "Bond Street By Red Tape Men's Casual Sneakers"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:18:55Z",
+  "produced_at": "2026-10-10T07:18:55Z",
+  "latency_ms": 5987,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-01-r2/receiving/label-shoe.jpeg",
+      "sha256": "1178195ba87bb14eb727b1ee5a5350ff64657ae6c129109ba803e349edcff652",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "BSE0871-9 (Bond Street By Red Tape Men's Casual Sneakers)",
+      "observed": "yes",
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "observed": 1,
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "expected": [
+        "Left shoe",
+        "right shoe",
+        "retail shoe box"
+      ],
+      "observed": [],
+      "detail": "One Flipkart polybag containing SKU BSE0871-9 \"Bond Street By Red Tape Men's\" casual sneakers with packing slip confirming QTY 1. No visible damage to the polybag or contents.",
+      "evidence_refs": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "receiving_policy_v1: UNCERTAIN on carton_count; UNCERTAIN is not a pass. Holding for a person.",
+    "needs_human": true
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": 1,
+    "cartons_ordered": null,
+    "cartons_received": 1,
+    "shortfall_units": 0,
+    "shortfall_cartons": null,
+    "quality_flags": [],
+    "observation_confidence": 0.95,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ],
+      "carton": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ],
+      "unit": [
+        "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [
+        "carton_count"
+      ],
+      "failed_checks": [],
+      "human_required": true
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 1,
+      "unusable": 0,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-01-r2/receiving/label-shoe.jpeg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "c87e0a30fadeed42037e98927c54f5ecf4d09401472fd1ed3cf0d1e375555c89"
+}

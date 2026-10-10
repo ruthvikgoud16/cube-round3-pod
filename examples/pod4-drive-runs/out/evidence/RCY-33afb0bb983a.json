@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCY-33afb0bb983a",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01",
+  "stage": "recovery",
+  "agent_id": "recovery-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-01",
+    "unit_id": "PRODUCT-01",
+    "unit_scope": "unit",
+    "refs": {}
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T06:52:08Z",
+  "produced_at": "2026-10-10T06:52:08Z",
+  "latency_ms": 2,
+  "operator_id": null,
+  "model": {
+    "name": "rules",
+    "version": "recovery-round3-adapter-0.1",
+    "provider": null,
+    "prompt_version": null,
+    "calls": 0,
+    "cost_usd": 0
+  },
+  "inputs": [],
+  "checks": [
+    {
+      "check_key": "fee_lines_available",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "at least one fee report line for the subject",
+      "observed": 0,
+      "detail": "No fee report lines were supplied or found for this subject; nothing to assess.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "insufficient_evidence",
+    "confidence": null,
+    "reason": "No fee report lines were supplied or found for this subject; nothing to assess.",
+    "needs_human": false
+  },
+  "payload": {
+    "charges": [],
+    "claimable_usd": 0.0,
+    "claimable_note": "Conditional potential amount from contradicted, unreimbursed fee lines. Not an approved recoverable amount; no claim is filed.",
+    "unclaimable": [],
+    "positions": {
+      "CONTRADICTS": 0,
+      "SUPPORTS": 0,
+      "SILENT": 0,
+      "UNCERTAIN": 0
+    },
+    "charge_source": "none",
+    "dropped_foreign_lines": [],
+    "ignored_foreign_evidence": [],
+    "upstream_agents_seen": [
+      "pack",
+      "prep",
+      "receiving",
+      "returns"
+    ],
+    "overrides_applied": [],
+    "rule_version": "recovery-round3-adapter-0.1",
+    "input_fingerprint": "63242f130995894f0855d1faa5daac3c4b9f23c1113d6a54b896acd7dd95a084",
+    "assessment_decided_by": "rules",
+    "claim_filed": false,
+    "ai_summary": null
+  },
+  "upstream_refs": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-01-receiving",
+    "PRP-197ee14d6e0f",
+    "PCK-85fe967c3dd8",
+    "RTN-PRODUCT-01"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "a74d0a0d7d86a76175e2ba5821c4c5bc18d17e3cb837871dd981a03ad8db41be"
+}

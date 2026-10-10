@@ -11,8 +11,10 @@ No authentication is included. Add it before you deploy anywhere public.
 """
 from __future__ import annotations
 
+import base64
 import os
-
+import re
+import threading
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -20,7 +22,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 from .clients import HttpClient, client_for, load_manifest
-from .orchestrator import apply_override, bundle, default_flow_path, flow_stages, load_flow, resume, run_workflow
+from .orchestrator import (
+    apply_override,
+    bundle,
+    default_flow_path,
+    flow_stages,
+    load_flow,
+    new_workflow,
+    resume,
+    run_workflow,
+    workflow_id_for,
+)
 from .store import EvidenceConflict, FileStore
 
 app = FastAPI(title="CUBE Round 3 orchestrator")
@@ -36,11 +48,69 @@ STORE = FileStore()
 
 
 DESK = Path(__file__).resolve().parent / "static" / "desk.html"
+LIVE = Path(__file__).resolve().parent / "static" / "live.html"
+STAGE_DIRS = ("receiving", "prep", "pack", "returns")
 
 
 @app.get("/desk")
 def desk() -> FileResponse:
     return FileResponse(DESK)
+
+
+@app.get("/live")
+def live() -> FileResponse:
+    return FileResponse(LIVE)
+
+
+def _stage_of(path: str) -> str | None:
+    for part in Path(path).parts:
+        token = part.lower()
+        for stage in STAGE_DIRS:
+            if token == stage or token.endswith("-" + stage) or token.endswith("_" + stage):
+                return stage
+    return None
+
+
+@app.post("/intake")
+def intake(body: dict) -> dict:
+    """Save an uploaded photo folder and start that unit. The response returns before the agents finish."""
+    org, subject = body.get("org_id"), body.get("subject_id") or body.get("unit_id")
+    if not org or not subject:
+        raise HTTPException(422, "org_id and unit_id are required")
+    if body.get("route") not in {"fba", "mfn"} or not isinstance(body.get("returned"), bool):
+        raise HTTPException(422, "route (fba or mfn) and returned (true or false) are required")
+    unit = re.sub(r"[^A-Za-z0-9._-]", "-", str(subject))[:80]
+    root = Path(os.environ.get("INPUT_DIR", "data/input"))
+    staged = []
+    for item in body.get("files") or []:
+        rel = str(item.get("path") or "")
+        stage = _stage_of(rel)
+        name = Path(rel).name
+        if not stage or not name.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+            continue
+        try:
+            raw = base64.b64decode(item.get("data_base64") or "", validate=True)
+        except Exception:
+            continue
+        if not raw or len(raw) > 8_000_000:
+            continue
+        dest = root / unit / stage / name
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(raw)
+        staged.append(f"{stage}/{name}")
+    if not staged:
+        raise HTTPException(422, "No photos were placed. Folders must be named receiving, prep, pack, or returns.")
+    case = {"org_id": org, "unit_id": unit, "route": body["route"], "returned": body["returned"], "live": True}
+    for key in ("product_name", "sku", "spec_variant", "qty_ordered"):
+        if body.get(key):
+            case[key] = body[key]
+    if STORE.load_workflow(workflow_id_for(case)) is not None:
+        raise HTTPException(409, f"{workflow_id_for(case)} already exists. Use a new unit id for a new run.")
+    flow = load_flow(FLOW)
+    wf = new_workflow(case, flow)
+    STORE.save_workflow(wf)
+    threading.Thread(target=run_workflow, args=(case, flow, STORE), daemon=True).start()
+    return {"workflow_id": wf["workflow_id"], "staged": staged, "status": "started"}
 
 
 @app.get("/workflows")

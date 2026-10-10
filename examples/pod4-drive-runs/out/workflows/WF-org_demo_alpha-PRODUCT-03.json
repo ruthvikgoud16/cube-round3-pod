@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-03",
+  "flow_id": "pod4-tracers-v1",
+  "org_id": "org_demo_alpha",
+  "subject_id": "PRODUCT-03",
+  "context": {
+    "route": "fba",
+    "returned": true,
+    "product_name": "GOBOULT Mustang Torq wireless earbuds, Silver",
+    "sku": "8906133855741",
+    "spec_variant": "Silver",
+    "qty_ordered": 1,
+    "cartons_ordered": 1,
+    "parts_list": [
+      "charging case",
+      "earbuds",
+      "extra eartips",
+      "manual"
+    ],
+    "order": {
+      "order_id": "PRODUCT-03",
+      "items": [
+        {
+          "sku": "8906133855741",
+          "name": "GOBOULT Mustang Torq earbuds",
+          "qty": 1
+        }
+      ]
+    },
+    "work_order": {
+      "workOrderId": "WO-PRODUCT-03",
+      "unitId": "PRODUCT-03",
+      "sku": "8906133855741",
+      "asin": "not-on-label",
+      "expectedFnsku": "not-on-label",
+      "requirements": {
+        "polybag": "UNKNOWN",
+        "suffocationWarning": "UNKNOWN",
+        "expiryDate": "UNKNOWN",
+        "handlingMarks": {
+          "state": "UNKNOWN",
+          "requiredMarks": []
+        }
+      }
+    },
+    "charges": [],
+    "live": true,
+    "include_ai_summary": false
+  },
+  "status": "FAILED",
+  "status_reason": "stage did not complete: pack, returns",
+  "current_stage": "recovery",
+  "previous_stage": "returns",
+  "stage_results": [
+    {
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCV-70d00048a840",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "receiving_policy_v1: UNCERTAIN on quantity; UNCERTAIN is not a pass. Holding for a person."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:55:37Z",
+      "finished_at": "2026-10-10T06:55:43Z",
+      "duration_ms": 5985,
+      "error": null
+    },
+    {
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "PRP-027fc4628a01",
+      "evidence_status": "completed",
+      "verdict": "FAIL",
+      "outcome": "stop_and_fix",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "prep operational status STOP_AND_FIX"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:55:43Z",
+      "finished_at": "2026-10-10T06:55:43Z",
+      "duration_ms": 18,
+      "error": null
+    },
+    {
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "PCK-86a170bd7dbc",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "No usable photos were attached to this Agent Input"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:55:43Z",
+      "finished_at": "2026-10-10T06:55:43Z",
+      "duration_ms": 6,
+      "error": {
+        "code": "pending",
+        "message": "No usable photos were attached to this Agent Input",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "RTN-ec5b0202e0d4",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "At least one check is UNCERTAIN. The operator decides. UNCERTAIN is not a pass."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:55:43Z",
+      "finished_at": "2026-10-10T06:55:57Z",
+      "duration_ms": 13787,
+      "error": null
+    },
+    {
+      "stage": "recovery",
+      "agent_id": "recovery-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCY-7bf10f7f993e",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "insufficient_evidence",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "complete",
+        "reason": "No fee report lines were supplied or found for this subject; nothing to assess."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:55:57Z",
+      "finished_at": "2026-10-10T06:55:57Z",
+      "duration_ms": 11,
+      "error": null
+    }
+  ],
+  "evidence_references": [
+    "RCV-70d00048a840",
+    "PRP-027fc4628a01",
+    "PCK-86a170bd7dbc",
+    "RTN-ec5b0202e0d4",
+    "RCY-7bf10f7f993e"
+  ],
+  "timestamps": {
+    "created_at": "2026-10-10T06:55:37Z",
+    "updated_at": "2026-10-10T06:55:57Z",
+    "completed_at": null
+  },
+  "errors": [
+    {
+      "code": "pending",
+      "message": "No usable photos were attached to this Agent Input",
+      "retryable": true,
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "at": "2026-10-10T06:55:43Z"
+    }
+  ],
+  "overrides": [],
+  "halted": null,
+  "final_outcome": {
+    "workflow_id": "WF-org_demo_alpha-PRODUCT-03",
+    "outcome": "EXCEPTION",
+    "verdict": "FAIL",
+    "reason": "Failed verdict from: prep; no claim recommended. Flagged for review: pack, returns, receiving, prep, pack, returns.",
+    "needs_human": true,
+    "provisional": true,
+    "claimable_usd": null,
+    "contributing_records": [
+      "RCV-70d00048a840",
+      "PRP-027fc4628a01",
+      "PCK-86a170bd7dbc",
+      "RTN-ec5b0202e0d4",
+      "RCY-7bf10f7f993e"
+    ],
+    "effective_verdicts": {
+      "receiving": "UNCERTAIN",
+      "prep": "FAIL",
+      "pack": "UNCERTAIN",
+      "returns": "UNCERTAIN",
+      "recovery": "UNCERTAIN"
+    },
+    "decided_by": "orchestrator",
+    "decided_at": "2026-10-10T06:55:57Z"
+  },
+  "transitions": [
+    {
+      "at": "2026-10-10T06:55:37Z",
+      "event": "workflow_created",
+      "stage": null,
+      "detail": "flow=pod4-tracers-v1"
+    },
+    {
+      "at": "2026-10-10T06:55:37Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "PENDING",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T06:55:43Z",
+      "event": "stage_completed",
+      "stage": "receiving",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:55:43Z",
+      "event": "stage_completed",
+      "stage": "prep",
+      "detail": "stop_and_fix / FAIL"
+    },
+    {
+      "at": "2026-10-10T06:55:43Z",
+      "event": "stage_error",
+      "stage": "pack",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:55:57Z",
+      "event": "stage_error",
+      "stage": "returns",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:55:57Z",
+      "event": "stage_completed",
+      "stage": "recovery",
+      "detail": "insufficient_evidence / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:55:57Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "stage did not complete: pack, returns",
+      "from_status": "IN_PROGRESS",
+      "to_status": "FAILED"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-87f1d4a6031b",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-05",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-05",
+    "unit_id": "PRODUCT-05",
+    "unit_scope": "unit",
+    "refs": {
+      "order_id": "PRODUCT-05",
+      "sku": null,
+      "asin": null,
+      "product_name": "JOMPERS Embroidered Kurta"
+    }
+  },
+  "client_id": "round3-orchestrator",
+  "status": "completed",
+  "captured_at": "2026-10-10T07:07:03.108Z",
+  "produced_at": "2026-10-10T07:07:03.111Z",
+  "latency_ms": 13148,
+  "operator_id": "orchestrator",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "returns-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "org_demo_alpha/3db4d6e2bec825fe04fc9ffc72de8efe",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/6ee8bf16b9d915c6accd3888727f5db0",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/e9be52d6a3d5da5476a46a904e9b4f09",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/d2e3f642e9d0d3ddbc237c4aced1d6c3",
+      "sha256": null,
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "The item is a black embroidered kurta with the JOMPERS brand label clearly visible on the neck tag in image 4. The garment matches the ordered product name 'JOMPERS Embroidered Kurta' with characteristic gold/silver embroidery patterns on the neckline, sleeves, and throughout the body. A product label with barcode is also attached.",
+      "evidence_refs": [
+        "org_demo_alpha/3db4d6e2bec825fe04fc9ffc72de8efe",
+        "org_demo_alpha/6ee8bf16b9d915c6accd3888727f5db0",
+        "org_demo_alpha/e9be52d6a3d5da5476a46a904e9b4f09",
+        "org_demo_alpha/d2e3f642e9d0d3ddbc237c4aced1d6c3"
+      ],
+      "expected": "JOMPERS Embroidered Kurta",
+      "observed": {
+        "matches": true
+      }
+    },
+    {
+      "check_key": "completeness",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "All expected parts of the kurta are visible in the photographs: the complete garment with long sleeves, decorative embroidery on the neckline, front placket, sleeves and body, and attached labels. The kurta appears complete with no missing components.",
+      "evidence_refs": [
+        "org_demo_alpha/3db4d6e2bec825fe04fc9ffc72de8efe",
+        "org_demo_alpha/6ee8bf16b9d915c6accd3888727f5db0",
+        "org_demo_alpha/e9be52d6a3d5da5476a46a904e9b4f09",
+        "org_demo_alpha/d2e3f642e9d0d3ddbc237c4aced1d6c3"
+      ],
+      "observed": {
+        "seen": [
+          "One black JOMPERS embroidered kurta with long sleeves",
+          "neckline embroidery",
+          "front embroidery",
+          "attached product/size labels"
+        ],
+        "missing": [],
+        "not_in_frame": []
+      }
+    },
+    {
+      "check_key": "condition",
+      "verdict": "PASS",
+      "confidence": 0.85,
+      "detail": "The kurta appears to be in excellent condition with original tags still attached. The fabric shows no visible signs of wear, staining, or damage. The embroidery is intact throughout. The garment appears clean and well-maintained with crisp fabric and no wrinkles suggesting use. While the tags are attached suggesting it may be unused, it is not in factory-sealed packaging, so grading as opened/unused condition consistent with Used Like New grade.",
+      "evidence_refs": [
+        "org_demo_alpha/3db4d6e2bec825fe04fc9ffc72de8efe",
+        "org_demo_alpha/6ee8bf16b9d915c6accd3888727f5db0",
+        "org_demo_alpha/e9be52d6a3d5da5476a46a904e9b4f09",
+        "org_demo_alpha/d2e3f642e9d0d3ddbc237c4aced1d6c3"
+      ],
+      "observed": {
+        "amazon_condition": "used_like_new",
+        "observed_state": "opened_unused"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "PASS",
+    "outcome": "restock",
+    "confidence": null,
+    "reason": "Identity matches, required parts are visible, and the visual grade is Like New or Very Good.",
+    "needs_human": false
+  },
+  "payload": {
+    "amazon_condition": "used_like_new",
+    "observed_state": "opened_unused",
+    "parts_missing": [],
+    "parts_seen": [
+      "One black JOMPERS embroidered kurta with long sleeves",
+      "neckline embroidery",
+      "front embroidery",
+      "attached product/size labels"
+    ],
+    "parts_not_in_frame": [],
+    "policy_version": "policy_v1",
+    "return_destination": "unknown",
+    "rule_source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201889720",
+    "condition_graded": true,
+    "schema_internal": "rtn-0.1-provisional"
+  },
+  "upstream_refs": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-05-receiving",
+    "PRP-d8e5086d3d9a",
+    "PCK-80b907fd0554"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "95a4ce33a43bde6d9ff909af907f262909e83ccd0449814abdb6f8d62ea49f9c"
+}

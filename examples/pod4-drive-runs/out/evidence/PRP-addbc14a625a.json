@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PRP-addbc14a625a",
+  "stage": "prep",
+  "status": "pending",
+  "content_hash": "f90ba5d1c2335a556c1b5da810e130a7c741177e4a7f0120e35109fe1f1879b9",
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "review_required",
+    "reason": "Prep received 2 usable photo(s). Front, back, and label are required, so observation was not run.",
+    "needs_human": true,
+    "confidence": null
+  },
+  "checks": [],
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-02",
+  "agent_id": "prep-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-02",
+    "unit_id": "PRODUCT-02",
+    "unit_scope": "unit",
+    "refs": {
+      "sku": "UNKNOWN",
+      "asin": "UNKNOWN",
+      "work_order_id": "UNRESOLVED"
+    }
+  },
+  "captured_at": "2026-10-09T16:08:59.909Z",
+  "produced_at": "2026-10-09T16:08:59.909Z",
+  "latency_ms": 0,
+  "operator_id": "prep",
+  "model": {
+    "name": "rules",
+    "version": "none",
+    "provider": null,
+    "prompt_version": "prep-observe-v1",
+    "calls": 0,
+    "cost_usd": null
+  },
+  "inputs": [],
+  "payload": {
+    "operational_status": "REVIEW_REQUIRED",
+    "pass_count": 0,
+    "fail_count": 0,
+    "uncertain_count": 0,
+    "blocking_checks": [],
+    "uncertain_checks": [],
+    "upstream_refs": [
+      "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving"
+    ],
+    "claim_boundary": "prep_compliance_only",
+    "observed": null
+  },
+  "upstream_refs": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving"
+  ],
+  "overrides": [],
+  "error": {
+    "code": "pending",
+    "message": "Prep received 2 usable photo(s). Front, back, and label are required, so observation was not run.",
+    "retryable": true
+  }
+}

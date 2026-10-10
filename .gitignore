@@ -13,3 +13,6 @@ out/
 
 # Generated labeler export; rebuild with scripts/export_labeler_pack.py
 eval/*.zip
+
+# Local Netlify folder
+.netlify

@@ -1,0 +1,13 @@
+# Live run site. Every path is proxied to the orchestrator behind the laptop tunnel.
+# scripts/publish_live_site.sh replaces TUNNEL_URL with the current tunnel and deploys.
+[[redirects]]
+  from = "/"
+  to = "TUNNEL_URL/live"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "TUNNEL_URL/:splat"
+  status = 200
+  force = true

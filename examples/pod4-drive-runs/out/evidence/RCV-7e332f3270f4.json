@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-7e332f3270f4",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-04",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-04",
+    "unit_id": "PRODUCT-04",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "8906126921460",
+      "asin": "UNKNOWN",
+      "product_name": "Oblique Sally tech pouch, Tan"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:01:04Z",
+  "produced_at": "2026-10-10T07:01:04Z",
+  "latency_ms": 6229,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-04/receiving/01-carton-brand.jpg",
+      "sha256": "0f2578754b8499eb31e862883cb87c1c3ba6c453e6dec1db47e3df7c84e603dd",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-04/receiving/02-carton-label.jpg",
+      "sha256": "bdcfc4450db2dd6085ad11e4791dddd98a5c073501350e1b3f0952f3733617df",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-04/receiving/03-label.jpg",
+      "sha256": "6363f2840d82bcae4f40e9a303856674f016f3e7dc5f6c517433643dd2bc443d",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.9,
+      "expected": "8906126921460 (Oblique Sally tech pouch, Tan)",
+      "observed": "yes",
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "PASS",
+      "confidence": 0.9,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "PASS",
+      "confidence": 0.9,
+      "expected": 1,
+      "observed": 1,
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "PASS",
+      "confidence": 0.9,
+      "expected": "none",
+      "observed": "none",
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.9,
+      "expected": "none",
+      "observed": "uncertain",
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ],
+      "uncertain_reason": "poor_image"
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.9,
+      "expected": [
+        "tech pouch"
+      ],
+      "observed": [],
+      "detail": "One cardboard carton with visible label showing \"Tech Pouch Oblique Sally\" matching the PO product. Label states Net Quantity 1N confirming one unit inside, carton exterior appears intact.",
+      "evidence_refs": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "receiving_policy_v1: UNCERTAIN on unit_damage; UNCERTAIN is not a pass. Holding for a person.",
+    "needs_human": true
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": 1,
+    "cartons_ordered": 1,
+    "cartons_received": 1,
+    "shortfall_units": 0,
+    "shortfall_cartons": 0,
+    "quality_flags": [],
+    "observation_confidence": 0.9,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ],
+      "carton": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ],
+      "unit": [
+        "PRODUCT-04/receiving/01-carton-brand.jpg",
+        "PRODUCT-04/receiving/02-carton-label.jpg",
+        "PRODUCT-04/receiving/03-label.jpg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [
+        "unit_damage"
+      ],
+      "failed_checks": [],
+      "human_required": true
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 3,
+      "unusable": 0,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-04/receiving/01-carton-brand.jpg",
+      "PRODUCT-04/receiving/02-carton-label.jpg",
+      "PRODUCT-04/receiving/03-label.jpg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "d871cafee5aaff6de2cef74c26de16a16ebe2b5d163e9c3c33acc2fc6526065c"
+}

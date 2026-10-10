@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PRP-197ee14d6e0f",
+  "stage": "prep",
+  "status": "pending",
+  "content_hash": "e372eaeeb62a2b0f7edeab0202f5683e706db41ab0d3ebc4c9a3de2b18148193",
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "review_required",
+    "reason": "prep operational status REVIEW_REQUIRED",
+    "needs_human": true,
+    "confidence": null
+  },
+  "checks": [
+    {
+      "check_key": "fnsku_identity",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "APPLICABLE",
+      "observed": null,
+      "detail": "FNSKU barcode label was not detected in supplied photographs. This does not confirm physical absence.",
+      "evidence_refs": [
+        "PRODUCT-01/prep/03-label.jpg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "polybag_presence",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": "NOT_DETECTED",
+      "detail": "Work order polybag requirement state is UNKNOWN; cannot evaluate compliance.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "polybag_seal",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": "UNCERTAIN",
+      "detail": "Work order polybag requirement state is UNKNOWN; cannot evaluate seal status.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "suffocation_warning_presence",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": "NOT_DETECTED",
+      "detail": "Work order suffocation warning requirement state is UNKNOWN; cannot evaluate compliance.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "suffocation_warning_legibility",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": "UNCERTAIN",
+      "detail": "Work order suffocation warning requirement state is UNKNOWN; cannot evaluate legibility.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "manufacturer_barcode_coverage",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "APPLICABLE",
+      "observed": "NOT_DETECTED",
+      "detail": "Manufacturer barcode was not detected in supplied photographs. Non-detection does not confirm proper coverage or physical compliance.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "expiry_visibility",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": null,
+      "detail": "Work order expiry date requirement state is UNKNOWN; cannot evaluate compliance.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "expiry_legibility",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": "UNCERTAIN",
+      "detail": "Work order expiry date requirement state is UNKNOWN; cannot evaluate legibility.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "handling_marks",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "UNKNOWN",
+      "observed": null,
+      "detail": "Work order handling marks requirement state is UNKNOWN; cannot evaluate compliance.",
+      "evidence_refs": [],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "fnsku_placement",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": "APPLICABLE",
+      "observed": null,
+      "detail": "FNSKU barcode was not detected in supplied photographs; placement cannot be evaluated.",
+      "evidence_refs": [
+        "PRODUCT-01/prep/03-label.jpg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    }
+  ],
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-01",
+  "agent_id": "prep-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-01",
+    "unit_id": "PRODUCT-01",
+    "unit_scope": "unit",
+    "refs": {
+      "sku": "BSE0871",
+      "asin": "not-on-label",
+      "work_order_id": "WO-PRODUCT-01"
+    }
+  },
+  "captured_at": "2026-10-09T16:08:52.240Z",
+  "produced_at": "2026-10-09T16:08:52.241Z",
+  "latency_ms": 14959,
+  "operator_id": "prep",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "prep-observe-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-01/prep/01-front.jpg",
+      "sha256": "7e5f3c477e0b61d261479a2a8d1c932be7a171500d039c991b0f91544fed0e76",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-01/prep/02-open.jpg",
+      "sha256": "7d59f3f199b836bdb092e687ddfcf8f9f41db112494cf83a9cdd4ff4f4a68708",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-01/prep/03-label.jpg",
+      "sha256": "9bbdbd962fdeb8912afd94e7b3b1167ebf32af8fbc4337dfe374b637b37ef833",
+      "kind": "image"
+    }
+  ],
+  "payload": {
+    "operational_status": "REVIEW_REQUIRED",
+    "pass_count": 0,
+    "fail_count": 0,
+    "uncertain_count": 10,
+    "blocking_checks": [],
+    "uncertain_checks": [
+      "FNSKU_IDENTITY",
+      "POLYBAG_PRESENCE",
+      "POLYBAG_SEAL",
+      "SUFFOCATION_WARNING_PRESENCE",
+      "SUFFOCATION_WARNING_LEGIBILITY",
+      "MANUFACTURER_BARCODE_COVERAGE",
+      "EXPIRY_VISIBILITY",
+      "EXPIRY_LEGIBILITY",
+      "HANDLING_MARKS",
+      "FNSKU_PLACEMENT"
+    ],
+    "upstream_refs": [
+      "RCV-PENDING-WF-org_demo_alpha-PRODUCT-01-receiving"
+    ],
+    "claim_boundary": "prep_compliance_only",
+    "observed": {
+      "manufacturer_barcode_visibility": "NOT_DETECTED",
+      "manufacturer_barcode_value": null,
+      "fnsku_visibility": "NOT_DETECTED",
+      "fnsku_value": null,
+      "expiry_visibility": "NOT_DETECTED",
+      "expiry_value": null,
+      "handling": []
+    }
+  },
+  "upstream_refs": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-01-receiving"
+  ],
+  "overrides": [],
+  "error": null
+}

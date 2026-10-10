@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RCV-1611847adba5",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-03-r2",
+  "stage": "receiving",
+  "agent_id": "receiving-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-03-r2",
+    "unit_id": "PRODUCT-03-r2",
+    "unit_scope": "po_line",
+    "refs": {
+      "po_number": "PO-UNKNOWN",
+      "po_line": "1",
+      "sku": "8906133855741",
+      "asin": "UNKNOWN",
+      "product_name": "GOBOULT Mustang Torq 60Hrs True Wireless Earbuds"
+    }
+  },
+  "client_id": null,
+  "status": "completed",
+  "captured_at": "2026-10-10T07:19:32Z",
+  "produced_at": "2026-10-10T07:19:32Z",
+  "latency_ms": 7359,
+  "operator_id": "dock",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "receiving-observe-v4",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+      "sha256": "fcacc4ec36d5824fc2e5535a322a7336a85a1993cd1868d188de4b22e3a47d72",
+      "kind": "image"
+    },
+    {
+      "ref": "PRODUCT-03-r2/receiving/label.jpeg",
+      "sha256": "fcacc4ec36d5824fc2e5535a322a7336a85a1993cd1868d188de4b22e3a47d72",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.65,
+      "expected": "8906133855741 (GOBOULT Mustang Torq 60Hrs True Wireless Earbuds)",
+      "observed": "uncertain",
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "poor_image"
+    },
+    {
+      "check_key": "carton_count",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "quantity",
+      "verdict": "UNCERTAIN",
+      "confidence": null,
+      "expected": 1,
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "insufficient_evidence"
+    },
+    {
+      "check_key": "carton_damage",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.65,
+      "expected": "none",
+      "observed": "uncertain",
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "uncertain_reason": "poor_image"
+    },
+    {
+      "check_key": "unit_damage",
+      "verdict": "PASS",
+      "confidence": 0.65,
+      "expected": "none",
+      "observed": "none",
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ]
+    },
+    {
+      "check_key": "quality_flags",
+      "verdict": "PASS",
+      "confidence": 0.65,
+      "expected": [
+        "Charging case",
+        "left earbud",
+        "right earbud",
+        "spare ear tips",
+        "retail packaging",
+        "user manual"
+      ],
+      "observed": [],
+      "detail": "The image shows a retail box for \"Mustang Torq\" earbuds marketed by Exotic Mile Pvt Ltd, product name matches PO, color Silver visible, manufactured July 2026, contains TWS earbuds with net quantity 1U. No shipping cartons visible; only a single sealed retail unit is shown, so carton count cannot be determined and inner contents are not visible for component verification.",
+      "evidence_refs": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "receiving_policy_v1: UNCERTAIN on identity_match, carton_count, quantity, carton_damage; UNCERTAIN is not a pass. Holding for a person.",
+    "needs_human": true
+  },
+  "payload": {
+    "policy_version": "receiving_policy_v1",
+    "supplier": null,
+    "qty_ordered": 1,
+    "qty_received": null,
+    "cartons_ordered": null,
+    "cartons_received": null,
+    "shortfall_units": null,
+    "shortfall_cartons": null,
+    "quality_flags": [],
+    "observation_confidence": 0.65,
+    "claim_boundary": "supplier_side_only",
+    "shot_roles": {
+      "pallet": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "carton": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ],
+      "unit": [
+        "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+        "PRODUCT-03-r2/receiving/label.jpeg"
+      ]
+    },
+    "trace": {
+      "uncertain_checks": [
+        "identity_match",
+        "carton_count",
+        "quantity",
+        "carton_damage"
+      ],
+      "failed_checks": [],
+      "human_required": true
+    },
+    "receiving_mode": "live",
+    "quality_gate": {
+      "usable": 2,
+      "unusable": 1,
+      "notes": []
+    },
+    "input_refs_requested": [
+      "PRODUCT-03-r2/receiving/cartoon-uds.jpg",
+      "PRODUCT-03-r2/receiving/label-17cKZr.jpeg",
+      "PRODUCT-03-r2/receiving/label.jpeg"
+    ],
+    "finding_notes": {
+      "F-08": "unit_scope=po_line",
+      "F-10": "shortfall_units is supplier-side; not channel lost_inbound proof"
+    }
+  },
+  "upstream_refs": [],
+  "overrides": [],
+  "error": null,
+  "content_hash": "f59388f01310e4bb866fbd10114da25b9efcf0853d48c8ebf0f1fa48cdc19557"
+}

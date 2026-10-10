@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PCK-5072b7f6d0ea",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-02-r2",
+  "stage": "pack",
+  "agent_id": "pack-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-02-r2",
+    "unit_id": "PRODUCT-02-r2",
+    "unit_scope": "order",
+    "refs": {
+      "order_id": "PRODUCT-02-r2"
+    }
+  },
+  "status": "pending",
+  "captured_at": "2026-10-10T07:19:19Z",
+  "produced_at": "2026-10-10T07:19:19Z",
+  "latency_ms": 0,
+  "operator_id": "pack",
+  "model": {
+    "name": "rules",
+    "version": "none",
+    "provider": null,
+    "prompt_version": "pack-observe-v1",
+    "calls": 0,
+    "cost_usd": null
+  },
+  "inputs": [],
+  "checks": [],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "review_required",
+    "confidence": null,
+    "reason": "No usable photos were attached to this Agent Input",
+    "needs_human": true
+  },
+  "payload": {
+    "pack_decision": "UNCERTAIN",
+    "upstream_refs": [
+      "RCV-c66096e8f61a",
+      "PRP-9f3d7a93ea17"
+    ],
+    "claim_boundary": "open_box_pack_only"
+  },
+  "upstream_refs": [
+    "RCV-c66096e8f61a",
+    "PRP-9f3d7a93ea17"
+  ],
+  "overrides": [],
+  "error": {
+    "code": "pending",
+    "message": "No usable photos were attached to this Agent Input",
+    "retryable": true
+  },
+  "content_hash": "96041ffb17cb4cc42d8a3f81f450a0e52cf234861678a08129f0fba358a336ec"
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "record_id": "PCK-d2b9ac783e59",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-05",
+  "stage": "pack",
+  "agent_id": "pack-manager@1.0.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-05",
+    "unit_id": "PRODUCT-05",
+    "unit_scope": "order",
+    "refs": {
+      "order_id": "PRODUCT-05"
+    }
+  },
+  "status": "completed",
+  "captured_at": "2026-10-10T07:20:12Z",
+  "produced_at": "2026-10-10T07:20:12Z",
+  "latency_ms": 0,
+  "operator_id": "pack",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5",
+    "provider": "anthropic",
+    "prompt_version": "pack-observe-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "PRODUCT-05/pack/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg",
+      "sha256": "d5ef8ac730cbc1e5670a2bc25f0395c1df02c1274ea516c197ac92ef218d9e52",
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "line_match",
+      "verdict": "FAIL",
+      "confidence": null,
+      "expected": 1,
+      "observed": 1,
+      "detail": "JOMPERS Embroidered Kurta",
+      "evidence_refs": [
+        "PRODUCT-05/pack/WhatsApp Image 2026-10-10 at 10.40.08 AM.jpeg"
+      ]
+    }
+  ],
+  "decision": {
+    "verdict": "FAIL",
+    "outcome": "stop_and_fix",
+    "confidence": null,
+    "reason": "Variant/color mismatch.",
+    "needs_human": true
+  },
+  "payload": {
+    "pack_decision": "STOP_FIX",
+    "upstream_refs": [
+      "RCV-ad852c465895",
+      "PRP-c0210356ad5b"
+    ],
+    "claim_boundary": "open_box_pack_only"
+  },
+  "upstream_refs": [
+    "RCV-ad852c465895",
+    "PRP-c0210356ad5b"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "021be42454d8af63848dadcc53879909967058bcd7f99fc6d99b0c4a119e3cd9"
+}

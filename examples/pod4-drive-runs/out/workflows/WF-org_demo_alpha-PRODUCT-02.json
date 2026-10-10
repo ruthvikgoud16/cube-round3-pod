@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-02",
+  "flow_id": "pod4-tracers-v1",
+  "org_id": "org_demo_alpha",
+  "subject_id": "PRODUCT-02",
+  "context": {
+    "route": "fba",
+    "returned": true,
+    "product_name": "",
+    "sku": "",
+    "qty_ordered": null,
+    "cartons_ordered": null,
+    "parts_list": [],
+    "order": {
+      "order_id": "PRODUCT-02",
+      "items": []
+    },
+    "work_order": {
+      "workOrderId": "WO-PRODUCT-02",
+      "unitId": "PRODUCT-02",
+      "sku": "not-provided",
+      "asin": "not-on-label",
+      "expectedFnsku": "not-on-label",
+      "requirements": {
+        "polybag": "UNKNOWN",
+        "suffocationWarning": "UNKNOWN",
+        "expiryDate": "UNKNOWN",
+        "handlingMarks": {
+          "state": "UNKNOWN",
+          "requiredMarks": []
+        }
+      }
+    },
+    "charges": [],
+    "live": true,
+    "include_ai_summary": false
+  },
+  "status": "FAILED",
+  "status_reason": "stage did not complete: receiving, prep, pack, returns",
+  "current_stage": "recovery",
+  "previous_stage": "returns",
+  "stage_results": [
+    {
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "retry",
+        "reason": "no photos in inputs and no folder [local folder]/cube-round3-pod/data/input/PRODUCT-02/receiving"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:52:09Z",
+      "finished_at": "2026-10-10T06:52:09Z",
+      "duration_ms": 0,
+      "error": {
+        "code": "unusable_photos",
+        "message": "no photos in inputs and no folder [local folder]/cube-round3-pod/data/input/PRODUCT-02/receiving",
+        "retryable": true,
+        "stage": "receiving",
+        "agent_id": "receiving-manager@1.0.0",
+        "at": "2026-10-10T06:52:09Z",
+        "detail": null
+      }
+    },
+    {
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "PRP-addbc14a625a",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "Prep received 2 usable photo(s). Front, back, and label are required, so observation was not run."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:52:09Z",
+      "finished_at": "2026-10-10T06:52:09Z",
+      "duration_ms": 12,
+      "error": {
+        "code": "pending",
+        "message": "Prep received 2 usable photo(s). Front, back, and label are required, so observation was not run.",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "PCK-6721dbc61179",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "No usable photos were attached to this Agent Input"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:52:09Z",
+      "finished_at": "2026-10-10T06:52:09Z",
+      "duration_ms": 5,
+      "error": {
+        "code": "pending",
+        "message": "No usable photos were attached to this Agent Input",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "state": "error",
+      "skipped_reason": null,
+      "record_id": "RTN-PRODUCT-02",
+      "evidence_status": "pending",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "No usable photos were attached to this Agent Input"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:52:09Z",
+      "finished_at": "2026-10-10T06:52:09Z",
+      "duration_ms": 8,
+      "error": {
+        "code": "pending",
+        "message": "No usable photos were attached to this Agent Input",
+        "retryable": true
+      }
+    },
+    {
+      "stage": "recovery",
+      "agent_id": "recovery-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCY-cc032d114c33",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "insufficient_evidence",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "complete",
+        "reason": "No fee report lines were supplied or found for this subject; nothing to assess."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T06:52:09Z",
+      "finished_at": "2026-10-10T06:52:09Z",
+      "duration_ms": 8,
+      "error": null
+    }
+  ],
+  "evidence_references": [
+    "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving",
+    "PRP-addbc14a625a",
+    "PCK-6721dbc61179",
+    "RTN-PRODUCT-02",
+    "RCY-cc032d114c33"
+  ],
+  "timestamps": {
+    "created_at": "2026-10-10T06:52:09Z",
+    "updated_at": "2026-10-10T06:52:09Z",
+    "completed_at": null
+  },
+  "errors": [
+    {
+      "code": "unusable_photos",
+      "message": "no photos in inputs and no folder [local folder]/cube-round3-pod/data/input/PRODUCT-02/receiving",
+      "retryable": true,
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "at": "2026-10-10T06:52:09Z",
+      "detail": null
+    },
+    {
+      "code": "pending",
+      "message": "Prep received 2 usable photo(s). Front, back, and label are required, so observation was not run.",
+      "retryable": true,
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "at": "2026-10-10T06:52:09Z"
+    },
+    {
+      "code": "pending",
+      "message": "No usable photos were attached to this Agent Input",
+      "retryable": true,
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "at": "2026-10-10T06:52:09Z"
+    },
+    {
+      "code": "pending",
+      "message": "No usable photos were attached to this Agent Input",
+      "retryable": true,
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "at": "2026-10-10T06:52:09Z"
+    }
+  ],
+  "overrides": [],
+  "halted": null,
+  "final_outcome": {
+    "workflow_id": "WF-org_demo_alpha-PRODUCT-02",
+    "outcome": "INCOMPLETE",
+    "verdict": "UNCERTAIN",
+    "reason": "Stage did not complete: receiving, prep, pack, returns.",
+    "needs_human": true,
+    "provisional": true,
+    "claimable_usd": null,
+    "contributing_records": [
+      "RCV-PENDING-WF-org_demo_alpha-PRODUCT-02-receiving",
+      "PRP-addbc14a625a",
+      "PCK-6721dbc61179",
+      "RTN-PRODUCT-02",
+      "RCY-cc032d114c33"
+    ],
+    "effective_verdicts": {
+      "receiving": "UNCERTAIN",
+      "prep": "UNCERTAIN",
+      "pack": "UNCERTAIN",
+      "returns": "UNCERTAIN",
+      "recovery": "UNCERTAIN"
+    },
+    "decided_by": "orchestrator",
+    "decided_at": "2026-10-10T06:52:09Z"
+  },
+  "transitions": [
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "workflow_created",
+      "stage": null,
+      "detail": "flow=pod4-tracers-v1"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "PENDING",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "stage_error",
+      "stage": "receiving",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "stage_error",
+      "stage": "prep",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "stage_error",
+      "stage": "pack",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "stage_error",
+      "stage": "returns",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "stage_completed",
+      "stage": "recovery",
+      "detail": "insufficient_evidence / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T06:52:09Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "stage did not complete: receiving, prep, pack, returns",
+      "from_status": "IN_PROGRESS",
+      "to_status": "FAILED"
+    }
+  ]
+}

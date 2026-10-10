@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-6b4f55912642",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-04",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-04",
+    "unit_id": "PRODUCT-04",
+    "unit_scope": "unit",
+    "refs": {
+      "order_id": "PRODUCT-04",
+      "sku": null,
+      "asin": null,
+      "product_name": "Oblique Sally tech pouch, Tan"
+    }
+  },
+  "client_id": "round3-orchestrator",
+  "status": "completed",
+  "captured_at": "2026-10-10T07:01:29.590Z",
+  "produced_at": "2026-10-10T07:01:29.593Z",
+  "latency_ms": 11985,
+  "operator_id": "orchestrator",
+  "model": {
+    "name": "claude",
+    "version": "claude-sonnet-4-5-20250929",
+    "provider": "anthropic",
+    "prompt_version": "returns-v1",
+    "calls": 1,
+    "cost_usd": null
+  },
+  "inputs": [
+    {
+      "ref": "org_demo_alpha/140393d71d362c7698f57b41ca2acbf8",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/386290e8a2050ed09265cab26e74d960",
+      "sha256": null,
+      "kind": "image"
+    },
+    {
+      "ref": "org_demo_alpha/a9b91d469d5a483c611d3b210c036183",
+      "sha256": null,
+      "kind": "image"
+    }
+  ],
+  "checks": [
+    {
+      "check_key": "identity_match",
+      "verdict": "PASS",
+      "confidence": 0.85,
+      "detail": "The photos show a tan/brown tech pouch with zipper closure and internal organizational compartments, consistent with the ordered product 'Oblique Sally tech pouch, Tan'. The color matches the tan description, and the style is consistent with a tech organizer pouch. No visible branding or labels are shown to confirm the exact model, but the general appearance matches the product description.",
+      "evidence_refs": [
+        "org_demo_alpha/140393d71d362c7698f57b41ca2acbf8",
+        "org_demo_alpha/386290e8a2050ed09265cab26e74d960",
+        "org_demo_alpha/a9b91d469d5a483c611d3b210c036183"
+      ],
+      "expected": "Oblique Sally tech pouch, Tan",
+      "observed": {
+        "matches": true
+      }
+    },
+    {
+      "check_key": "completeness",
+      "verdict": "PASS",
+      "confidence": 0.95,
+      "detail": "The tech pouch is fully visible in all three photos showing exterior (closed), interior with white tissue paper stuffing, and empty interior with organizational compartments. All expected parts of a tech pouch are present and visible.",
+      "evidence_refs": [
+        "org_demo_alpha/140393d71d362c7698f57b41ca2acbf8",
+        "org_demo_alpha/386290e8a2050ed09265cab26e74d960",
+        "org_demo_alpha/a9b91d469d5a483c611d3b210c036183"
+      ],
+      "observed": {
+        "seen": [
+          "tech pouch"
+        ],
+        "missing": [],
+        "not_in_frame": []
+      }
+    },
+    {
+      "check_key": "condition",
+      "verdict": "PASS",
+      "confidence": 0.8,
+      "detail": "The pouch shows minor signs of use including slight discoloration/staining visible on the fabric surface, particularly noticeable in the interior shots. The zipper appears functional, stitching is intact, and overall structure is maintained. There are some light marks and slight wear on the fabric but no significant damage, tears, or structural issues. The item appears gently used with minimal cosmetic wear.",
+      "evidence_refs": [
+        "org_demo_alpha/140393d71d362c7698f57b41ca2acbf8",
+        "org_demo_alpha/386290e8a2050ed09265cab26e74d960",
+        "org_demo_alpha/a9b91d469d5a483c611d3b210c036183"
+      ],
+      "observed": {
+        "amazon_condition": "used_very_good",
+        "observed_state": "signs_of_use"
+      }
+    }
+  ],
+  "decision": {
+    "verdict": "PASS",
+    "outcome": "restock",
+    "confidence": null,
+    "reason": "Identity matches, required parts are visible, and the visual grade is Like New or Very Good.",
+    "needs_human": false
+  },
+  "payload": {
+    "amazon_condition": "used_very_good",
+    "observed_state": "signs_of_use",
+    "parts_missing": [],
+    "parts_seen": [
+      "tech pouch"
+    ],
+    "parts_not_in_frame": [],
+    "policy_version": "policy_v1",
+    "return_destination": "unknown",
+    "rule_source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=201889720",
+    "condition_graded": true,
+    "schema_internal": "rtn-0.1-provisional"
+  },
+  "upstream_refs": [
+    "RCV-7e332f3270f4",
+    "PRP-b7ec38b3c3c8",
+    "PCK-9dcaf5ca560b"
+  ],
+  "overrides": [],
+  "error": null,
+  "content_hash": "d0d700f233464f2cb46695e7fa38a3161392b02c2dd73f0b3c376a1984211bb0"
+}

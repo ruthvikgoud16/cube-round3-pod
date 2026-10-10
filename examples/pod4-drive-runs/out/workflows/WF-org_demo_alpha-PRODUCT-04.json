@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-04",
+  "flow_id": "pod4-tracers-v1",
+  "org_id": "org_demo_alpha",
+  "subject_id": "PRODUCT-04",
+  "context": {
+    "route": "fba",
+    "returned": true,
+    "product_name": "Oblique Sally tech pouch, Tan",
+    "sku": "8906126921460",
+    "spec_variant": "Tan",
+    "qty_ordered": 1,
+    "cartons_ordered": 1,
+    "parts_list": [
+      "tech pouch"
+    ],
+    "order": {
+      "order_id": "PRODUCT-04",
+      "items": [
+        {
+          "sku": "8906126921460",
+          "name": "Oblique Sally tech pouch",
+          "qty": 1
+        }
+      ]
+    },
+    "work_order": {
+      "workOrderId": "WO-PRODUCT-04",
+      "unitId": "PRODUCT-04",
+      "sku": "8906126921460",
+      "asin": "not-on-label",
+      "expectedFnsku": "not-on-label",
+      "requirements": {
+        "polybag": "UNKNOWN",
+        "suffocationWarning": "UNKNOWN",
+        "expiryDate": "UNKNOWN",
+        "handlingMarks": {
+          "state": "UNKNOWN",
+          "requiredMarks": []
+        }
+      }
+    },
+    "charges": [],
+    "live": true,
+    "include_ai_summary": false
+  },
+  "status": "BLOCKED",
+  "status_reason": "a person must decide: receiving, prep, pack",
+  "current_stage": "recovery",
+  "previous_stage": "returns",
+  "stage_results": [
+    {
+      "stage": "receiving",
+      "agent_id": "receiving-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCV-7e332f3270f4",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "pending_review",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "receiving_policy_v1: UNCERTAIN on unit_damage; UNCERTAIN is not a pass. Holding for a person."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:00:57Z",
+      "finished_at": "2026-10-10T07:01:04Z",
+      "duration_ms": 6246,
+      "error": null
+    },
+    {
+      "stage": "prep",
+      "agent_id": "prep-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "PRP-b7ec38b3c3c8",
+      "evidence_status": "completed",
+      "verdict": "FAIL",
+      "outcome": "stop_and_fix",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "prep operational status STOP_AND_FIX"
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:01:04Z",
+      "finished_at": "2026-10-10T07:01:04Z",
+      "duration_ms": 18,
+      "error": null
+    },
+    {
+      "stage": "pack",
+      "agent_id": "pack-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "PCK-9dcaf5ca560b",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "review_required",
+      "needs_human": true,
+      "next_step_recommendation": {
+        "action": "review",
+        "reason": "The model could not confirm Oblique Sally tech pouch, so this pack cannot be sealed. Model: While a brown tech pouch matching the general description is present in quantity of 1, I cannot definitively confirm this is the 'Oblique Sally tech pouch' specifically. No visible branding, tags, or labels are clear enough in the photos to verify the exact model name 'Sally' or brand 'Oblique'. The retail box text is not legible enough to confirm product identity."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:01:04Z",
+      "finished_at": "2026-10-10T07:01:17Z",
+      "duration_ms": 13505,
+      "error": null
+    },
+    {
+      "stage": "returns",
+      "agent_id": "returns-manager@0.1.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RTN-6b4f55912642",
+      "evidence_status": "completed",
+      "verdict": "PASS",
+      "outcome": "restock",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "continue",
+        "reason": "Identity matches, required parts are visible, and the visual grade is Like New or Very Good."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:01:17Z",
+      "finished_at": "2026-10-10T07:01:29Z",
+      "duration_ms": 12025,
+      "error": null
+    },
+    {
+      "stage": "recovery",
+      "agent_id": "recovery-manager@1.0.0",
+      "state": "completed",
+      "skipped_reason": null,
+      "record_id": "RCY-9528cac65c2d",
+      "evidence_status": "completed",
+      "verdict": "UNCERTAIN",
+      "outcome": "insufficient_evidence",
+      "needs_human": false,
+      "next_step_recommendation": {
+        "action": "complete",
+        "reason": "No fee report lines were supplied or found for this subject; nothing to assess."
+      },
+      "runs": 1,
+      "attempts": 1,
+      "started_at": "2026-10-10T07:01:29Z",
+      "finished_at": "2026-10-10T07:01:29Z",
+      "duration_ms": 11,
+      "error": null
+    }
+  ],
+  "evidence_references": [
+    "RCV-7e332f3270f4",
+    "PRP-b7ec38b3c3c8",
+    "PCK-9dcaf5ca560b",
+    "RTN-6b4f55912642",
+    "RCY-9528cac65c2d"
+  ],
+  "timestamps": {
+    "created_at": "2026-10-10T07:00:57Z",
+    "updated_at": "2026-10-10T07:19:52Z",
+    "completed_at": null
+  },
+  "errors": [],
+  "overrides": [],
+  "halted": null,
+  "final_outcome": {
+    "workflow_id": "WF-org_demo_alpha-PRODUCT-04",
+    "outcome": "EXCEPTION",
+    "verdict": "FAIL",
+    "reason": "Failed verdict from: prep; no claim recommended. Flagged for review: receiving, prep, pack.",
+    "needs_human": true,
+    "provisional": true,
+    "claimable_usd": null,
+    "contributing_records": [
+      "RCV-7e332f3270f4",
+      "PRP-b7ec38b3c3c8",
+      "PCK-9dcaf5ca560b",
+      "RTN-6b4f55912642",
+      "RCY-9528cac65c2d"
+    ],
+    "effective_verdicts": {
+      "receiving": "UNCERTAIN",
+      "prep": "FAIL",
+      "pack": "UNCERTAIN",
+      "returns": "PASS",
+      "recovery": "UNCERTAIN"
+    },
+    "decided_by": "orchestrator",
+    "decided_at": "2026-10-10T07:19:52Z"
+  },
+  "transitions": [
+    {
+      "at": "2026-10-10T07:00:57Z",
+      "event": "workflow_created",
+      "stage": null,
+      "detail": "flow=pod4-tracers-v1"
+    },
+    {
+      "at": "2026-10-10T07:00:57Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "PENDING",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T07:01:04Z",
+      "event": "stage_completed",
+      "stage": "receiving",
+      "detail": "pending_review / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:01:04Z",
+      "event": "stage_completed",
+      "stage": "prep",
+      "detail": "stop_and_fix / FAIL"
+    },
+    {
+      "at": "2026-10-10T07:01:17Z",
+      "event": "stage_completed",
+      "stage": "pack",
+      "detail": "review_required / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:01:29Z",
+      "event": "stage_completed",
+      "stage": "returns",
+      "detail": "restock / PASS"
+    },
+    {
+      "at": "2026-10-10T07:01:29Z",
+      "event": "stage_completed",
+      "stage": "recovery",
+      "detail": "insufficient_evidence / UNCERTAIN"
+    },
+    {
+      "at": "2026-10-10T07:01:29Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "a person must decide: receiving, prep, pack",
+      "from_status": "IN_PROGRESS",
+      "to_status": "BLOCKED"
+    },
+    {
+      "at": "2026-10-10T07:19:52Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "advancing",
+      "from_status": "BLOCKED",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "at": "2026-10-10T07:19:52Z",
+      "event": "status_changed",
+      "stage": null,
+      "detail": "a person must decide: receiving, prep, pack",
+      "from_status": "IN_PROGRESS",
+      "to_status": "BLOCKED"
+    }
+  ]
+}

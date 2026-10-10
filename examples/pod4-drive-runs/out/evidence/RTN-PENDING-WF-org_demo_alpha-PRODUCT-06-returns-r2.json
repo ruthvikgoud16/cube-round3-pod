@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_id": "RTN-PENDING-WF-org_demo_alpha-PRODUCT-06-returns-r2",
+  "workflow_id": "WF-org_demo_alpha-PRODUCT-06",
+  "stage": "returns",
+  "agent_id": "returns-manager@0.1.0",
+  "subject": {
+    "org_id": "org_demo_alpha",
+    "subject_id": "PRODUCT-06",
+    "unit_id": "PRODUCT-06",
+    "unit_scope": "unit",
+    "refs": {}
+  },
+  "client_id": null,
+  "status": "error",
+  "captured_at": "2026-10-10T07:20:12Z",
+  "produced_at": "2026-10-10T07:20:12Z",
+  "latency_ms": null,
+  "operator_id": null,
+  "model": {
+    "name": "none",
+    "version": "0",
+    "calls": 0
+  },
+  "inputs": [],
+  "checks": [],
+  "decision": {
+    "verdict": "UNCERTAIN",
+    "outcome": "pending_review",
+    "confidence": null,
+    "reason": "agent_rejected: HTTP 413: {\"statusCode\": 413, \"code\": \"FST_ERR_CTP_BODY_TOO_LARGE\", \"error\": \"Payload Too Large\", \"message\": \"Request body is too large\"}",
+    "needs_human": true
+  },
+  "payload": {},
+  "upstream_refs": [
+    "RCV-94d91eb3fc00",
+    "PRP-0289ea1e5cf8",
+    "PCK-b41a0d87502c"
+  ],
+  "overrides": [],
+  "error": {
+    "code": "agent_rejected",
+    "message": "HTTP 413: {\"statusCode\": 413, \"code\": \"FST_ERR_CTP_BODY_TOO_LARGE\", \"error\": \"Payload Too Large\", \"message\": \"Request body is too large\"}",
+    "retryable": false,
+    "stage": "returns",
+    "agent_id": "returns-manager@0.1.0",
+    "at": "2026-10-10T07:20:12Z",
+    "detail": null
+  },
+  "content_hash": "3f4da0874e8341878a8200704dabe0de7c83c61f0a3b96a28707368f3ccfc991"
+}

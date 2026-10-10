@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pod 4 live run</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 16px/1.45 system-ui, sans-serif; background: #12140f; color: #f3f0e6; }
+    main { max-width: 880px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 32px; margin: 0 0 8px; }
+    p.lead { color: #c8c2b4; }
+    form, section { background: #1c1f18; border: 1px solid #34382e; border-radius: 16px; padding: 18px; margin-top: 16px; }
+    label { display: block; margin: 12px 0; }
+    input, select, button { font: inherit; }
+    input[type="text"], select { width: 100%; box-sizing: border-box; padding: 8px 10px; border-radius: 8px; border: 1px solid #4a4f42; background: #10130e; color: inherit; }
+    button { background: #e7f26a; color: #1a1d12; border: 0; border-radius: 999px; padding: 10px 16px; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stage { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #34382e; }
+    .stage b { min-width: 110px; }
+    .warn { color: #e7c56a; }
+    code { color: #e7f26a; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Live run</h1>
+    <p class="lead">Upload one product folder. The orchestrator starts when you submit, and the stages below update as each agent finishes. Stored products stay on the other site.</p>
+    <form id="run">
+      <label>Product folder
+        <input id="folder" type="file" webkitdirectory directory multiple required />
+      </label>
+      <p class="warn">Use folders named receiving, prep, pack, and returns. Leave out courier labels, phone numbers, street addresses, and faces.</p>
+      <div class="row">
+        <label>Unit id
+          <input id="unit" type="text" placeholder="Filled from the folder name" required />
+        </label>
+        <label>Product name
+          <input id="name" type="text" placeholder="Optional" />
+        </label>
+      </div>
+      <div class="row">
+        <label>SKU or barcode
+          <input id="sku" type="text" placeholder="Optional" />
+        </label>
+        <label>Variant
+          <input id="variant" type="text" placeholder="Optional, e.g. Black; Size S" />
+        </label>
+      </div>
+      <div class="row">
+        <label>Route
+          <select id="route"><option value="fba">fba</option><option value="mfn">mfn</option></select>
+        </label>
+        <label>Returned
+          <select id="returned"><option value="true">true</option><option value="false">false</option></select>
+        </label>
+      </div>
+      <button id="go" type="submit">Start the pipeline</button>
+      <p id="note"></p>
+    </form>
+    <section>
+      <h2 id="title">Waiting for a folder</h2>
+      <div id="stages"></div>
+    </section>
+  </main>
+  <script>
+    const folder = document.querySelector("#folder");
+    const unit = document.querySelector("#unit");
+    const note = document.querySelector("#note");
+    const stages = document.querySelector("#stages");
+    const title = document.querySelector("#title");
+    const button = document.querySelector("#go");
+    folder.addEventListener("change", () => {
+      const first = folder.files && folder.files[0];
+      const top = first && first.webkitRelativePath ? first.webkitRelativePath.split("/")[0] : "";
+      if (top && !unit.value) unit.value = top.replace(/[^A-Za-z0-9._-]/g, "-").slice(0, 80);
+    });
+    // Photos are resized in the browser (longest side 1280 px, JPEG 0.7) before upload.
+    // That is the same size the stored product runs used, and keeps a phone folder small.
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, 1280 / Math.max(img.width, img.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+          URL.revokeObjectURL(url);
+          resolve(canvas.toDataURL("image/jpeg", 0.7).split(",")[1] || "");
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("unreadable image")); };
+        img.src = url;
+      });
+    }
+    function draw(workflow) {
+      title.textContent = workflow.workflow_id + " · " + workflow.status;
+      const outcome = workflow.final_outcome && workflow.final_outcome.outcome;
+      stages.innerHTML = "";
+      for (const stage of workflow.stage_results || []) {
+        const row = document.createElement("div");
+        row.className = "stage";
+        const running = stage.started_at && !stage.finished_at;
+        const label = running ? "RUNNING" : (stage.verdict || stage.state);
+        row.innerHTML = "<b>" + stage.stage + "</b><span>" + label + "</span>";
+        stages.appendChild(row);
+      }
+      if (outcome) {
+        const row = document.createElement("div");
+        row.className = "stage";
+        row.innerHTML = "<b>Outcome</b><span>" + outcome + "</span>";
+        stages.appendChild(row);
+      }
+    }
+    async function watch(id) {
+      const done = new Set(["COMPLETED", "FAILED", "BLOCKED", "RECOVERY_REQUIRED"]);
+      for (let i = 0; i < 180; i++) {
+        const response = await fetch("/workflows/" + encodeURIComponent(id));
+        if (response.ok) {
+          const workflow = await response.json();
+          draw(workflow);
+          if (done.has(workflow.status) && workflow.final_outcome) return;
+        }
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+    }
+    document.querySelector("#run").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      note.textContent = "Reading the folder…";
+      const files = [];
+      for (const file of folder.files) {
+        const path = file.webkitRelativePath || file.name;
+        if (!/\.(jpe?g|png|webp)$/i.test(path)) continue;
+        try {
+          files.push({ path: path.replace(/\.(png|webp)$/i, ".jpg"), data_base64: await fileToBase64(file) });
+        } catch {
+          note.textContent = "Skipped an unreadable image: " + path;
+        }
+      }
+      note.textContent = "Starting " + files.length + " photo(s)…";
+      const response = await fetch("/intake", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          org_id: "org_demo_alpha",
+          unit_id: unit.value,
+          route: document.querySelector("#route").value,
+          returned: document.querySelector("#returned").value === "true",
+          product_name: document.querySelector("#name").value,
+          sku: document.querySelector("#sku").value,
+          spec_variant: document.querySelector("#variant").value,
+          files,
+        }),
+      });
+      const body = await response.json();
+      if (!response.ok) {
+        note.textContent = body.detail || "The folder was not accepted.";
+        button.disabled = false;
+        return;
+      }
+      note.textContent = "Staged " + body.staged.join(", ");
+      title.textContent = body.workflow_id + " · started";
+      await watch(body.workflow_id);
+      button.disabled = false;
+    });
+  </script>
+</body>
+</html>
