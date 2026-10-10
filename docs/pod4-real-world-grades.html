@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pod 4 real-world model grades</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1c1c1c;
+    background: #fff;
+  }
+  .slide {
+    width: 13.333in;
+    height: 7.5in;
+    padding: 0.48in 0.62in 0.42in;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    background: #f6f4ef;
+  }
+  .slide:last-child { page-break-after: auto; }
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b6258;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: 42px;
+    line-height: 1.05;
+    font-weight: 650;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 650;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .sub {
+    font-size: 16px;
+    line-height: 1.35;
+    color: #3f3a34;
+    max-width: 11.2in;
+    margin: 0 0 18px;
+  }
+  .foot {
+    position: absolute;
+    left: 0.62in;
+    right: 0.62in;
+    bottom: 0.28in;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #7a7168;
+    letter-spacing: 0.02em;
+  }
+  .bar {
+    width: 72px;
+    height: 6px;
+    background: #1f4b3a;
+    margin-bottom: 18px;
+  }
+  .stats {
+    display: flex;
+    gap: 14px;
+    margin: 8px 0 16px;
+  }
+  .stat {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e2dcd3;
+    padding: 14px 16px 12px;
+  }
+  .stat b {
+    display: block;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #1f4b3a;
+    font-weight: 700;
+  }
+  .stat span {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #4a453f;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 13.5px;
+  }
+  th {
+    text-align: left;
+    font-weight: 650;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5c564f;
+    background: #efeae3;
+    padding: 8px 10px;
+    border-bottom: 1px solid #d9d2c8;
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eee8e0;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  .right { text-align: right; }
+  .note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #3f3a34;
+    line-height: 1.35;
+  }
+  .cols { display: flex; gap: 18px; }
+  .cols > * { flex: 1; }
+  .title-slide {
+    background: #1f4b3a;
+    color: #f6f4ef;
+  }
+  .title-slide h1 { font-size: 54px; color: #f6f4ef; margin-top: 1.3in; }
+  .title-slide .kicker { color: #c9d7cf; }
+  .title-slide .sub { color: #e7eee9; font-size: 20px; max-width: 9.5in; }
+  .title-slide .foot { color: #c9d7cf; }
+  .pillrow { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+  .pill {
+    border: 1px solid #8eaa9c;
+    color: #f6f4ef;
+    padding: 6px 12px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  ul { margin: 6px 0 0; padding-left: 18px; }
+  li { margin: 4px 0; font-size: 15px; line-height: 1.3; }
+  .small td, .small th { font-size: 12px; padding: 6px 8px; }
+  .warn b { color: #8a4b12; }
+</style>
+</head>
+<body>
+
+<section class="slide title-slide">
+  <p class="kicker">Pod 4 · Cube round 3</p>
+  <div class="bar" style="background:#e7c27a"></div>
+  <h1>Real-world model grades</h1>
+  <p class="sub">Receiving, Prep, Pack, Returns, and Recovery. Each figure is that agent’s own photo or dock set. They are not one combined accuracy.</p>
+  <div class="pillrow">
+    <span class="pill">Receiving · 12 dock deliveries</span>
+    <span class="pill">Prep · 15 products</span>
+    <span class="pill">Pack · 12 + 14</span>
+    <span class="pill">Returns · 40 scored</span>
+    <span class="pill">Recovery · no match rate</span>
+  </div>
+  <div class="foot"><span>Presentation set · October 2026</span><span>01</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">All agents</p>
+  <h2>What you can put on a slide</h2>
+  <p class="sub">Four agents have a model grade on real photos or real dock deliveries. Recovery has rules on six copied fee lines and no labeled match rate.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>Set</th>
+        <th>Labelers</th>
+        <th class="right">Calls</th>
+        <th>Headline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Receiving</td>
+        <td>12 real dock deliveries</td>
+        <td>Jaanu + Soanli</td>
+        <td class="right">12</td>
+        <td>Full agreement on all 6 checks: 3 units. Quantity 10/10 where both agreed.</td>
+      </tr>
+      <tr>
+        <td>Prep</td>
+        <td>15 products</td>
+        <td>One frozen sheet</td>
+        <td class="right">15</td>
+        <td>104/122 fields (85.2%). FNSKU value 15/15.</td>
+      </tr>
+      <tr>
+        <td>Pack · Gemini</td>
+        <td>12 warehouse carton photos</td>
+        <td>Expected manifests</td>
+        <td class="right">12</td>
+        <td>5/12 decisions (41.7%). 0 false seals.</td>
+      </tr>
+      <tr>
+        <td>Pack · Claude</td>
+        <td>14 open-box orders</td>
+        <td>One sheet</td>
+        <td class="right">15*</td>
+        <td>3/14 verdicts (21.4%). 0 false seals.</td>
+      </tr>
+      <tr>
+        <td>Returns</td>
+        <td>40 agreed, graded cases</td>
+        <td>Rishik Goud + Lasya</td>
+        <td class="right">47</td>
+        <td>Identity 92.5% · Completeness 75.0% · Condition 42.5%</td>
+      </tr>
+      <tr>
+        <td>Recovery</td>
+        <td>6 copied fee lines</td>
+        <td>None</td>
+        <td class="right">0</td>
+        <td>No match rate. No line written as claimable USD.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">*Pack Claude called 15 orders, then removed ORD-005 from the score. Sources: pod eval 7 Oct, Prep 8 Oct, Pack Gemini 8 Oct, Pack Claude 9 Oct, Returns freeze 1 Oct.</p>
+  <div class="foot"><span>Each percentage stays inside its own denominator</span><span>02</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Returns · frozen 1 Oct 2026</p>
+  <h2>40 agreed cases with a model grade</h2>
+  <p class="sub">50 cases. Two labelers before scoring. Agreed means identity, completeness, and Amazon condition all match. Three agreed cases had no photos, so the rates use 40. One model call per graded return. policy_v1 chooses disposition.</p>
+  <div class="stats">
+    <div class="stat"><b>37/40</b><span>Identity · 92.5%<br>0 false positives · 0 false negatives</span></div>
+    <div class="stat"><b>30/40</b><span>Completeness · 75.0%<br>2 false positives · 0 false negatives</span></div>
+    <div class="stat warn"><b>17/40</b><span>Condition · 42.5%<br>Amazon grade equality</span></div>
+    <div class="stat"><b>0</b><span>Model errors<br>47 calls · about $0.72</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Check</th><th class="right">Match</th><th>Uncertain</th><th>False positives</th><th>False negatives</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Identity</td><td class="right">37/40 (92.5%)</td><td>1/40 (2.5%)</td><td>0</td><td>0</td></tr>
+      <tr><td>Completeness</td><td class="right">30/40 (75.0%)</td><td>5/40 (12.5%)</td><td>RTN-046, RTN-049</td><td>0</td></tr>
+      <tr><td>Condition</td><td class="right">17/40 (42.5%)</td><td>Not a pass/fail count</td><td>Not a pass/fail count</td><td>Not a pass/fail count</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Seven disagreements stay out of every rate: RTN-002, 005, 006, 009, 013, 037, 044. No-photo cases: RTN-017, 026, 032. Cohen’s kappa was not computed.</p>
+  <div class="foot"><span>EVALUATION.md · frozen 2026-10-01T1015Z</span><span>03</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Returns · condition and policy</p>
+  <h2>The usual miss is one Amazon step</h2>
+  <div class="cols">
+    <div>
+      <table>
+        <thead><tr><th>Condition mismatch on the 40</th><th class="right">Count</th></tr></thead>
+        <tbody>
+          <tr><td>Human Very Good, agent Like New</td><td class="right">14</td></tr>
+          <tr><td>Human Good, agent Very Good</td><td class="right">4</td></tr>
+          <tr><td>Human Like New, agent Very Good</td><td class="right">4</td></tr>
+          <tr><td>Human unknown, agent Very Good (RTN-049)</td><td class="right">1</td></tr>
+        </tbody>
+      </table>
+      <p class="note">23 condition mismatches. Identity non-matches that are neither false positives nor false negatives: RTN-028 (agent uncertain), RTN-010 and RTN-049 (labelers uncertain).</p>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>Saved disposition on 47 grades</th><th class="right">Count</th></tr></thead>
+        <tbody>
+          <tr><td>restock</td><td class="right">38</td></tr>
+          <tr><td>pending_review</td><td class="right">8</td></tr>
+          <tr><td>refurbish</td><td class="right">1</td></tr>
+          <tr><td>liquidate</td><td class="right">0</td></tr>
+          <tr><td>dispose</td><td class="right">0</td></tr>
+        </tbody>
+      </table>
+      <p class="note">policy_v1 reproduced 40/40 saved dispositions from the agent’s own checks. Against the agreed human checks, 27/40 (67.5%) match. Those 13 gaps are upstream check disagreements. Disposition was not human-labeled.</p>
+    </div>
+  </div>
+  <div class="foot"><span>These figures describe this held-out set</span><span>04</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Receiving · 7 Oct 2026</p>
+  <h2>12 real dock deliveries</h2>
+  <p class="sub">One Claude observation each, then receiving_policy_v1. Jaanu and Soanli labeled independently. Both agreed on every check for 3 units: UNIT-RCV-01, 06, 10. Primary rates use those 3. All 12 outcomes were pending_review.</p>
+  <div class="stats">
+    <div class="stat"><b>3/12</b><span>Full agreement on all six checks</span></div>
+    <div class="stat"><b>10/10</b><span>Quantity, where both labelers agreed</span></div>
+    <div class="stat"><b>11/12</b><span>Unit damage, soft agreement</span></div>
+    <div class="stat"><b>0</b><span>Ingestion failures</span></div>
+  </div>
+  <div class="cols">
+    <div>
+      <p class="kicker">Primary · n = 3</p>
+      <table class="small">
+        <thead><tr><th>Check</th><th class="right">Match</th><th class="right">FP</th><th class="right">FN</th></tr></thead>
+        <tbody>
+          <tr><td>Identity</td><td class="right">1/3</td><td class="right">0</td><td class="right">0</td></tr>
+          <tr><td>Carton count</td><td class="right">0/3</td><td class="right">0</td><td class="right">0</td></tr>
+          <tr><td>Quantity</td><td class="right">3/3</td><td class="right">0</td><td class="right">0</td></tr>
+          <tr><td>Carton damage</td><td class="right">2/3</td><td class="right">0</td><td class="right">1</td></tr>
+          <tr><td>Unit damage</td><td class="right">3/3</td><td class="right">0</td><td class="right">0</td></tr>
+          <tr><td>Quality flags</td><td class="right">3/3</td><td class="right">0</td><td class="right">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p class="kicker">Soft · humans agree on that check</p>
+      <table class="small">
+        <thead><tr><th>Check</th><th class="right">n</th><th class="right">Match</th></tr></thead>
+        <tbody>
+          <tr><td>Identity</td><td class="right">12</td><td class="right">5/12 (41.7%)</td></tr>
+          <tr><td>Carton count</td><td class="right">6</td><td class="right">3/6 (50%)</td></tr>
+          <tr><td>Quantity</td><td class="right">10</td><td class="right">10/10</td></tr>
+          <tr><td>Carton damage</td><td class="right">8</td><td class="right">6/8 (75%)</td></tr>
+          <tr><td>Unit damage</td><td class="right">12</td><td class="right">11/12 (91.7%)</td></tr>
+          <tr><td>Quality flags</td><td class="right">11</td><td class="right">7/11 (63.6%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note">Clear paths: 07 and 08 wrong product. 09 quantity incomplete. 04, 05, 11 carton count below PO. 12 too blurry. Soft rates do not replace the primary 3. This is a 12-delivery pilot.</p>
+  <div class="foot"><span>eval/EVALUATION.md · scored 2026-10-07T17:34Z</span><span>05</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Prep · 8 Oct 2026</p>
+  <h2>104 of 122 fields agree</h2>
+  <p class="sub">claude-sonnet-4-5 on PRODUCT-1 through PRODUCT-15. One frozen sheet. 201.6 seconds. Uncertain is not counted as a match. Polybag seal and suffocation warning are not scorable on this sheet.</p>
+  <div class="stats">
+    <div class="stat"><b>85.2%</b><span>104 agreements / 122 scorable fields</span></div>
+    <div class="stat"><b>15/15</b><span>FNSKU visible and FNSKU value</span></div>
+    <div class="stat"><b>15/15</b><span>Polybag present</span></div>
+    <div class="stat warn"><b>7</b><span>Disagreements · 11 model-uncertain</span></div>
+  </div>
+  <table class="small">
+    <thead>
+      <tr><th>Field</th><th class="right">Scorable</th><th class="right">Agree</th><th class="right">Disagree</th><th class="right">Uncertain</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Barcode visible</td><td class="right">15</td><td class="right">10</td><td class="right">0</td><td class="right">5</td></tr>
+      <tr><td>Barcode readable</td><td class="right">14</td><td class="right">7</td><td class="right">2</td><td class="right">5</td></tr>
+      <tr><td>FNSKU visible / value</td><td class="right">15</td><td class="right">15</td><td class="right">0</td><td class="right">0</td></tr>
+      <tr><td>Polybag present</td><td class="right">15</td><td class="right">15</td><td class="right">0</td><td class="right">0</td></tr>
+      <tr><td>Expiry visible</td><td class="right">15</td><td class="right">14</td><td class="right">1</td><td class="right">0</td></tr>
+      <tr><td>Expiry readable</td><td class="right">3</td><td class="right">2</td><td class="right">0</td><td class="right">1</td></tr>
+      <tr><td>Handling mark</td><td class="right">15</td><td class="right">14</td><td class="right">1</td><td class="right">0</td></tr>
+      <tr><td>Photo quality</td><td class="right">15</td><td class="right">12</td><td class="right">3</td><td class="right">0</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Disagreements: PRODUCT-3 expiry, PRODUCT-5 and 12 barcode readable plus photo quality, PRODUCT-7 photo quality, PRODUCT-15 handling mark. A later note on PRODUCT-15 and PRODUCT-3 was not used to rescore.</p>
+  <div class="foot"><span>Prep docs/evaluation.md · one labeler</span><span>06</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Pack · Gemini real-world · 8 Oct 2026</p>
+  <h2>5 of 12 decisions, zero false seals</h2>
+  <p class="sub">Twelve warehouse carton photos. Order-blind Gemini perception, then Python stages 2–5. When the pipeline is unsure, it returns UNCERTAIN. It did not seal a bad carton.</p>
+  <div class="stats">
+    <div class="stat"><b>5/12</b><span>Correct decisions · 41.7%</span></div>
+    <div class="stat"><b>0</b><span>False seals</span></div>
+    <div class="stat"><b>2/2</b><span>SEAL precision</span></div>
+    <div class="stat"><b>1/1</b><span>STOP_FIX precision</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Expected</th><th class="right">Predicted SEAL</th><th class="right">Predicted STOP_FIX</th><th class="right">Predicted UNCERTAIN</th><th class="right">Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>SEAL</td><td class="right">2</td><td class="right">0</td><td class="right">3</td><td class="right">5</td></tr>
+      <tr><td>STOP_FIX</td><td class="right">0</td><td class="right">1</td><td class="right">4</td><td class="right">5</td></tr>
+      <tr><td>UNCERTAIN</td><td class="right">0</td><td class="right">0</td><td class="right">2</td><td class="right">2</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Matches: correct apparel, blurry hold, unknown product hold, correct electronics, wrong electronics caught. The seven misses are catalogue ambiguity (score 0.80 under a 0.85 threshold). Stage 1 perception failures: 0. No tuning after this baseline.</p>
+  <div class="foot"><span>docs/REAL_WORLD_EVALUATION.md</span><span>07</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Pack · Claude held-out · 9 Oct 2026</p>
+  <h2>3 of 14 verdicts, still zero false seals</h2>
+  <p class="sub">claude-sonnet-4-5, 23 photos, about 200 seconds. ORD-005 was removed because the photo includes a person’s head. One labeler. The agent sealed nothing.</p>
+  <div class="stats">
+    <div class="stat warn"><b>3/14</b><span>Verdict match · 21.4%</span></div>
+    <div class="stat"><b>0</b><span>False seals</span></div>
+    <div class="stat"><b>13/13</b><span>Product damage agreement</span></div>
+    <div class="stat"><b>10/13</b><span>Missing-item agreement</span></div>
+  </div>
+  <table class="small">
+    <thead><tr><th>Pattern</th><th class="right">Orders</th><th>What happened</th></tr></thead>
+    <tbody>
+      <tr><td>Label FAIL, agent FAIL</td><td class="right">3</td><td>ORD-002, ORD-010, ORD-021. Extra items. These are the three matches.</td></tr>
+      <tr><td>Label PASS, agent FAIL</td><td class="right">5</td><td>ORD-004, 027, 031, 042, 050. Extras, or missing plus extra.</td></tr>
+      <tr><td>Label PASS, agent UNCERTAIN</td><td class="right">2</td><td>ORD-015, ORD-022. Low confidence or unclear brand.</td></tr>
+      <tr><td>Label FAIL, agent UNCERTAIN</td><td class="right">3</td><td>ORD-018, 028, 044.</td></tr>
+      <tr><td>Label UNCERTAIN, agent FAIL</td><td class="right">1</td><td>ORD-040. Variant or colour mismatch.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Extra-item agreement is 3/14. Cables, remotes, manuals, and stands that belong with the product were treated as extras. This Claude sheet and the Gemini 12 are separate grades.</p>
+  <div class="foot"><span>Pack docs/evaluation.md</span><span>08</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Recovery</p>
+  <h2>Rules ran. There is no accuracy number.</h2>
+  <p class="sub">The decision is the rule code. A model summary does not change the assessment. Six copied fee lines were judged locally with zero model calls. No line was written as claimable USD.</p>
+  <div class="stats">
+    <div class="stat"><b>0</b><span>Model calls on these lines</span></div>
+    <div class="stat"><b>6</b><span>Fee lines judged</span></div>
+    <div class="stat"><b>2</b><span>SUPPORTS · PRODUCT-1, PRODUCT-8</span></div>
+    <div class="stat"><b>4</b><span>SILENT · PRODUCT-4, 6, RTN-019, iPhone</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Charge type</th><th>What the rule does</th></tr></thead>
+    <tbody>
+      <tr><td>Inbound defect fee</td><td>Prep PASS contradicts the fee. Prep FAIL supports it. Prep UNCERTAIN stays silent.</td></tr>
+      <tr><td>Refund, item not returned</td><td>Completed Returns identity PASS contradicts. Identity FAIL supports. Pending stays silent.</td></tr>
+      <tr><td>Weight tier / lost inbound</td><td>Silent. No demo measurement. A receiving shortfall is not a channel-loss claim.</td></tr>
+      <tr><td>Amount missing or 0.00</td><td>A CONTRADICTS result is forced back to silent.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Order OD435816013145832100 stays UNCERTAIN: the handset line is missing org, unit, SKU, return event, recipient, and due date. A match rate needs human labels of CONTRADICTS, SUPPORTS, or SILENT on real fee lines. That sheet does not exist.</p>
+  <div class="foot"><span>Recovery docs/evaluation.md</span><span>09</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Close</p>
+  <h2>Three lines to leave on screen</h2>
+  <div class="stats">
+    <div class="stat"><b>92.5%</b><span>Returns identity on 40 agreed cases</span></div>
+    <div class="stat"><b>85.2%</b><span>Prep fields on 15 products</span></div>
+    <div class="stat"><b>0</b><span>False seals on both Pack runs</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Say this</th><th>Leave this off the slide</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Returns identity is strong on this set. Condition sits one Amazon step high.</td>
+        <td>An overall Pod 4 accuracy, or a claim that the same rates hold next week.</td>
+      </tr>
+      <tr>
+        <td>Pack fails closed. Both real-photo runs recorded zero false seals.</td>
+        <td>Adding 41.7% and 21.4% into one Pack score.</td>
+      </tr>
+      <tr>
+        <td>Receiving quantity matched on every row both labelers agreed.</td>
+        <td>Treating the soft table as the primary 50-case evaluation.</td>
+      </tr>
+      <tr>
+        <td>Recovery withholds a claim when the fee line is incomplete.</td>
+        <td>A recovery precision or a dollar saved.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">Frozen files: Returns eval/frozen/2026-10-01T1015Z. Receiving eval/frozen/2026-10-07T1734Z. Prep held-out Claude results. Pack REAL_WORLD_EVALUATION.md and held-out Claude results.</p>
+  <div class="foot"><span>Pod 4 · real-world model grades</span><span>10</span></div>
+</section>
+
+</body>
+</html>

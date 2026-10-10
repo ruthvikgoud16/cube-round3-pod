@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pod 4 Drive products</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c1c1c; background: #fff; }
+  .slide {
+    width: 13.333in; height: 7.5in;
+    padding: 0.44in 0.56in 0.38in;
+    page-break-after: always; position: relative; overflow: hidden;
+    background: #f6f4ef;
+  }
+  .slide:last-child { page-break-after: auto; }
+  .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6258; margin: 0 0 8px; }
+  h1 { font-size: 44px; line-height: 1.05; font-weight: 650; margin: 0 0 12px; letter-spacing: -0.02em; }
+  h2 { font-size: 28px; line-height: 1.1; font-weight: 650; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { font-size: 15.5px; line-height: 1.35; color: #3f3a34; margin: 0 0 12px; max-width: 12in; }
+  .foot {
+    position: absolute; left: 0.56in; right: 0.56in; bottom: 0.24in;
+    display: flex; justify-content: space-between; font-size: 11px; color: #7a7168;
+  }
+  .bar { width: 72px; height: 6px; background: #1f4b3a; margin-bottom: 14px; }
+  .stats { display: flex; gap: 12px; margin: 4px 0 12px; }
+  .stat { flex: 1; background: #fff; border: 1px solid #e2dcd3; padding: 11px 13px 9px; }
+  .stat b { display: block; font-size: 26px; line-height: 1; letter-spacing: -0.03em; color: #1f4b3a; font-weight: 700; }
+  .stat span { display: block; margin-top: 5px; font-size: 12.5px; color: #4a453f; }
+  .warn b { color: #8a4b12; }
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: 12.5px; }
+  th {
+    text-align: left; font-weight: 650; font-size: 10.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #5c564f; background: #efeae3; padding: 6px 8px;
+    border-bottom: 1px solid #d9d2c8;
+  }
+  td { padding: 5px 8px; border-bottom: 1px solid #eee8e0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .note { margin-top: 10px; font-size: 13px; color: #3f3a34; line-height: 1.35; }
+  .title-slide { background: #1f4b3a; color: #f6f4ef; }
+  .title-slide h1 { font-size: 48px; color: #f6f4ef; margin-top: 0.95in; }
+  .title-slide .kicker { color: #c9d7cf; }
+  .title-slide .sub { color: #e7eee9; font-size: 18px; }
+  .title-slide .foot { color: #c9d7cf; }
+  .link {
+    margin-top: 16px; font-size: 15px; color: #f6f4ef;
+    border: 1px solid #8eaa9c; display: inline-block; padding: 8px 12px;
+  }
+  .small td, .small th { font-size: 11.5px; padding: 5px 7px; }
+</style>
+</head>
+<body>
+
+<section class="slide title-slide">
+  <p class="kicker">Pod 4 · Final Drive folder</p>
+  <div class="bar" style="background:#e7c27a"></div>
+  <h1>Seven products through<br>the orchestrator</h1>
+  <p class="sub">Six workflows ran on 10 October 2026 against live agents. None finished CLEAN. None produced a claim. PRODUCT-07 had empty templates and no photos, so no workflow was created.</p>
+  <div class="link">drive.google.com/drive/folders/1CNGJ8_67tNkD74i5z8XjM60Ne0U-9j8_</div>
+  <div class="foot"><span>org_demo_alpha · route sent as fba because the folder did not state a route</span><span>01</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Scorecard</p>
+  <h2>What the bus stored for each folder</h2>
+  <p class="sub">Status is whether every required stage finished. Outcome is what the evidence showed. A person is waiting on every product that ran. Claimable dollars are blank on all six.</p>
+  <table class="small">
+    <thead>
+      <tr><th>Product</th><th>What Drive names</th><th>Status</th><th>Outcome</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>01</td><td>Bond Street by Red Tape sneakers, size 9</td><td>FAILED</td><td>INCOMPLETE</td><td>Prep and Returns did not finish</td></tr>
+      <tr><td>02</td><td>Red Tape sneakers and a study-table carton</td><td>FAILED</td><td>EXCEPTION</td><td>Receiving FAIL. Prep, Pack, Returns did not finish</td></tr>
+      <tr><td>03</td><td>GOBOULT Mustang Torq earbuds, silver</td><td>FAILED</td><td>INCOMPLETE</td><td>Prep, Pack, and Returns did not finish</td></tr>
+      <tr><td>04</td><td>Oblique Sally tech pouch, tan</td><td>BLOCKED</td><td>EXCEPTION</td><td>Prep STOP_AND_FIX. A person must decide</td></tr>
+      <tr><td>05</td><td>JOMPERS embroidered kurta, black, size S</td><td>FAILED</td><td>EXCEPTION</td><td>Receiving and Pack FAIL. Prep did not finish</td></tr>
+      <tr><td>06</td><td>Apple MacBook Air 13-inch, silver</td><td>FAILED</td><td>INCOMPLETE</td><td>Prep did not finish. Returns rejected a body that was too large</td></tr>
+      <tr><td>07</td><td>Blank template</td><td>not started</td><td>—</td><td>No photos, no name, no route, no returned flag</td></tr>
+    </tbody>
+  </table>
+  <p class="note">PRODUCT-01, 02, and 03 were rerun as unit ids ending in -r2. Earlier workflows already existed. Old evidence was kept. Drive did not state fba or merchant-fulfilled, so the run sent route=fba. That is not a finding from the folder.</p>
+  <div class="foot"><span>pod4-data/results/INDEX.md · workflows under pod4-data/out</span><span>02</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Stage verdicts</p>
+  <h2>One Pack seal. Two Returns restocks. No Recovery claim.</h2>
+  <table class="small">
+    <thead>
+      <tr><th></th><th>Receiving</th><th>Prep</th><th>Pack</th><th>Returns</th><th>Recovery</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>01 sneakers</td><td>UNCERTAIN · hold</td><td>did not observe</td><td>PASS · seal</td><td>no photo</td><td>no fee line</td></tr>
+      <tr><td>02 mixed carton</td><td>FAIL · hold</td><td>did not observe</td><td>no photo</td><td>no photo</td><td>no fee line</td></tr>
+      <tr><td>03 earbuds</td><td>UNCERTAIN · hold</td><td>did not observe</td><td>no photo</td><td>UNCERTAIN · pending</td><td>no fee line</td></tr>
+      <tr><td>04 pouch</td><td>UNCERTAIN · hold</td><td>FAIL · stop and fix</td><td>UNCERTAIN · cannot confirm Sally</td><td>PASS · restock</td><td>no fee line</td></tr>
+      <tr><td>05 kurta</td><td>FAIL · accept with exceptions</td><td>did not observe</td><td>FAIL · stop and fix</td><td>PASS · restock</td><td>no fee line</td></tr>
+      <tr><td>06 MacBook</td><td>PASS · accept</td><td>REVIEW_REQUIRED</td><td>UNCERTAIN · brand unclear</td><td>HTTP 413</td><td>no fee line</td></tr>
+    </tbody>
+  </table>
+  <div class="stats" style="margin-top:14px">
+    <div class="stat"><b>0</b><span>CLEAN workflows</span></div>
+    <div class="stat warn"><b>3</b><span>EXCEPTION · 02, 04, 05</span></div>
+    <div class="stat"><b>3</b><span>INCOMPLETE · 01, 03, 06</span></div>
+    <div class="stat"><b>$0</b><span>claimable on every product</span></div>
+  </div>
+  <div class="foot"><span>Returned was true only for PRODUCT-05. PRODUCT-04 says it is not a return.</span><span>03</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">PRODUCT-01 · PRODUCT-02 · PRODUCT-03</p>
+  <h2>Photos arrived. Prep still refused to look.</h2>
+  <table>
+    <thead><tr><th></th><th>PRODUCT-01</th><th>PRODUCT-02</th><th>PRODUCT-03</th></tr></thead>
+    <tbody>
+      <tr><td>Order</td><td>OD338734740660891100</td><td>OD338303263747180100</td><td>OD438837663084490500</td></tr>
+      <tr><td>Item</td><td>Bond Street sneakers, white/beige, size 9, qty 1</td><td>Details say the study-table carton and the sneaker photos are not one verified order</td><td>GOBOULT Mustang Torq, silver, barcode 8906133855741</td></tr>
+      <tr><td>Receiving</td><td>UNCERTAIN. Carton count is not a pass. 1 photo.</td><td>FAIL. Carton count, quantity, and unit damage uncertain. 2 photos.</td><td>UNCERTAIN on identity, carton count, quantity, and carton damage. 2 photos.</td></tr>
+      <tr><td>Prep</td><td>5 usable photos. Front, back, and label slots missing, so observation did not run.</td><td>4 usable photos. Same slot rule. Observation did not run.</td><td>8 usable photos. Same slot rule. Observation did not run.</td></tr>
+      <tr><td>Pack</td><td>PASS, seal. Expected items, quantity, and variant. No extras. 1 photo.</td><td>Drive had no pack photo.</td><td>Drive had no pack photo.</td></tr>
+      <tr><td>Returns</td><td>Drive had no returns photo.</td><td>Drive had no returns photo.</td><td>3 photos. At least one check UNCERTAIN. Evidence stayed pending, so the workflow counts Returns as unfinished.</td></tr>
+      <tr><td>Recovery</td><td>Invoice is not a fee. Nothing to assess.</td><td>No fee file.</td><td>Sales invoice and Protect Promise fee were not sent as a charge.</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span>Workflows PRODUCT-01-r2, PRODUCT-02-r2, PRODUCT-03-r2</span><span>04</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">PRODUCT-04 · PRODUCT-05 · PRODUCT-06</p>
+  <h2>The three products where a stage actually judged the item</h2>
+  <table>
+    <thead><tr><th></th><th>PRODUCT-04 pouch</th><th>PRODUCT-05 kurta</th><th>PRODUCT-06 MacBook</th></tr></thead>
+    <tbody>
+      <tr><td>Returned flag</td><td>False. Details say no return event.</td><td>True. Stated in the live-demo file.</td><td>False. The doc never set the flag.</td></tr>
+      <tr><td>Receiving</td><td>UNCERTAIN on unit damage. 3 photos. Holding for a person.</td><td>FAIL. Accept with exceptions on carton count. 6 photos.</td><td>PASS. All receiving checks passed. Outcome accept. 4 photos.</td></tr>
+      <tr><td>Prep</td><td>FAIL. Operational status stop and fix. 3 photos. This is the only Prep FAIL.</td><td>8 usable photos. Front, back, and label missing, so observation did not run.</td><td>REVIEW_REQUIRED. 3 photos. Stored as an unfinished stage.</td></tr>
+      <tr><td>Pack</td><td>UNCERTAIN. A brown pouch is present, but branding is not clear enough to confirm Oblique Sally.</td><td>FAIL. Stop and fix. Variant or colour mismatch. 1 photo.</td><td>UNCERTAIN. A visible item is low confidence or the brand is not clear, so it will not seal.</td></tr>
+      <tr><td>Returns</td><td>PASS. Restock. Identity matches, parts visible, grade Like New or Very Good.</td><td>PASS. Restock. Same reason. 4 photos. SKU KO_D_5088Black_S.</td><td>Refused. HTTP 413, request body too large. Not retried.</td></tr>
+      <tr><td>Bus result</td><td>BLOCKED / EXCEPTION. A person must decide receiving, prep, and pack.</td><td>FAILED / EXCEPTION. Prep never finished, and receiving plus pack failed.</td><td>FAILED / INCOMPLETE. Receiving’s PASS is kept.</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span>No recovery amount was sent on any of these three</span><span>05</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">PRODUCT-07 and the pattern</p>
+  <h2>The seventh folder never became a workflow</h2>
+  <div class="stats">
+    <div class="stat"><b>0</b><span>Image files in PRODUCT-07. Scenario folders are empty.</span></div>
+    <div class="stat"><b>Blank</b><span>Name, SKU, route, and returned are empty templates.</span></div>
+    <div class="stat"><b>No guess</b><span>Route and returned were not invented. No workflow id.</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Pattern across the six that ran</th><th>Count</th></tr></thead>
+    <tbody>
+      <tr><td>Prep saw usable photos but would not observe because front, back, and label slots were required</td><td>4 · products 01, 02, 03, 05</td></tr>
+      <tr><td>Pack sealed</td><td>1 · product 01 only</td></tr>
+      <tr><td>Returns restocked</td><td>2 · products 04 and 05</td></tr>
+      <tr><td>Receiving accepted with every check passing</td><td>1 · product 06, the MacBook</td></tr>
+      <tr><td>Recovery assessed a fee</td><td>0. Every recovery record is insufficient evidence</td></tr>
+      <tr><td>Needs a person</td><td>6 of 6</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Invoices and a Protect Promise note were in some recovery folders. The run did not send them as charges, because the details files say they are not recovery fees. Recovery therefore had nothing to assess.</p>
+  <div class="foot"><span>PRODUCT-07.md</span><span>06</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Close</p>
+  <h2>What to say about this Drive run</h2>
+  <table>
+    <thead><tr><th>Say this</th><th>Leave this off</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Six real Drive products went through Receiving, Prep, Pack, Returns, and Recovery on 10 October.</td>
+        <td>A pass rate for the folder. Zero workflows are CLEAN.</td>
+      </tr>
+      <tr>
+        <td>The bus kept going and stored a result. PRODUCT-01 Pack sealed. PRODUCT-04 and 05 Returns restocked. PRODUCT-06 Receiving accepted.</td>
+        <td>Those stage passes as a product pass. The workflow outcome is still EXCEPTION or INCOMPLETE.</td>
+      </tr>
+      <tr>
+        <td>Prep stopped four products before the model looked, because the photos were not in front, back, and label slots.</td>
+        <td>Calling that a vision miss. Observation was not run.</td>
+      </tr>
+      <tr>
+        <td>Recovery withheld every claim. No fee line was supplied.</td>
+        <td>Dollars recovered, or a false-claim rate.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">Folder: https://drive.google.com/drive/folders/1CNGJ8_67tNkD74i5z8XjM60Ne0U-9j8_ · Written results: pod4-data/results/PRODUCT-01.md through PRODUCT-07.md · Stored workflows dated 2026-10-10.</p>
+  <div class="foot"><span>Pod 4 · final Drive products</span><span>07</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pod 4 orchestration</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c1c1c; background: #fff; }
+  .slide {
+    width: 13.333in; height: 7.5in;
+    padding: 0.46in 0.58in 0.4in;
+    page-break-after: always; position: relative; overflow: hidden;
+    background: #f6f4ef;
+  }
+  .slide:last-child { page-break-after: auto; }
+  .kicker { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6258; margin: 0 0 8px; }
+  h1 { font-size: 46px; line-height: 1.05; font-weight: 650; margin: 0 0 12px; letter-spacing: -0.02em; }
+  h2 { font-size: 30px; line-height: 1.1; font-weight: 650; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { font-size: 16px; line-height: 1.35; color: #3f3a34; margin: 0 0 14px; max-width: 11.6in; }
+  .foot {
+    position: absolute; left: 0.58in; right: 0.58in; bottom: 0.26in;
+    display: flex; justify-content: space-between; font-size: 11px; color: #7a7168;
+  }
+  .bar { width: 72px; height: 6px; background: #1f4b3a; margin-bottom: 16px; }
+  .stats { display: flex; gap: 12px; margin: 6px 0 14px; }
+  .stat { flex: 1; background: #fff; border: 1px solid #e2dcd3; padding: 12px 14px 10px; }
+  .stat b { display: block; font-size: 28px; line-height: 1; letter-spacing: -0.03em; color: #1f4b3a; font-weight: 700; }
+  .stat span { display: block; margin-top: 6px; font-size: 13px; color: #4a453f; }
+  .warn b { color: #8a4b12; }
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: 13px; }
+  th {
+    text-align: left; font-weight: 650; font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #5c564f; background: #efeae3; padding: 7px 9px;
+    border-bottom: 1px solid #d9d2c8;
+  }
+  td { padding: 6px 9px; border-bottom: 1px solid #eee8e0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .right { text-align: right; }
+  .note { margin-top: 10px; font-size: 13px; color: #3f3a34; line-height: 1.35; }
+  .flow { display: flex; align-items: stretch; gap: 8px; margin: 8px 0 14px; }
+  .node { flex: 1; background: #fff; border: 1px solid #e2dcd3; padding: 12px 12px 10px; }
+  .node b { display: block; font-size: 16px; margin-bottom: 4px; }
+  .node span { font-size: 12.5px; color: #4a453f; line-height: 1.3; }
+  .arrow { align-self: center; color: #1f4b3a; font-size: 20px; font-weight: 700; }
+  .title-slide { background: #1f4b3a; color: #f6f4ef; }
+  .title-slide h1 { font-size: 50px; color: #f6f4ef; margin-top: 1.15in; }
+  .title-slide .kicker { color: #c9d7cf; }
+  .title-slide .sub { color: #e7eee9; font-size: 19px; }
+  .title-slide .foot { color: #c9d7cf; }
+  .pillrow { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+  .pill { border: 1px solid #8eaa9c; color: #f6f4ef; padding: 6px 12px; font-size: 13px; }
+  .small td, .small th { font-size: 12px; padding: 5px 8px; }
+</style>
+</head>
+<body>
+
+<section class="slide title-slide">
+  <p class="kicker">Pod 4 · Orchestrator</p>
+  <div class="bar" style="background:#e7c27a"></div>
+  <h1>How the bus works,<br>and what it returns</h1>
+  <p class="sub">One workflow per unit. Agents write evidence. The orchestrator derives the status and the final outcome. The 8 October stress run is a crash test of that bus, not a five-agent vision score.</p>
+  <div class="pillrow">
+    <span class="pill">200 workflows</span>
+    <span class="pill">0 crashes</span>
+    <span class="pill">0 schema failures</span>
+    <span class="pill">No Claude calls</span>
+  </div>
+  <div class="foot"><span>Stress run 8 October 2026 · flow standard-v1</span><span>01</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">The path</p>
+  <h2>Receiving always. Prep or Pack by route. Returns only if returned.</h2>
+  <p class="sub">flow.json, flow_id standard-v1. A stage that does not apply is skipped and the reason is stored. A stage is never skipped because an agent was down. That is an error.</p>
+  <div class="flow">
+    <div class="node"><b>1 · Receiving</b><span>Always. Dock identity, cartons, quantity, damage.</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>2 · Prep or Pack</b><span>Prep when route is FBA. Pack when route is merchant-fulfilled. Unknown route runs neither.</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>3 · Returns</b><span>Only when returned is true. Identity, completeness, condition. Policy chooses disposition.</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>4 · Recovery</b><span>Always. Reads the evidence chain. Rules decide. The model does not rewrite history.</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Policy</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>timeout</td><td>30 seconds</td><td>Then a retry.</td></tr>
+      <tr><td>retries</td><td>1</td><td>Transient failures retry. A 4xx refusal does not.</td></tr>
+      <tr><td>on_uncertain</td><td>continue</td><td>UNCERTAIN stays UNCERTAIN and travels forward. A person is asked when needs_human is true.</td></tr>
+      <tr><td>on_error</td><td>continue</td><td>Other stages can still write evidence. The workflow still ends FAILED if a required stage never finished.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Every agent output is checked for schema, stage, workflow, tenant, and hash before it is stored. Evidence is append-only. A person’s disagreement is an override that names the record it supersedes.</p>
+  <div class="foot"><span>orchestration/flow.json · ORCHESTRATION-GUIDE.md</span><span>02</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">What one run gives</p>
+  <h2>A workflow, an evidence chain, and a derived outcome</h2>
+  <p class="sub">The latest agent answer is not the source of truth. rollup.py derives status and final outcome from the stored records and overrides.</p>
+  <div class="stats">
+    <div class="stat"><b>WF-…</b><span>workflow_id from org and unit. Starting the same unit again advances it. It does not duplicate it.</span></div>
+    <div class="stat"><b>Evidence</b><span>One immutable record per attempt. Failed attempts stay. Retries add a new record.</span></div>
+    <div class="stat"><b>Outcome</b><span>CLEAN, EXCEPTION, NEEDS_REVIEW, CLAIM_RECOMMENDED, or INCOMPLETE, with a reason and the record ids behind it.</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Field on the finished workflow</th><th>What you show</th></tr></thead>
+    <tbody>
+      <tr><td>status</td><td>PENDING, IN_PROGRESS, COMPLETED, FAILED, BLOCKED, or RECOVERY_REQUIRED</td></tr>
+      <tr><td>stage_results</td><td>Per stage: skipped, completed, pending, or error, plus verdict, attempts, and error code</td></tr>
+      <tr><td>final_outcome.outcome</td><td>The business result</td></tr>
+      <tr><td>final_outcome.reason</td><td>A sentence naming the stages that drove it</td></tr>
+      <tr><td>effective_verdicts</td><td>Each stage after overrides</td></tr>
+      <tr><td>claimable_usd</td><td>Set only when the outcome is CLAIM_RECOMMENDED</td></tr>
+      <tr><td>provisional</td><td>True whenever status is not COMPLETED</td></tr>
+      <tr><td>needs_human</td><td>True when a person was asked, or a required stage did not finish</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span>decided_by is orchestrator</span><span>03</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">How to read the result</p>
+  <h2>Status says whether the bus finished. Outcome says what it found.</h2>
+  <div class="stats" style="margin-bottom:10px">
+    <div class="stat"><b>PASS</b><span>Record it. Continue.</span></div>
+    <div class="stat warn"><b>FAIL</b><span>A finished judgment, not a crash. The bus keeps going.</span></div>
+    <div class="stat"><b>UNCERTAIN</b><span>Kept as written. Never turned into PASS.</span></div>
+  </div>
+  <table class="small">
+    <thead><tr><th>If the evidence says</th><th>Status</th><th>Final outcome</th></tr></thead>
+    <tbody>
+      <tr><td>Every required stage passed</td><td>COMPLETED</td><td>CLEAN</td></tr>
+      <tr><td>A stage FAIL, and Recovery did not contradict a charge</td><td>COMPLETED</td><td>EXCEPTION</td></tr>
+      <tr><td>A stage asks for a person</td><td>BLOCKED</td><td>NEEDS_REVIEW</td></tr>
+      <tr><td>FAIL and a person is also waiting</td><td>BLOCKED</td><td>EXCEPTION. The person comes first in the status.</td></tr>
+      <tr><td>Recovery verdict FAIL, earlier stages finished</td><td>COMPLETED</td><td>CLAIM_RECOMMENDED. claimable_usd is set.</td></tr>
+      <tr><td>Recovery silent, needs_human false</td><td>COMPLETED if the rest passed</td><td>CLEAN. Silence is not a failure.</td></tr>
+      <tr><td>A required stage timed out, crashed, or refused</td><td>FAILED</td><td>INCOMPLETE. Resume retries the failed stage.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">A claim is withheld when an earlier stage did not finish, even if Recovery’s own verdict was FAIL. That outcome becomes INCOMPLETE.</p>
+  <div class="foot"><span>orchestration/rollup.py</span><span>04</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Stress run · 100 scripted units · 8 Oct 2026</p>
+  <h2>60 completed, 10 blocked, 30 failed. The process stayed up.</h2>
+  <p class="sub">These units are scripted inside the orchestrator. No Claude. No ports 8102–8105. Route rotates through FBA, merchant-fulfilled, and unknown. Half are marked returned. Ten units in each group.</p>
+  <table class="small">
+    <thead><tr><th>Scenario</th><th>Status</th><th>Outcome</th><th>What it proves</th></tr></thead>
+    <tbody>
+      <tr><td>all_pass</td><td>COMPLETED 10</td><td>CLEAN 10</td><td>A full pass finishes clean.</td></tr>
+      <tr><td>receiving_fail</td><td>COMPLETED 10</td><td>EXCEPTION 10</td><td>A FAIL is a judgment. The bus continues.</td></tr>
+      <tr><td>midstage_fail</td><td>COMPLETED 10</td><td>CLEAN 4, EXCEPTION 6</td><td>Unknown route has no Prep or Pack, so nothing mid-stage to fail.</td></tr>
+      <tr><td>uncertain_needs_person</td><td>BLOCKED 10</td><td>NEEDS_REVIEW 10</td><td>The bus continues, then the rollup blocks because a person was asked.</td></tr>
+      <tr><td>recovery_claim</td><td>COMPLETED 10</td><td>CLAIM_RECOMMENDED 10</td><td>A claim is allowed when earlier stages passed.</td></tr>
+      <tr><td>recovery_silent</td><td>COMPLETED 10</td><td>CLEAN 10</td><td>Silent uncertainty with needs_human false stays CLEAN.</td></tr>
+      <tr><td>timeout_then_pass</td><td>COMPLETED 10</td><td>CLEAN 10</td><td>Receiving tried twice (20 attempts). The retry passed.</td></tr>
+      <tr><td>timeout_exhausted</td><td>FAILED 10</td><td>INCOMPLETE 10</td><td>Both attempts used. Stage stays pending. Process stays up.</td></tr>
+      <tr><td>agent_crash</td><td>FAILED 10</td><td>INCOMPLETE 10</td><td>RuntimeError inside Recovery is stored as UNCERTAIN. It does not escape.</td></tr>
+      <tr><td>schema_refusal</td><td>FAILED 10</td><td>INCOMPLETE 10</td><td>A bare HTTP 422 stops the bus. Later stages are not called.</td></tr>
+    </tbody>
+  </table>
+  <div class="foot"><span>docs/pod4-stress-run.md · uncaught exceptions 0 · schema failures 0</span><span>05</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Stress run · 100 sample CSV units</p>
+  <h2>73 completed, 27 blocked. Dummy rows, replayed.</h2>
+  <p class="sub">Source: data/sample. The sample README marks it dummy. A stage runs only when the case is eligible. Receiving and Recovery always. Prep for FBA. Pack for merchant-fulfilled. Returns only when returned is true.</p>
+  <div class="stats">
+    <div class="stat"><b>48</b><span>CLEAN</span></div>
+    <div class="stat warn"><b>31</b><span>EXCEPTION</span></div>
+    <div class="stat"><b>21</b><span>NEEDS_REVIEW</span></div>
+    <div class="stat"><b>0</b><span>Claims from these rows</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Eligibility</th><th class="right">Units</th><th>Replay rule</th></tr></thead>
+    <tbody>
+      <tr><td>Neither Prep nor Pack</td><td class="right">9</td><td>Unknown route.</td></tr>
+      <tr><td>Prep ran</td><td class="right">62</td><td>FAIL on missing, unsealed, obscured, or badly placed marks.</td></tr>
+      <tr><td>Pack ran</td><td class="right">29</td><td>PASS on seal. FAIL on stop_and_fix.</td></tr>
+      <tr><td>Returns ran</td><td class="right">24</td><td>PASS on a disposition. pending_review is UNCERTAIN.</td></tr>
+      <tr><td>Receiving</td><td class="right">100</td><td>PASS only when identity is yes and both damage fields are none.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Six units are BLOCKED and EXCEPTION together: one stage FAIL, another asked for a person. Twenty-one are BLOCKED / NEEDS_REVIEW with no FAIL. Twenty-five are EXCEPTION with nobody waiting. Recovery does not recommend a claim from these CSVs. A weight, lost, or warehouse line is silent. An inbound-defect or refund line asks for a person, because the CSV has no photo.</p>
+  <div class="foot"><span>Same run as the scripted hundred · no vision model</span><span>06</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Ten sample units that touch every stage</p>
+  <h2>All ten blocked. Pack has no row to replay.</h2>
+  <p class="sub">These dummy units have a Receiving row, a Prep row, a Returns row, and a fee row. This pass uses flow.pod4-tracers.json, so Pack is called anyway and returns UNCERTAIN. Not a Claude run.</p>
+  <table class="small">
+    <thead>
+      <tr><th>Unit</th><th>Product</th><th>Outcome</th><th>Receiving</th><th>Prep</th><th>Pack</th><th>Returns</th><th>Recovery</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0003</td><td>Jigsaw Puzzle</td><td>EXCEPTION</td><td>UNCERTAIN</td><td>FAIL</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0014</td><td>LED Desk Lamp</td><td>NEEDS_REVIEW</td><td>PASS</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0018</td><td>Steel Water Bottle</td><td>NEEDS_REVIEW</td><td>PASS</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0030</td><td>Vitamin C Serum</td><td>EXCEPTION</td><td>PASS</td><td>FAIL</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0036</td><td>Jigsaw Puzzle</td><td>EXCEPTION</td><td>FAIL</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0038</td><td>Whey Protein</td><td>NEEDS_REVIEW</td><td>PASS</td><td>UNCERTAIN</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0039</td><td>Vitamin C Serum</td><td>NEEDS_REVIEW</td><td>PASS</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0041</td><td>Nylon Dog Leash</td><td>NEEDS_REVIEW</td><td>PASS</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0048</td><td>Soy Candle Trio</td><td>NEEDS_REVIEW</td><td>PASS</td><td>PASS</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+      <tr><td>0050</td><td>Jigsaw Puzzle</td><td>EXCEPTION</td><td>FAIL</td><td>UNCERTAIN</td><td>UNCERTAIN</td><td>PASS</td><td>UNCERTAIN</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Workflow status is BLOCKED on all ten. Returns replayed PASS on all ten. Recovery stayed UNCERTAIN: either a silent fee line, or a charge with no photo that can support or contradict it.</p>
+  <div class="foot"><span>docs/pod4-ten-eligible.md</span><span>07</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">When an agent breaks</p>
+  <h2>The judgment that already landed is kept. The process does not die.</h2>
+  <table>
+    <thead><tr><th>Break</th><th>What is stored</th></tr></thead>
+    <tbody>
+      <tr><td>Connection refused</td><td>FAILED / INCOMPLETE. Receiving UNCERTAIN, error agent_unavailable. Prep is not asked to invent that judgment.</td></tr>
+      <tr><td>Resume after the agent answers</td><td>On the injected case: COMPLETED / CLEAN. Receiving PASS. Attempts seen: 5.</td></tr>
+      <tr><td>Every agent raises</td><td>FAILED / INCOMPLETE. Four stages error / UNCERTAIN. The exception does not leave run_workflow.</td></tr>
+      <tr><td>Prep returns a bare 422</td><td>FAILED / INCOMPLETE. Receiving PASS is kept. Pack, Returns, and Recovery are not called.</td></tr>
+      <tr><td>UNIT-0014, Receiving down, then resume</td><td>First pass FAILED / INCOMPLETE. After resume: BLOCKED / NEEDS_REVIEW, because Pack and Recovery are still UNCERTAIN on that lamp.</td></tr>
+    </tbody>
+  </table>
+  <div class="stats" style="margin-top:14px">
+    <div class="stat"><b>2</b><span>Receiving attempts while the agent is down, then stop.</span></div>
+    <div class="stat"><b>Kept</b><span>A finished PASS stays on the evidence chain through a later refusal.</span></div>
+    <div class="stat"><b>Resume</b><span>Retries errored stages on the same workflow id.</span></div>
+  </div>
+  <div class="foot"><span>docs/pod4-stress-run.md · docs/pod4-ten-eligible.md</span><span>08</span></div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Close</p>
+  <h2>The bus was measured. A five-stage Claude score was not.</h2>
+  <div class="stats">
+    <div class="stat"><b>200</b><span>Workflows returned. 0 crashes. 0 schema failures.</span></div>
+    <div class="stat"><b>10</b><span>Scripted claims recommended, only when earlier stages had passed.</span></div>
+    <div class="stat"><b>0</b><span>Claims from the dummy CSV. No photo, no claimable dollars.</span></div>
+  </div>
+  <table>
+    <thead><tr><th>Say this</th><th>Leave this off</th></tr></thead>
+    <tbody>
+      <tr><td>The orchestrator owns the outcome. Agents contribute evidence.</td><td>A single Pod 4 accuracy percentage.</td></tr>
+      <tr><td>FAIL continues. A crash, timeout, or 422 is stored and can be resumed.</td><td>Calling the stress run a vision evaluation.</td></tr>
+      <tr><td>CLEAN, EXCEPTION, NEEDS_REVIEW, CLAIM_RECOMMENDED, and INCOMPLETE are the five results a workflow can give.</td><td>UNIT-001, UNIT-002, and UNIT-003. They were not in these 200.</td></tr>
+      <tr><td>Stage grades live on the other deck: identity, prep fields, false seals.</td><td>A false-claim rate. There is no labeled fee sheet large enough to score one.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Sources: docs/pod4-stress-run.md, docs/evaluation.md, docs/pod4-ten-eligible.md, orchestration/flow.json, orchestration/rollup.py. Tracer photo folders are empty.</p>
+  <div class="foot"><span>Pod 4 · orchestration</span><span>09</span></div>
+</section>
+
+</body>
+</html>
