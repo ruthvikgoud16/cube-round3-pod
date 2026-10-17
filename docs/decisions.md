@@ -107,3 +107,41 @@ A contradiction between documents or data is a **finding**, not a failure. Open 
 - Decision: `canonicalize_output` runs before validation. `hold` becomes `review`. A missing uncertain reason becomes `insufficient_evidence`. The evidence body is sealed with the official hash, which excludes `content_hash` and `overrides`. The verdict, checks, and call count stay the agent's.
 - Why: the judgment was already made. Dropping it made every live workflow FAILED even when Pack had returned PASS. The hash is a content hash, not a tamper seal.
 - Consequences: a stored hash can differ from the hash in the agent's own log. A schema error that is not one of these three still becomes a pending UNCERTAIN record.
+
+### D-011 · Optional API key on the orchestrator edge
+- Date / Owner: 2026-10-17 / ruthvikgoud16
+- Context: ARCHITECTURE.md and api.py stated the HTTP surface had no authentication. A public desk would expose workflow evidence and overrides.
+- Options considered: always-open demo; JWT/OAuth; shared API key with public probes.
+- Decision: when `ORCH_API_KEY` is set, data routes require `Authorization: Bearer` or `X-API-Key` (constant-time compare). `/health`, `/ready`, `/desk`, `/live`, `/metrics` stay public. Unset key keeps local CI and stub demos open.
+- Why: Pod deploy needs a gate without standing up an IdP. Probes and scrapers must not need secrets.
+- Consequences: Control Tower must send `VITE_ORCH_API_KEY` when the bus is locked. This is not multi-user RBAC.
+
+### D-012 · SQLite as a first-class store backend
+- Date / Owner: 2026-10-17 / ruthvikgoud16
+- Context: FileStore is fine for the CLI; ephemeral deploy disks lose JSON under `out/` unless seeded. The store interface already invited a database swap.
+- Options considered: keep files only; Postgres; SQLite via `STORE_BACKEND=sqlite`.
+- Decision: `SqliteStore` implements the same methods (`list` / `load` / `save` / `get` / `put`) with WAL and evidence immutability. `build_store()` selects file | sqlite | memory.
+- Why: one file on the volume, no extra service, same contract tests.
+- Consequences: concurrent writers across processes are not a goal; scale-out still wants Postgres later.
+
+### D-013 · Circuit breaker on HTTP agent transport only
+- Date / Owner: 2026-10-17 / ruthvikgoud16
+- Context: a dead Prep host caused every workflow to burn retries and latency. A bare 422 is not a dead host (D-007).
+- Options considered: unlimited retries; breaker on every non-200; breaker on connection/5xx/timeout only.
+- Decision: after `CIRCUIT_FAILURE_THRESHOLD` transport failures, open for `CIRCUIT_COOLDOWN_S`. Schema refusals and 4xx rejections do not trip it. Open raises `CircuitOpen` (subclass of `AgentUnavailable`) so resume/`on_error` paths stay unchanged.
+- Why: fail fast on outages; never confuse judgment stops with outages.
+- Consequences: health payload includes `circuit` for HTTP stages.
+
+### D-014 · Correlation ids and dual metrics surface
+- Date / Owner: 2026-10-17 / ruthvikgoud16
+- Context: debugging a five-service run needed a shared id at the HTTP edge; ops wanted scrapable counters without a vendor.
+- Decision: `RequestIdMiddleware` accepts or mints `X-Request-ID` and echoes it. `GET /metrics` returns JSON by default and Prometheus text when requested. `/ready` checks store only; `/health` still probes agents.
+- Why: join logs to a desk poll; scrape without coupling to Datadog.
+- Consequences: counters are process-local and reset on restart.
+
+### D-015 · Idempotency-Key on workflow create
+- Date / Owner: 2026-10-17 / ruthvikgoud16
+- Context: `run_workflow` already advances an existing id, but a client retry after a completed POST still re-enters `advance`.
+- Decision: if `Idempotency-Key` is present and the workflow is already terminal (`COMPLETED` / `BLOCKED` / `FAILED` / `RECOVERY_REQUIRED`), return the stored state.
+- Why: safe client retries for the intake/create path.
+- Consequences: in-progress retries still advance (intentional).

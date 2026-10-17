@@ -232,6 +232,12 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
         try:
             out = client.run(request, float(opts["timeout_s"]))
             err = None
+            try:
+                from .metrics import METRICS
+
+                METRICS.record_agent(stage, ok=True)
+            except Exception:
+                pass
             break
         except AgentTimeout as exc:
             err = error_obj("agent_timeout", str(exc), retryable=True, stage=stage)
@@ -249,6 +255,12 @@ def _run_stage(wf: dict, sr: dict, idx: int, opts: dict, store, client) -> dict 
         except Exception as exc:  # an agent bug must not take the orchestrator down
             err = error_obj("agent_exception", f"{type(exc).__name__}: {exc}", retryable=False, stage=stage)
             break
+        try:
+            from .metrics import METRICS
+
+            METRICS.record_agent(stage, ok=False)
+        except Exception:
+            pass
         if sr["attempts"] <= int(opts["retries"]):
             _log(wf, "retry", stage, err["message"])
     if out is not None:
@@ -306,6 +318,14 @@ def _finalize(wf: dict, store) -> dict:
     wf["final_outcome"] = derive_final_outcome(wf, evidence, status)
     wf["timestamps"]["completed_at"] = utcnow() if status == "COMPLETED" else None
     store.save_workflow(wf)
+    try:
+        from .metrics import METRICS
+
+        outcome = (wf.get("final_outcome") or {}).get("outcome")
+        METRICS.record_workflow(status, outcome)
+        METRICS.inc("workflows_finalized")
+    except Exception:
+        pass
     return wf
 
 
