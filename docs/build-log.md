@@ -1,5 +1,11 @@
 # Receiving build log
 
+## 2026-10-17 — orchestrator production upgrades (interview)
+
+- Optional API key auth (`ORCH_API_KEY`), request correlation ids, SQLite store backend, HTTP circuit breaker, `/metrics` + `/ready`.
+- Decisions D-011…D-015; talking points in `docs/INTERVIEW-UPGRADES.md`.
+- New tests: `tests/unit/test_upgrades.py`. Evidence contract unchanged.
+
 ## 2026-10-07 — photos + live path complete
 
 - Forked Round 3: https://github.com/ruthvikgoud16/cube-round3-pod

@@ -94,7 +94,12 @@ Copy `.env.example` to `.env`. **Never commit `.env`.**
 | `OUT_DIR` | Where workflow state and evidence are written | `out` |
 | `DATA_DIR`, `INPUT_DIR` | Sample CSVs for the stubs; your per-stage captures | `data/sample`, `data/input` |
 | `LOG_LEVEL`, `LOG_FORMAT` | Logging | `WARNING`, `json` |
+| `ORCH_API_KEY` | Optional Bearer / X-API-Key gate on data routes | unset (open) |
+| `STORE_BACKEND` | `file` \| `sqlite` \| `memory` | `file` |
+| `CIRCUIT_FAILURE_THRESHOLD` / `CIRCUIT_COOLDOWN_S` | HTTP agent circuit breaker | `3` / `30` |
 | Model provider keys | Whatever *your* agents use (e.g. `ANTHROPIC_API_KEY`) | none |
+
+Production-hardening notes and interview talking points: [`docs/INTERVIEW-UPGRADES.md`](docs/INTERVIEW-UPGRADES.md).
 
 ## Example end-to-end workflow
 

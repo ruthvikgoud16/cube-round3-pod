@@ -278,8 +278,14 @@ function apiBase(): string {
   return typeof window === "undefined" ? "http://127.0.0.1:8100" : "/orch";
 }
 
+function apiHeaders(): HeadersInit {
+  const key = import.meta.env.VITE_ORCH_API_KEY;
+  if (!key || typeof key !== "string") return {};
+  return { Authorization: `Bearer ${key}`, "X-API-Key": key };
+}
+
 async function readJson(path: string): Promise<unknown> {
-  const response = await fetch(`${apiBase()}${path}`);
+  const response = await fetch(`${apiBase()}${path}`, { headers: apiHeaders() });
   if (!response.ok) throw new Error(`${response.status} ${path}`);
   return response.json();
 }

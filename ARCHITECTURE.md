@@ -188,13 +188,13 @@ What the stress run broke, with the process still alive (`docs/pod4-stress-run.m
 
 ### Deployment
 
-Local only. Nothing here is a public URL.
-
 ```
 uvicorn orchestration.api:app --port 8100
 ```
 
-The read-only desk is `http://127.0.0.1:8100/desk`. Health is `GET /health`. Prep, Pack, Returns, and Recovery must already be listening on 8102–8105 or those stages report down. Set `ORCH_FLOW` to `orchestration/flow.pod4-tracers.json` for the five-stage demo path. `make run` still uses `flow.json`.
+The read-only desk is `http://127.0.0.1:8100/desk`. Health is `GET /health`; readiness (store only) is `GET /ready`; counters are `GET /metrics`. Prep, Pack, Returns, and Recovery must already be listening on 8102–8105 or those stages report down. Set `ORCH_FLOW` to `orchestration/flow.pod4-tracers.json` for the five-stage demo path. `make run` still uses `flow.json`.
+
+Production edge (D-011…D-015): set `ORCH_API_KEY` before exposing the API; set `STORE_BACKEND=sqlite` for a durable volume file; HTTP agent circuit state appears under `/health`. Talking points: [`docs/INTERVIEW-UPGRADES.md`](docs/INTERVIEW-UPGRADES.md).
 
 ### Known limits
 
@@ -202,3 +202,4 @@ The read-only desk is `http://127.0.0.1:8100/desk`. Health is `GET /health`. Pre
 - There is no system claim-precision number. Stage scores live in `docs/evaluation.md`. The stress numbers are not vision accuracy.
 - The desk reads workflows already stored under `out/`. It does not start agents.
 - Receiving's agreed-on-every-check set is 3 units. Pack's held-out verdict match is 3 of 14. Recovery has no match rate.
+- API key auth is shared-secret, not per-operator RBAC. Metrics counters reset on process restart.
