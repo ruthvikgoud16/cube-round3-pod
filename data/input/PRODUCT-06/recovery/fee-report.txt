@@ -1,0 +1,17 @@
+PRODUCT-06 fee report
+Generated for this run. No invoice and no fee ledger were in the folder.
+This is not a real charge.
+
+line_id: FEE-PRODUCT-06-NO-INVOICE
+charge_type: inbound_defect_fee
+org_id: org_demo_alpha
+unit_id: PRODUCT-06
+sku: MacBook Air 13-inch
+order_id: not on the details sheet
+amount: none
+currency: none
+posted_date: none
+source: generated because no real fee or invoice was found
+expected_position: SILENT until an amount exists
+
+The details sheet names an Apple MacBook Air, silver, 13-inch. It does not name a fee. Recovery must not invent an amount or recommend a claim.

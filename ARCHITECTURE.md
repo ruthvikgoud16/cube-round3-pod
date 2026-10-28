@@ -188,13 +188,9 @@ What the stress run broke, with the process still alive (`docs/pod4-stress-run.m
 
 ### Deployment
 
-Local only. Nothing here is a public URL.
+The orchestrator is on Railway: https://pod4-orchestrator-production.up.railway.app . Health is `GET /health`. The desk is `GET /desk`. The Netlify frontend is https://harmonious-dasik-5d4283.netlify.app . https://pod4-live-run.netlify.app is published, and its page says the tunnel proxy is not active.
 
-```
-uvicorn orchestration.api:app --port 8100
-```
-
-The read-only desk is `http://127.0.0.1:8100/desk`. Health is `GET /health`. Prep, Pack, Returns, and Recovery must already be listening on 8102–8105 or those stages report down. Set `ORCH_FLOW` to `orchestration/flow.pod4-tracers.json` for the five-stage demo path. `make run` still uses `flow.json`.
+A local run is still `uvicorn orchestration.api:app --port 8100`, with the desk at `http://127.0.0.1:8100/desk`. On the Railway health check dated 10 October 2026, Receiving was up in-process and Prep, Pack, Returns, and Recovery were connection refused. Those four services are not part of the Railway process. Set `ORCH_FLOW` to `orchestration/flow.pod4-tracers.json` for the five-stage demo path. `make run` still uses `flow.json`.
 
 ### Known limits
 

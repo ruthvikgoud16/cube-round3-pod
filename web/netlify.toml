@@ -4,3 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  VITE_ORCH_URL = "https://pod4-orchestrator-production.up.railway.app"
+
+[[redirects]]
+  from = "/orch/*"
+  to = "https://pod4-orchestrator-production.up.railway.app/:splat"
+  status = 200
+  force = true

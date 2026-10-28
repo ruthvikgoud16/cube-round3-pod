@@ -52,6 +52,31 @@ make test             # integration, end-to-end, failure, UNCERTAIN, override an
 make run              # all sample workflows end to end -> out/workflows/*.json and out/evidence/*.json
 make case UNIT=UNIT-0014 ORG=org_demo_alpha     # one workflow, in full
 make serve            # orchestrator API on :8100 (POST /workflows, GET /workflows/{id}, GET /health)
+```
+
+## Live
+
+The orchestrator is deployed. It is not a fully live five-agent run. On 10 October 2026, `GET /health` on Railway reported Receiving up in-process. Prep, Pack, Returns, and Recovery answered connection refused, so those stages are not running on that host.
+
+| What | URL |
+|---|---|
+| Railway backend | https://pod4-orchestrator-production.up.railway.app |
+| Health | https://pod4-orchestrator-production.up.railway.app/health |
+| Desk | https://pod4-orchestrator-production.up.railway.app/desk |
+| Netlify frontend | https://harmonious-dasik-5d4283.netlify.app |
+| Netlify live-run shell | https://pod4-live-run.netlify.app |
+
+The live-run Netlify site is published. Its page says the proxy to the orchestrator is not active, so that URL is not the working desk. Use the Railway `/desk` URL or the Control Tower frontend above.
+
+## Photographs
+
+| Set | Drive |
+|---|---|
+| Pod 4 final products, PRODUCT-01 through PRODUCT-07 | https://drive.google.com/drive/folders/1CNGJ8_67tNkD74i5z8XjM60Ne0U-9j8_ |
+| Receiving carton photos | https://drive.google.com/drive/folders/1ntPKrpVc9ebb0cDLwAQYyityM01RHMZA |
+| Returns held-out photographs | https://drive.google.com/drive/folders/1R8sk5n_OCvtidlbkyiL0IT6NBZpjT86Q |
+
+Opening a Drive folder does not run the model.
 
 ## Deploy
 
@@ -63,7 +88,6 @@ docker run --rm -p 8100:8100 pod4-orchestrator
 ```
 
 The image listens on `0.0.0.0` and `$PORT` (default 8100). It does not load the sample catalog and it does not start a workflow by itself. `POST /workflows` requires `route` (`fba` or `mfn`) and `returned` (`true` or `false`). Anything else you send, such as product name or sku, is stored only when you include it. `data/input` is not copied into the image. Do not put `ANTHROPIC_API_KEY` in the image. `render.yaml` is the same service for Render. Point `PREP_URL`, `PACK_URL`, `RETURNS_URL`, and `RECOVERY_URL` at the agent hosts when those services are reachable.
-```
 
 Out of the box everything runs on **organiser stub agents** replaying the synthetic Round 2 CSVs. **Replacing a stub with your real agent is your job.**
 
